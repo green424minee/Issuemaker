@@ -14,6 +14,7 @@ public class Company {
 	private Date comBirth;
 	private int comSize;
 	private String comWeb;
+	
 	public Company(String comId, String comName, int comNo, String comPhone, String comCeo, String managerEmail,
 			String comAddress, Date comBirth, int comSize, String comWeb) {
 		super();
