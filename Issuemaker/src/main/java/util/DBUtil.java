@@ -1,7 +1,10 @@
 package util;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import javax.sql.DataSource;
 
@@ -15,48 +18,55 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
-
 public class DBUtil {
-	private static DataSource dataSource;
-	private static SqlSessionFactory sqlSessionFactory	;
-	
-	static {
-		initDataSource();
-		initSqlSessionFactory();
-	}
-	
-	private static void initSqlSessionFactory() {
-		TransactionFactory transactionFactory = new JdbcTransactionFactory();
-		Environment environment = new Environment("development", transactionFactory, dataSource);
-		Configuration configuration = new Configuration(environment);
-		configuration.addMapper(Mapper.class); // ----------------- 매퍼 파일이름으로 변경하기!
-		sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
-	}
-	
-	public static SqlSession getSqlSession() {
-		return sqlSessionFactory.openSession();
-	}
+    private static DataSource dataSource;
+    private static SqlSessionFactory sqlSessionFactory;
 
-	private static void initDataSource() {
-		BasicDataSource ds = new BasicDataSource();
-		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/issuemaker");
-		ds.setUsername("root");
-		ds.setPassword("root");
-		
-		ds.setInitialSize(0);
-		ds.setMaxTotal(8);
-		ds.setMaxIdle(8);
-		ds.setMinIdle(0);
-		
-		dataSource = ds;
-	}
-	
-	public static Connection getConnection() throws SQLException {
-		return dataSource.getConnection();
-	}
+    static {
+        initDataSource();
+        initSqlSessionFactory();
+    }
+
+    private static void initSqlSessionFactory() {
+        TransactionFactory transactionFactory = new JdbcTransactionFactory();
+        Environment environment = new Environment("development", transactionFactory, dataSource);
+        Configuration configuration = new Configuration(environment);
+        configuration.addMapper(Mapper.class); // ----------------- 매퍼 파일이름으로 변경하기!
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+    }
+
+    public static SqlSession getSqlSession() {
+        return sqlSessionFactory.openSession();
+    }
+
+    private static void initDataSource() {
+        BasicDataSource ds = new BasicDataSource();
+        Properties properties = new Properties();
+
+        try (InputStream input = DBUtil.class.getClassLoader().getResourceAsStream("config/db.properties")) {
+            if (input == null) {
+                System.out.println("db.properties 파일을 찾을 수 없습니다.");
+                return;
+            }
+            properties.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        ds.setUrl(properties.getProperty("jdbc:mysql://localhost:3306/issuemaker"));
+        ds.setUsername(properties.getProperty("db.username"));
+        ds.setPassword(properties.getProperty("db.password"));
+
+        ds.setInitialSize(0);
+        ds.setMaxTotal(8);
+        ds.setMaxIdle(8);
+        ds.setMinIdle(0);
+
+        dataSource = ds;
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return dataSource.getConnection();
+    }
 }
-
-
-
-
