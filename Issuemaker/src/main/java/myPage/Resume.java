@@ -1,6 +1,6 @@
 package myPage;
 
-import java.security.Timestamp;
+import java.time.LocalDate;
 import java.util.Arrays;
 
 import member.User;
@@ -15,10 +15,10 @@ public class Resume {
     private byte[] coverLetter;   
     private byte[] portfolio;     
     private Integer salary;       
-    private Timestamp postDate;
+    private LocalDate postDate;
     
 	public Resume(int no, User user, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
-			byte[] portfolio, Integer salary, Timestamp postDate) {
+			byte[] portfolio, Integer salary, LocalDate postDate) {
 		super();
 		this.no = no;
 		this.user = user;
@@ -95,11 +95,11 @@ public class Resume {
 		this.salary = salary;
 	}
 
-	public Timestamp getPostDate() {
+	public LocalDate getPostDate() {
 		return postDate;
 	}
 
-	public void setPostDate(Timestamp postDate) {
+	public void setPostDate(LocalDate postDate) {
 		this.postDate = postDate;
 	}
 
