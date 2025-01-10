@@ -1,49 +1,48 @@
 package matching;
 
-import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import member.Company;
 
 public class Notice {
 	
-	 	private int no;              
-	    private Company company;     
-	    private String title;       
-	    private String context;      
-	    private Date postDate;      
-	    private Date deadLine;       
-	    private Integer salary;      
-	    private String jobType;      
-	    private Integer exTerm;      
-	    private String workday;      
-	    private int type;        
-	    private int schoolLevel; 
-	    private String major;        
-	    private String level;        
-	    private String license;
+	private int no;              
+	private Company company;     
+	private String title;       
+	private String context;      
+	private LocalDate postDate;      
+	private LocalDate deadLine;       
+	private Integer salary;      
+	private String jobType;      
+	private Integer exTerm;      
+	private String workday;      
+	private int type;        
+	private int schoolLevel; 
+	private String major;        
+	private String level;        
+	private List<String> license;  
 	    
-	    
-		public Notice(int no, Company company, String title, String context, Date postDate, Date deadLine,
-				Integer salary, String jobType, Integer exTerm, String workday, int type, int schoolLevel, String major,
-				String level, String license) {
-			super();
-			this.no = no;
-			this.company = company;
-			this.title = title;
-			this.context = context;
-			this.postDate = postDate;
-			this.deadLine = deadLine;
-			this.salary = salary;
-			this.jobType = jobType;
-			this.exTerm = exTerm;
-			this.workday = workday;
-			this.type = type;
-			this.schoolLevel = schoolLevel;
-			this.major = major;
-			this.level = level;
-			this.license = license;
-		}
-
+	public Notice(int no, Company company, String title, String context, LocalDate postDate, LocalDate deadLine,
+			Integer salary, String jobType, Integer exTerm, String workday, int type, int schoolLevel, String major,
+			String level, List<String> license) {  
+		super();
+		this.no = no;
+		this.company = company;
+		this.title = title;
+		this.context = context;
+		this.postDate = postDate;
+		this.deadLine = deadLine;
+		this.salary = salary;
+		this.jobType = jobType;
+		this.exTerm = exTerm;
+		this.workday = workday;
+		this.type = type;
+		this.schoolLevel = schoolLevel;
+		this.major = major;
+		this.level = level;
+		this.license = license;  
+	}
 
 		public int getNo() {
 			return no;
@@ -85,22 +84,22 @@ public class Notice {
 		}
 
 
-		public Date getPostDate() {
+		public LocalDate getPostDate() {
 			return postDate;
 		}
 
 
-		public void setPostDate(Date postDate) {
+		public void setPostDate(LocalDate postDate) {
 			this.postDate = postDate;
 		}
 
 
-		public Date getDeadLine() {
+		public LocalDate getDeadLine() {
 			return deadLine;
 		}
 
 
-		public void setDeadLine(Date deadLine) {
+		public void setDeadLine(LocalDate deadLine) {
 			this.deadLine = deadLine;
 		}
 
@@ -185,12 +184,11 @@ public class Notice {
 		}
 
 
-		public String getLicense() {
+		public List<String> getLicense() {  
 			return license;
 		}
 
-
-		public void setLicense(String license) {
+		public void setLicense(List<String> license) { 
 			this.license = license;
 		}
 
@@ -200,7 +198,7 @@ public class Notice {
 			return "Notice [no=" + no + ", company=" + company + ", title=" + title + ", context=" + context
 					+ ", postDate=" + postDate + ", deadLine=" + deadLine + ", salary=" + salary + ", jobType="
 					+ jobType + ", exTerm=" + exTerm + ", workday=" + workday + ", type=" + type + ", schoolLevel="
-					+ schoolLevel + ", major=" + major + ", level=" + level + ", license=" + license + "]";
+					+ schoolLevel + ", major=" + major + ", level=" + level + ", license=" + license + "]";  
 		}      
 	    
 	    
