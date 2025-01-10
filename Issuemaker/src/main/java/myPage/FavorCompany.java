@@ -6,6 +6,7 @@ import member.User;
 public class FavorCompany {
 	private User user;
 	private Company company;
+	
 	public FavorCompany(User user, Company company) {
 		super();
 		this.user = user;
