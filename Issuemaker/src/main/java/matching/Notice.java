@@ -6,7 +6,7 @@ import member.Company;
 
 public class Notice {
 	
-	 private int no;              
+	 	private int no;              
 	    private Company company;     
 	    private String title;       
 	    private String context;      

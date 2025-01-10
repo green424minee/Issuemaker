@@ -7,6 +7,7 @@ public class Suggest {
 	private int no;
 	private Company company;
 	private User user;
+	
 	public Suggest(int no, Company company, User user) {
 		super();
 		this.no = no;
