@@ -1,6 +1,6 @@
 package member;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Company {
 	
@@ -11,12 +11,12 @@ public class Company {
 	private String comCeo;
 	private String managerEmail;
 	private String comAddress;
-	private Date comBirth;
+	private LocalDate comBirth;
 	private int comSize;
 	private String comWeb;
 	
 	public Company(String comId, String comName, long comNo, String comPhone, String comCeo, String managerEmail,
-			String comAddress, Date comBirth, int comSize, String comWeb) {
+			String comAddress, LocalDate comBirth, int comSize, String comWeb) {
 		super();
 		this.comId = comId;
 		this.comName = comName;
@@ -71,10 +71,10 @@ public class Company {
 	public void setComAddress(String comAddress) {
 		this.comAddress = comAddress;
 	}
-	public Date getComBirth() {
+	public LocalDate getComBirth() {
 		return comBirth;
 	}
-	public void setComBirth(Date comBirth) {
+	public void setComBirth(LocalDate comBirth) {
 		this.comBirth = comBirth;
 	}
 	public int getComSize() {

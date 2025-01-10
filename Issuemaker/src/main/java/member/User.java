@@ -1,17 +1,17 @@
 package member;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class User {
 	
 	private String userID;
 	private String userName;
-	private Date userBirth;
+	private LocalDate userBirth;
 	private String userPhone;
 	private String userEmail;
 	private String userAddress;
 	
-	public User(String userID, String userName, Date userBirth, String userPhone, String userEmail,
+	public User(String userID, String userName, LocalDate userBirth, String userPhone, String userEmail,
 			String userAddress) {
 		super();
 		this.userID = userID;
@@ -38,11 +38,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public Date getUserBirth() {
+	public LocalDate getUserBirth() {
 		return userBirth;
 	}
 
-	public void setUserBirth(Date userBirth) {
+	public void setUserBirth(LocalDate userBirth) {
 		this.userBirth = userBirth;
 	}
 
