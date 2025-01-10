@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>기업 회원가입</title>
+<link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
+	
+
 
 </body>
 </html>
