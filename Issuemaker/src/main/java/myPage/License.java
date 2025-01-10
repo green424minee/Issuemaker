@@ -10,9 +10,9 @@ public class License {
 	private int type;
 	private String license;
 	private LocalDate acuisition;
-	private int score;
+	private Integer score;
 	
-	public License(int no, User user, int type, String license, LocalDate acuisition, int score) {
+	public License(int no, User user, int type, String license, LocalDate acuisition, Integer score) {
 		super();
 		this.no = no;
 		this.user = user;
@@ -62,7 +62,7 @@ public class License {
 		this.acuisition = acuisition;
 	}
 
-	public int getScore() {
+	public Integer getScore() {
 		return score;
 	}
 
