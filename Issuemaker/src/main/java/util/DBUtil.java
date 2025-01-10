@@ -54,7 +54,7 @@ public class DBUtil {
         }
 
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl(properties.getProperty("jdbc:mysql://localhost:3306/issuemaker"));
+        ds.setUrl("jdbc:mysql://localhost:3306/issuemaker");
         ds.setUsername(properties.getProperty("db.username"));
         ds.setPassword(properties.getProperty("db.password"));
 
