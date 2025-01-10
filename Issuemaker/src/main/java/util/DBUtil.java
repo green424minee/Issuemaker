@@ -9,7 +9,6 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.mapping.Environment;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
@@ -17,6 +16,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+
+import member.Guest0Mapper;
+import member.UserMapper;
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -31,7 +33,9 @@ public class DBUtil {
         TransactionFactory transactionFactory = new JdbcTransactionFactory();
         Environment environment = new Environment("development", transactionFactory, dataSource);
         Configuration configuration = new Configuration(environment);
-        configuration.addMapper(Mapper.class); // ----------------- 매퍼 파일이름으로 변경하기!
+        configuration.addMapper(UserMapper.class);
+        configuration.addMapper(Guest0Mapper.class);
+        // ----------------- 매퍼 파일이름으로 변경하기!
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
 
@@ -54,7 +58,7 @@ public class DBUtil {
         }
 
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/issuemaker");
+        ds.setUrl(properties.getProperty("db.url"));
         ds.setUsername(properties.getProperty("db.username"));
         ds.setPassword(properties.getProperty("db.password"));
 

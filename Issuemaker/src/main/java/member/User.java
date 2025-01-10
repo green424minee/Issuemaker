@@ -4,17 +4,17 @@ import java.time.LocalDate;
 
 public class User {
 	
-	private String userID;
+	private String userId;
 	private String userName;
 	private LocalDate userBirth;
 	private String userPhone;
 	private String userEmail;
 	private String userAddress;
 	
-	public User(String userID, String userName, LocalDate userBirth, String userPhone, String userEmail,
+	public User(String userId, String userName, LocalDate userBirth, String userPhone, String userEmail,
 			String userAddress) {
 		super();
-		this.userID = userID;
+		this.userId = userId;
 		this.userName = userName;
 		this.userBirth = userBirth;
 		this.userPhone = userPhone;
@@ -23,11 +23,11 @@ public class User {
 	}
 
 	public String getUserID() {
-		return userID;
+		return userId;
 	}
 
 	public void setUserID(String userID) {
-		this.userID = userID;
+		this.userId = userID;
 	}
 
 	public String getUserName() {
@@ -72,7 +72,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userID=" + userID + ", userName=" + userName + ", userBirth=" + userBirth + ", userPhone="
+		return "User [userID=" + userId + ", userName=" + userName + ", userBirth=" + userBirth + ", userPhone="
 				+ userPhone + ", userEmail=" + userEmail + ", userAddress=" + userAddress + "]";
 	}
 	
