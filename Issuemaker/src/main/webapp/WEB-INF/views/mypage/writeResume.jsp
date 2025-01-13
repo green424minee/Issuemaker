@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>이력서 작성</title>
 </head>
 <body>
-
+	<div><h2>이력서 작성</h2></div>
+	<form>
+		
+	</form>
 </body>
 </html>
