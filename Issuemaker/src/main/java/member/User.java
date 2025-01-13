@@ -20,7 +20,7 @@ public class User {
 		this.userPhone = userPhone;
 		this.userEmail = userEmail;
 		this.userAddress = userAddress;
-	}
+	}//
 
 	public String getUserID() {
 		return userId;

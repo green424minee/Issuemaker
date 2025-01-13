@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/companyjoin")
+@WebServlet("/companyJoin")
 public class CompanyJoinServlet extends HttpServlet{
 
 	@Override
@@ -54,11 +54,12 @@ public class CompanyJoinServlet extends HttpServlet{
 	        return;
 	    }
 	    
+        Guest1Service ser = Guest1Service.getInstance();
+        ser.insert(comId, pwAgain);
+	    
 	    Company company = new Company(comId, comName, comNo, comPhone, comCeo, managerEmail, comAddress, comBirth, comSize, comWeb);
-	    
 	    CompanyService service = CompanyService.getInstance();
-	    
-		service.insert(company);
+	    service.insert(company);
 		  
 		req.getRequestDispatcher("/WEB-INF/views/login/login.jsp").forward(req, resp);
 	}

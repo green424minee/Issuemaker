@@ -17,7 +17,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
+import member.CompanyMapper;
 import member.Guest0Mapper;
+import member.Guest1Mapper;
+import member.LoginMapper;
 import member.UserMapper;
 
 public class DBUtil {
@@ -35,7 +38,10 @@ public class DBUtil {
         Configuration configuration = new Configuration(environment);
         configuration.addMapper(UserMapper.class);
         configuration.addMapper(Guest0Mapper.class);
-        // ----------------- 매퍼 파일이름으로 변경하기!
+        configuration.addMapper(CompanyMapper.class);
+        configuration.addMapper(Guest1Mapper.class);
+        configuration.addMapper(LoginMapper.class);
+       
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
 

@@ -48,6 +48,7 @@ public class UserJoinServlet extends HttpServlet {
         
         Guest0Service ser = Guest0Service.getInstance();
         ser.insert(userId, userPwOK);
+        
         UserService service = UserService.getInstance();
         User user = new User(userId, userName, userBirth, userPhone, userEmail, userAddress);
         service.insert(user);
