@@ -18,29 +18,28 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserJoinServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("사용자 요청 발생: " + req.getRequestURI());
 		
 		req.getRequestDispatcher("/WEB-INF/views/login/userJoin.jsp")
 			.forward(req, resp);
 	}
 	
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String userId = request.getParameter("userId");
-        String userPw = request.getParameter("userPw");
-        String userPwOK = request.getParameter("userPwOK");
-        String userName = request.getParameter("userName");
-        String userBirthStr = request.getParameter("userBirth");
-        String userPhone = request.getParameter("userPhone");
-        String userEmail = request.getParameter("userEmail");
-        String userAddress = request.getParameter("userAddress");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userId = req.getParameter("userId");
+        String userPw = req.getParameter("userPw");
+        String userPwOK = req.getParameter("userPwOK");
+        String userName = req.getParameter("userName");
+        String userBirthStr = req.getParameter("userBirth");
+        String userPhone = req.getParameter("userPhone");
+        String userEmail = req.getParameter("userEmail");
+        String userAddress = req.getParameter("userAddress");
         
         
         
         if (!userPw.equals(userPwOK)) {
-            request.setAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
-            request.getRequestDispatcher("/WEB-INF/views/login/userJoin.jsp")
-                .forward(request, response);
+            req.setAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
+            req.getRequestDispatcher("/WEB-INF/views/login/userJoin.jsp")
+                .forward(req, resp);
             return;
         }
         
@@ -54,7 +53,7 @@ public class UserJoinServlet extends HttpServlet {
         service.insert(user);
         
         
-        request.getRequestDispatcher("/WEB-INF/views/login/login.jsp")
-            .forward(request, response);
+        req.getRequestDispatcher("/WEB-INF/views/login/login.jsp")
+            .forward(req, resp);
     }
 }
