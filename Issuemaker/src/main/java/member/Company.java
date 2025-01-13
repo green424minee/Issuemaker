@@ -21,7 +21,7 @@ public class Company {
 		this.comId = comId;
 		this.comName = comName;
 		this.comNo = comNo;
-		this.comPhone = comPhone;
+		this.comPhone = comPhone;//
 		this.comCeo = comCeo;
 		this.managerEmail = managerEmail;
 		this.comAddress = comAddress;
