@@ -29,6 +29,7 @@ public class Company {
 		this.comSize = comSize;
 		this.comWeb = comWeb;
 	}
+	
 	public String getComId() {
 		return comId;
 	}

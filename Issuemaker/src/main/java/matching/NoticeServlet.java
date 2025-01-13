@@ -32,6 +32,8 @@ public class NoticeServlet extends HttpServlet {
 	         }
 	      }
 */
+		
+		
         String title = req.getParameter("title");
         String context = req.getParameter("context");
         LocalDate postDate = LocalDate.parse(req.getParameter("postDate"));
