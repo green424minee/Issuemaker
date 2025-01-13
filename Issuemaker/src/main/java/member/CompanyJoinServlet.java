@@ -29,7 +29,7 @@ public class CompanyJoinServlet extends HttpServlet{
 		String managerEmail = req.getParameter("managerEmail");
 		String comAddress = req.getParameter("comAddress");
 		String comBirthStr = req.getParameter("comBirth"); // comBirth는 문자열로 받아온 후 변환
-		String comSizeStr = req.getParameter("comSize");
+		String comSizeStr = req.getParameter("comSize"); //
 		String comWeb = req.getParameter("comWeb");
 		
 		
