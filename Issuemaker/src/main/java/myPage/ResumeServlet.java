@@ -66,7 +66,7 @@ public class ResumeServlet extends HttpServlet {
 		req.setAttribute("school", school);
 		
 		// 자격증
-		List<License> listLi = ser.selectLicense(id);
+		List<License> listLi = ser.selectLicense(id);//
 		req.setAttribute("listLi", listLi);
 		
 		// 자기소개서 보기
