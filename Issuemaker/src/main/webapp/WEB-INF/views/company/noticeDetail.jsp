@@ -31,7 +31,7 @@
     </div>
     <div class="notice-info">
         근무요일: ${notice.workday} <br>
-        근무형태: ${notice.jobType} <br>
+        직무: ${notice.jobType} <br>
         근무지역: ${company.comAddress} <br>
         자격증: ${comLicense.comLicense}
     </div>

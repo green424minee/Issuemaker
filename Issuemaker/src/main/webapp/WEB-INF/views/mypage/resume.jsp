@@ -17,7 +17,11 @@
     			<label>사진이 없습니다.</label>
 			</c:if>
 		</p>
-		<p>이름 : ${ userName }</p>
+		<p>${ userName } ${ user.userBirth }</p>
+		<p>${user.userPhone }</p>
+		<p>${ user.userEmail }</p>
+		<p>${ user.userAddress }</p>
+		<hr>
 		<p>희망 직무 : ${ type }</p>
 		<p>경력
 			<c:forEach var="his" items="${ history }">
@@ -40,6 +44,7 @@
 	<form method="post">
 			<input type="submit" name="action" value="수정">
 			<input type="submit" name="action" value="삭제">
+			<input type="hidden" name="no" value="${ resume.no }">
 	</form>
 	<a href="/userPage">목록으로 돌아가기</a>
 </body>

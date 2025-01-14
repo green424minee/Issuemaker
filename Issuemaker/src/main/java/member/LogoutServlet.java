@@ -12,11 +12,16 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Cookie cookie = new Cookie("user", "any");
 		cookie.setMaxAge(0);  // 쿠키 만료
 		resp.addCookie(cookie);
 		
-		resp.sendRedirect("#");  // 메인 홈으로
+		resp.sendRedirect("/");  // 메인 홈으로
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 	}
 }
