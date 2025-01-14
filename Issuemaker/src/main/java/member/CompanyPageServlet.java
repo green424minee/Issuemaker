@@ -15,7 +15,7 @@ public class CompanyPageServlet extends HttpServlet {
         String comId = req.getParameter("comId");
       
         CompanyService service = CompanyService.getInstance();
-        Company company = service.getCompanyById(comId); 
+        Company company = service.getCompanyBycomId(comId); 
         
         req.setAttribute("company", company);
         req.getRequestDispatcher("/WEB-INF/views/company/companyPage.jsp").forward(req, resp);
@@ -48,7 +48,7 @@ public class CompanyPageServlet extends HttpServlet {
         }
 
         CompanyService service = CompanyService.getInstance();
-        Company existingCompany = service.getCompanyById(comId); 
+        Company existingCompany = service.getCompanyBycomId(comId); 
 
         existingCompany.setComPhone(comPhone);
         existingCompany.setManagerEmail(managerEmail);

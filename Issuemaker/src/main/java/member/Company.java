@@ -18,6 +18,7 @@ public class Company {
 	public Company(String comId, String comName, long comNo, String comPhone, String comCeo, String managerEmail,
 			String comAddress, LocalDate comBirth, int comSize, String comWeb) {
 		super();
+		
 		this.comId = comId;
 		this.comName = comName;
 		this.comNo = comNo;
