@@ -14,7 +14,7 @@ public class NoticeService {
 		return instance;
 	}
 	
-	public int insert(Notice notice) {
+	public int insert(NoticeForInsert notice) {
 		try (SqlSession session = DBUtil.getSqlSession()) {
 			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 			

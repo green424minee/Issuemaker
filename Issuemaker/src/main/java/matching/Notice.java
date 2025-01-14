@@ -7,8 +7,7 @@ import member.Company;
 
 public class Notice {
 
-   
-            
+	private int no;
    private String comId;     
    private String title;       
    private String context;      
@@ -23,9 +22,10 @@ public class Notice {
    private String major;        
           
    
-   public Notice(String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
+   public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
          Integer salary, String jobType, Integer exTerm, String workday, int type, int schoolLevel, String major) {
       super();
+      this.no = no;
       this.comId = comId;
       this.title = title;
       this.context = context;
