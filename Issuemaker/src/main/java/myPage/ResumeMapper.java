@@ -2,8 +2,11 @@ package myPage;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import member.User;
 
 public interface ResumeMapper {
 	@Select("SELECT * FROM resume WHERE no = #{ no }")
@@ -21,4 +24,9 @@ public interface ResumeMapper {
 	@Select("SELECT * FROM license WHERE userId = #{userId}")
 	List<License> selectLicense(@Param("userId") String userId);
 
+	@Delete("DELETE FROM resume WHERE no = #{no}")
+	int deleteResume(@Param("no") int no);
+	
+	@Select("SELECT * FROM user WHERE userId = #{userId}")
+	User selectUser(String userId);
 }
