@@ -19,7 +19,7 @@
     		text-align: center;
     	}
     	.logout {
-    		background-color: #FFB182;
+    		background-color: #ffd677;
     		border: none;
     		padding: 10px 20px;
     		cursor: pointer;

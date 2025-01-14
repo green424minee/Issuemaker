@@ -11,13 +11,17 @@
 <body>
 
 <div class="notice-details">
-    <div class="notice-header">
-        ${company.comName} / ${notice.title}
-    </div>
-    <div class="notice-info">
-        공고시작기간: ${notice.postDate} ~ 공고마감기간: ${notice.deadLine} <br>
-
-    </div>
+	<form action="/noticeSetting">
+	    <div class="notice-header">
+	        ${company.comName} / ${notice.title}
+	    </div>
+	    <div class="notice-info">
+	        공고시작기간: ${notice.postDate} ~ 공고마감기간: ${notice.deadLine} <br>
+	    </div>
+	    <input type="submit" value="수정">
+	    <input type="hidden" name="no" value="${ notice.no }">
+	    <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
+    </form>
     <div class="notice-info">
         경력: ${notice.exTerm} <br>
         급여: ${notice.salary} <br>
@@ -25,10 +29,6 @@
         전공: ${notice.major} <br>
         
     </div>
-     <form action="/noticeSetting">
-        <input type="submit" value="수정">
-        <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
-    </form>
     <div class="notice-info">
         근무요일: ${notice.workday} <br>
         근무형태: ${notice.jobType} <br>

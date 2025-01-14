@@ -5,8 +5,10 @@
 <!DOCTYPE html>
 	<form>
 		<c:forEach var="notice" items="${ noticeList }">
-			<a href="/noticeDetail">${ notice.title } ${ notice.postDate }~${ notice.deadLine }</a>
+			<div>
+			<a href="/noticeDetail?noticeNo=${ notice.no }">${ notice.title } ${ notice.postDate }~${ notice.deadLine }</a> 
 			<%-- 공고 상세보기 --%>
+			</div>
 		</c:forEach>
 	</form>
 </body>
