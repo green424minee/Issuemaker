@@ -1,18 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!-- header.jsp -->
 <html>
 <head>
-    <title>공통 헤더</title>
+    <title>마이페이지</title>
+    <style>
+    	.link {
+    		margin-right: 8em;  /* 오른쪽 여백 8em */
+    	}
+    	.logout-button {
+    		padding: 10px 0;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    	}
+    	.title {
+    		flex-grow: 1;
+    		text-align: center;
+    	}
+    	.logout {
+    		background-color: #FFB182;
+    		border: none;
+    		padding: 10px 20px;
+    		cursor: pointer;
+    		transition: background-color 0.3s;
+    	}
+    </style>
 </head>
 <body>
-    <header>
-        <h1>마이페이지</h1>
+	<header>
+		<form class="logout-button" action="/logout" method="post">
+			<h1 class="title">마이페이지</h1>
+    		<input type="submit" value="로그아웃" class="logout"> <%-- 메인 화면으로- --%>
+    	</form>
         <nav>
-            <ul>
-                <li><a href="index.jsp">홈</a></li>
-                <li><a href="about.jsp">소개</a></li>
-                <li><a href="contact.jsp">연락처</a></li>
-            </ul>
+            <a href="/userPage" class="link">이력서 관리</a>
+            <a href="/noticeList" class="link">지원 내역</a>
+            <a href="#" class="link">받은 제안</a>
+            <a href="#" class="link">스크랩/관심 기업</a>
         </nav>
     </header>
