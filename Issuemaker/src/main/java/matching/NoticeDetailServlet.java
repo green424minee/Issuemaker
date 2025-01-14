@@ -73,7 +73,7 @@ public class NoticeDetailServlet extends HttpServlet {
 	    req.setAttribute("notice", notice); 
 	    req.setAttribute("company", company);
 	    req.setAttribute("comLicense", comLicense);
-		resp.sendRedirect(req.getContextPath() + "/noticeDetail?no=" + notice.getNo() + "&comId=" + comId);
+//		resp.sendRedirect(req.getContextPath() + "/noticeDetail?no=" + notice.getNo() + "&comId=" + comId);
 		req.getRequestDispatcher("/WEB-INF/views/company/noticeDetail.jsp")
 		.forward(req, resp);
 	}
