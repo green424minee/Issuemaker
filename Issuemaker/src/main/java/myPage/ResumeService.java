@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
+import member.User;
 import util.DBUtil;
 
 public class ResumeService {
@@ -55,6 +56,24 @@ public class ResumeService {
 		
 			List<License> list = mapper.selectLicense(userId);
 			return list;
+		}
+	}
+	
+	public int deleteResume(int no) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			ResumeMapper mapper = session.getMapper(ResumeMapper.class);
+		
+			int row = mapper.deleteResume(no);
+			session.commit();
+			return row;
+		}
+	}
+	
+	public User selectUser(String userId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			ResumeMapper mapper = session.getMapper(ResumeMapper.class);
+		
+			return mapper.selectUser(userId);
 		}
 	}
 }

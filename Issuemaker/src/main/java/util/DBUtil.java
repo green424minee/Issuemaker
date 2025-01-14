@@ -19,6 +19,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import matching.ComLicenseMapper;
 import matching.NoticeMapper;
+import matching.SuggestMapper;
 import member.CompanyMapper;
 import member.Guest0Mapper;
 import member.Guest1Mapper;
@@ -55,7 +56,11 @@ public class DBUtil {
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
         
+
         configuration.addMapper(IndexMapper.class);
+
+        configuration.addMapper(SuggestMapper.class);
+
         
        
 
