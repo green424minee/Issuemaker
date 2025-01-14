@@ -13,14 +13,13 @@ import member.CompanyService;
 
 @WebServlet("/noticeDetail")
 public class NoticeDetailServlet extends HttpServlet {
-
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String noticeNo = req.getParameter("no"); 
+		String noticeNo = req.getParameter("noticeNo");
 	    NoticeService noticeService = NoticeService.getInstance();
 	    Notice notice = noticeService.getNoticeByNo(noticeNo); 
 	    
-	    String comId = req.getParameter("comId");
+	    String comId = notice.getComId();
 	    CompanyService companyService = CompanyService.getInstance();
 	    Company company = companyService.getCompanyBycomId(comId);
 	    
@@ -34,9 +33,6 @@ public class NoticeDetailServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect("/noticeSetting");
+		//resp.sendRedirect("/noticeSetting");
 	}
-	
-	
-
 }

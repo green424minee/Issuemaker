@@ -25,7 +25,7 @@ public class NoticeSettingServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	String no = req.getParameter("no");;
+    	String no = req.getParameter("no");
         String context = req.getParameter("context");
         String deadLineStr = req.getParameter("deadLine");
         
