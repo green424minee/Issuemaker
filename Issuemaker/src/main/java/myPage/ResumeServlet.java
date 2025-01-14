@@ -73,6 +73,7 @@ public class ResumeServlet extends HttpServlet {
 		// 포트폴리오 보기
 
 		req.getRequestDispatcher("/WEB-INF/views/mypage/resume.jsp").forward(req, resp);
+		//
 	}
 
 	@Override
