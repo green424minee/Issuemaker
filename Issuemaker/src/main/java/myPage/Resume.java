@@ -3,12 +3,10 @@ package myPage;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import member.User;
-
 public class Resume {
 	
     private int no;              
-    private User user;           
+    private String user;           
     private byte[] userPhoto;     
     private String title;         
     private String jobType;       
@@ -17,7 +15,7 @@ public class Resume {
     private Integer salary;       
     private LocalDate postDate;
     
-	public Resume(int no, User user, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
+	public Resume(int no, String user, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
 			byte[] portfolio, Integer salary, LocalDate postDate) {
 		super();
 		this.no = no;
@@ -39,11 +37,11 @@ public class Resume {
 		this.no = no;
 	}
 
-	public User getUser() {
+	public String getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(String user) {
 		this.user = user;
 	}
 
@@ -110,4 +108,5 @@ public class Resume {
 				+ Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + "]";
 	} 
     
+	
 }

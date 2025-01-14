@@ -1,14 +1,12 @@
 package matching;
 
-import myPage.Resume;
-
 public class Apply {
-	private Notice notice;
-	private Resume resume;
+	private int notice;
+	private int resume;
 	private int view;
 	private int result;
 	
-	public Apply(Notice notice, Resume resume, int view, int result) {
+	public Apply(int notice, int resume, int view, int result) {
 		super();
 		this.notice = notice;
 		this.resume = resume;
@@ -16,19 +14,19 @@ public class Apply {
 		this.result = result;
 	}
 
-	public Notice getNotice() {
+	public int getNotice() {
 		return notice;
 	}
 
-	public void setNotice(Notice notice) {
+	public void setNotice(int notice) {
 		this.notice = notice;
 	}
 
-	public Resume getResume() {
+	public int getResume() {
 		return resume;
 	}
 
-	public void setResume(Resume resume) {
+	public void setResume(int resume) {
 		this.resume = resume;
 	}
 
