@@ -6,7 +6,7 @@ import member.User;
 
 public class School {
 	
-	private User user;
+	private String userId;
 	private int type;
 	private String level;
 	private String schoolName;
@@ -14,11 +14,12 @@ public class School {
 	private String major;
 	private LocalDate startDate;  
     private LocalDate endDate;
+    private String levelstr;  // 대학구분(석사, 박사, 2, 3년제, 4년제)
     
-	public School(User user, int type, String level, String schoolName, int schoolLevel, String major,
+	public School(String userId, int type, String level, String schoolName, int schoolLevel, String major,
 			LocalDate startDate, LocalDate endDate) {
 		super();
-		this.user = user;
+		this.userId = userId;
 		this.type = type;
 		this.level = level;
 		this.schoolName = schoolName;
@@ -26,16 +27,21 @@ public class School {
 		this.major = major;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		
-		
+		levelstr = levelStr(schoolLevel);
 	}
 
-	public User getUser() {
-		return user;
+
+	public String getLevelstr() {
+		return levelstr;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+
+	public String getUser() {
+		return userId;
+	}
+
+	public void setUser(String user) {
+		this.userId = user;
 	}
 
 	public int getType() {
@@ -96,11 +102,17 @@ public class School {
 
 	@Override
 	public String toString() {
-		return "School [user=" + user + ", type=" + type + ", level=" + level + ", schoolName=" + schoolName
-				+ ", schoolLevel=" + schoolLevel + ", major=" + major + ", startDate=" + startDate + ", endDate="
-				+ endDate + "]";
+		return levelstr + " " + schoolName + " " + major + " " + level;
 	} 
     
-	
-    
+	// 대학구분(schoolLevel)
+	public String levelStr(int schoolLevel) {
+		String result = "";
+		if (schoolLevel == 0) result = "석사";
+		else if (schoolLevel == 1) result = "박사";
+		else if (schoolLevel == 2) result = "2, 3년제";
+		else result =  "4년제";
+		
+		return result;
+	}
 }

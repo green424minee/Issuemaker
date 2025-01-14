@@ -6,7 +6,7 @@ import member.User;
 
 public class WorkHistory {
 	private int no;
-	private User user;
+	private String userId;
 	private String exCom;
 	private LocalDate startDate;
 	private LocalDate endDate;
@@ -15,7 +15,7 @@ public class WorkHistory {
 	public WorkHistory(int no, String userId, String exCom, LocalDate startDate, LocalDate endDate, String jobType) {
 		super();
 		this.no = no;
-		this.user = user;
+		this.userId = userId;
 		this.exCom = exCom;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -27,11 +27,11 @@ public class WorkHistory {
 	public void setNo(int no) {
 		this.no = no;
 	}
-	public User getUser() {
-		return user;
+	public String getUserId() {
+		return userId;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(String userId) {
+		this.userId = userId;
 	}
 	public String getExCom() {
 		return exCom;
@@ -59,7 +59,7 @@ public class WorkHistory {
 	}
 	@Override
 	public String toString() {
-		return "WorkHistory [no=" + no + ", user=" + user + ", exCom=" + exCom + ", startDate=" + startDate
+		return "WorkHistory [no=" + no + ", userId=" + userId + ", exCom=" + exCom + ", startDate=" + startDate
 				+ ", endDate=" + endDate + ", jobType=" + jobType + "]";
 	}
 }
