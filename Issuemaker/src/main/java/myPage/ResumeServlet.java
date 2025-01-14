@@ -42,6 +42,10 @@ public class ResumeServlet extends HttpServlet {
 		String userName = ser.selectUserName(id);
 		req.setAttribute("userName", userName);
 		
+		// 희망 직무
+		String type = resume.getJobType();
+		req.setAttribute("type", type);
+		
 		// 경력
 		List<WorkHistory> list = ser.selectWork(id);
 		List<String> history = new ArrayList<>();
@@ -60,6 +64,9 @@ public class ResumeServlet extends HttpServlet {
 		List<License> listLi = ser.selectLicense(id);
 		req.setAttribute("listLi", listLi);
 		
+		// 자기소개서 보기
+		// 포트폴리오 보기
+
 		req.getRequestDispatcher("/WEB-INF/views/mypage/resume.jsp").forward(req, resp);
 	}
 

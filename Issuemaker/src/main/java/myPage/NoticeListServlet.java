@@ -39,8 +39,8 @@ public class NoticeListServlet extends HttpServlet {
 		        }
 		    }
 		}
-		
 		req.setAttribute("noticeList", noticeList);
+		
 		
 		req.getRequestDispatcher("/WEB-INF/views/mypage/noticeList.jsp").forward(req, resp);
 	}
