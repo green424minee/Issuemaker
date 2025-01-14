@@ -9,7 +9,8 @@
 <body>
 <p>${ errorMessage }</p>
 	<form method="post"></form>
-
+		<p>${ notice.context }</p>
+		<hr>
         <label for="context">내용:</label><br>
         <textarea id="context" name="context" required></textarea><br><br>
 

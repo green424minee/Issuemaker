@@ -8,18 +8,18 @@ import member.Company;
 public class Notice {
 
 	private int no;
-   private String comId;     
-   private String title;       
-   private String context;      
-   private LocalDate postDate;      
-   private LocalDate deadLine;       
-   private Integer salary;      
-   private String jobType;      
-   private Integer exTerm;      
-   private String workday;      
-   private int type;        
-   private int schoolLevel; 
-   private String major;        
+	private String comId;     
+	private String title;       
+	private String context;      
+	private LocalDate postDate;      
+	private LocalDate deadLine;       
+	private Integer salary;      
+	private String jobType;      
+	private Integer exTerm;      
+	private String workday;      
+	private int type;        
+	private int schoolLevel; 
+	private String major;        
           
    
    public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
@@ -40,7 +40,33 @@ public class Notice {
       this.major = major;
    }
    
-   public String getComId() {
+   
+   
+
+
+
+
+public int getNo() {
+	return no;
+}
+
+
+
+
+
+
+
+public void setNo(int no) {
+	this.no = no;
+}
+
+
+
+
+
+
+
+public String getComId() {
       return comId;
    }
    public void setComId(String comId) {
