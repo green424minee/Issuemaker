@@ -18,6 +18,7 @@
 			</c:if>
 		</p>
 		<p>이름 : ${ userName }</p>
+		<p>희망 직무 : ${ type }</p>
 		<p>경력
 			<c:forEach var="his" items="${ history }">
 				 <p>${ his }년</p>
@@ -29,7 +30,14 @@
 				<p>${ li }</p>
 			</c:forEach>
 		</p>
+		<p>
+			<%-- 자기소개서 보기 --%>
+		</p>
+		<p>
+			<%-- 포트폴리오 보기 --%>
+		</p>
 	</form>
-	<a href="/userPage">홈으로 돌아가기</a>
+	<a href="#">수정</a>
+	<a href="/userPage">목록으로 돌아가기</a>
 </body>
 </html>

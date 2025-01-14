@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update;
 public interface NoticeMapper {
 	@Insert("INSERT INTO notice (comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major) " +
             "VALUES (#{comId}, #{title}, #{context}, #{postDate}, #{deadLine}, #{salary}, #{jobType}, #{exTerm}, #{workday}, #{type}, #{schoolLevel}, #{major})")
-	int insert(Notice notice);
+	int insert(NoticeForInsert notice);
 
 	 @Update("UPDATE notice SET context = #{context}, deadLine = #{deadLine}" +
 				"WHERE no = #{no}")
