@@ -34,23 +34,27 @@
         <label for="workday">근무요일:</label>
         <input type="text" id="workday" name="workday" required><br><br>
 
-        <label>학교구분:</label><br>
-        <input type="radio" id="type0" name="type" value="0" required>
-        <label for="type0">초/중학교</label><br>
-        <input type="radio" id="type1" name="type" value="1">
-        <label for="type1">고등학교</label><br>
-        <input type="radio" id="type2" name="type" value="2">
-        <label for="type2">대학교</label><br><br>
+		<label>학교구분:</label><br>
+		    <input type="radio" id="type0" name="type" value="0" required>
+		    <label for="type0">무관</label><br>
+		    <input type="radio" id="type1" name="type" value="1">
+		    <label for="type1">초/중학교</label><br>
+		    <input type="radio" id="type2" name="type" value="2">
+		    <label for="type2">고등학교</label><br>
+		    <input type="radio" id="type3" name="type" value="3">
+		    <label for="type3">대학교</label><br>
 
         <label>대학구분:</label><br>
-        <input type="radio" id="schoolLevel0" name="schoolLevel" value="0" required>
-        <label for="schoolLevel0">석사</label><br>
-        <input type="radio" id="schoolLevel1" name="schoolLevel" value="1">
-        <label for="schoolLevel1">박사</label><br>
-        <input type="radio" id="schoolLevel2" name="schoolLevel" value="2">
-        <label for="schoolLevel2">2, 3년제</label><br>
-        <input type="radio" id="schoolLevel3" name="schoolLevel" value="3">
-        <label for="schoolLevel3">4년제</label><br><br>
+	        <input type="radio" id="schoolLevel0" name="schoolLevel" value="0" required>
+	        <label for="schoolLevel0">무관</label><br>
+	        <input type="radio" id="schoolLevel1" name="schoolLevel" value="1">
+	        <label for="schoolLevel2">2, 3년제</label><br>
+	        <input type="radio" id="schoolLevel2" name="schoolLevel" value="2">
+	        <label for="schoolLevel3">4년제</label><br>
+	        <input type="radio" id="schoolLevel3" name="schoolLevel" value="3">
+	        <label for="schoolLevel0">석사</label><br>
+	        <input type="radio" id="schoolLevel4" name="schoolLevel" value="4">
+	        <label for="schoolLevel1">박사</label><br>
 
         <label for="major">전공:</label>
         <input type="text" id="major" name="major"><br><br>
