@@ -17,9 +17,9 @@ public interface NoticeListMapper {
 	@Select("SELECT * FROM notice WHERE no = #{no}")
 	Notice selectNotice(@Param("no") int no);
 	
-	@Select("SELECT * view FROM apply WHERE noticeNo = #{noticeNo}, resumeNo = #{resumeNo}")
-	int selectView(int noticeNo, int resumeNo);
+	@Select("SELECT view FROM apply WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo}")
+	int selectView(@Param("noticeNo") int noticeNo, @Param("resumeNo") int resumeNo);
 	
-	@Select("SELECT * result FROM apply WHERE noticeNo = #{noticeNo}, resumeNo = #{resumeNo}")
-	int selectResult(int noticeNo, int resumeNo);
+	@Select("SELECT result FROM apply WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo}")
+	int selectResult(@Param("noticeNo") int noticeNo, @Param("resumeNo") int resumeNo);
 }

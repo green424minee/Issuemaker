@@ -15,5 +15,8 @@
        		</div>
     	</c:forEach>
 	</form>
+	<form action="/writeResume">
+		<input type="submit" value="이력서 작성">
+	</form>
 </body>
 </html>

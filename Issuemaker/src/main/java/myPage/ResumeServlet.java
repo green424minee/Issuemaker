@@ -72,7 +72,13 @@ public class ResumeServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String action = req.getParameter("action");
 		
+		if (action.equals("수정")) {
+			resp.sendRedirect("#"); // 이력서 수정
+		} else if (action.equals("삭제")) {
+			
+		}
 		
 	}
 	

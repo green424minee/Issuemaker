@@ -37,7 +37,10 @@
 			<%-- 포트폴리오 보기 --%>
 		</p>
 	</form>
-	<a href="#">수정</a>
+	<form method="post">
+			<input type="submit" name="action" value="수정">
+			<input type="submit" name="action" value="삭제">
+	</form>
 	<a href="/userPage">목록으로 돌아가기</a>
 </body>
 </html>

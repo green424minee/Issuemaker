@@ -33,8 +33,8 @@ public class NoticeListServlet extends HttpServlet {
 		    List<Integer> noticeNo = ser.selectApply(a); // 이력서 일련번호가 포함된 행의 공고번호
 		    for (Integer b : noticeNo) {
 		        Notice notice = ser.selectNotice(b);
-		       //int view = ser.selectView(b, a); // 열람여부
-		        
+		        int view = ser.selectView(b, a); // 열람여부
+		        System.out.println(view);
 		        System.out.println(notice);
 		        if (notice != null) {
 		            noticeList.add(notice);

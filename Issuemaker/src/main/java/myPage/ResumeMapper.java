@@ -20,4 +20,5 @@ public interface ResumeMapper {
 	
 	@Select("SELECT * FROM license WHERE userId = #{userId}")
 	List<License> selectLicense(@Param("userId") String userId);
+
 }
