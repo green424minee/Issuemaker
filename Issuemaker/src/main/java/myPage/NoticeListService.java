@@ -46,5 +46,20 @@ public class NoticeListService {
 		}
 	}
 	
+	public int selectView(int noticeNo, int resumeNo) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			NoticeListMapper mapper = session.getMapper(NoticeListMapper.class);
+			
+			return mapper.selectView(noticeNo, resumeNo);
+		}
+	}
+	
+	public int selectResult(int noticeNo, int resumeNo) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			NoticeListMapper mapper = session.getMapper(NoticeListMapper.class);
+			
+			return mapper.selectResult(noticeNo, resumeNo);
+		}
+	}
 	
 }
