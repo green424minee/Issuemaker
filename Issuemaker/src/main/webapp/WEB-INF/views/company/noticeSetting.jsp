@@ -8,18 +8,17 @@
 </head>
 <body>
 <p>${ errorMessage }</p>
-	<form method="post"></form>
-		<p>${ notice.context }</p>
-		<hr>
+
         <label for="context">내용:</label><br>
-        <textarea id="context" name="context" required></textarea><br><br>
+        <textarea id="context" name="context">${ notice.context }</textarea><br><br>
 
         <label for="deadLine">공고마감:</label>
-        <input type="date" id="deadLine" name="deadLine" required><br><br>
+        <input type="date" id="deadLine" name="deadLine" value="${ notice.deadLine }"><br><br>
 
- <div>
+	<form method="post">
+	<div>
         <input type="submit" value="수정">
-        <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
+        <button type="button" onclick="window.history.back()">취소</button>
     </div>
     </form>
 </body>
