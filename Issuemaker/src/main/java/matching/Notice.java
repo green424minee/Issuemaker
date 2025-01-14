@@ -8,7 +8,7 @@ import member.Company;
 public class Notice {
 
    
-   private int no;              
+            
    private String comId;     
    private String title;       
    private String context;      
@@ -23,10 +23,9 @@ public class Notice {
    private String major;        
           
    
-   public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
+   public Notice(String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
          Integer salary, String jobType, Integer exTerm, String workday, int type, int schoolLevel, String major) {
       super();
-      this.no = no;
       this.comId = comId;
       this.title = title;
       this.context = context;
@@ -39,14 +38,8 @@ public class Notice {
       this.type = type;
       this.schoolLevel = schoolLevel;
       this.major = major;
-      
    }
-   public int getNo() {
-      return no;
-   }
-   public void setNo(int no) {
-      this.no = no;
-   }
+   
    public String getComId() {
       return comId;
    }
@@ -122,7 +115,7 @@ public class Notice {
 
 	@Override
 	public String toString() {
-		return "Notice [no=" + no + ", comId=" + comId + ", title=" + title + ", context=" + context + ", postDate="
+		return "Notice [comId=" + comId + ", title=" + title + ", context=" + context + ", postDate="
 				+ postDate + ", deadLine=" + deadLine + ", salary=" + salary + ", jobType=" + jobType + ", exTerm="
 				+ exTerm + ", workday=" + workday + ", type=" + type + ", schoolLevel=" + schoolLevel + ", major="
 				+ major + "]";
