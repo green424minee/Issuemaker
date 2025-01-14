@@ -27,6 +27,7 @@ import member.UserMapper;
 import myPage.NoticeListMapper;
 import myPage.ResumeMapper;
 import myPage.myPageMapper;
+import search.IndexMapper;
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -53,6 +54,8 @@ public class DBUtil {
 
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
+        
+        configuration.addMapper(IndexMapper.class);
         
        
 

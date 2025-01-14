@@ -16,4 +16,6 @@ public interface CompanyMapper {
 
 	 @Select("SELECT * FROM company WHERE comId = #{comId}")
 	 Company getCompanyBycomId(String comId);
+
+
 }

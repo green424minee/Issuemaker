@@ -25,7 +25,7 @@
     <div class="notice-info">
         경력: ${notice.exTerm} <br>
         급여: ${notice.salary} <br>
-        학력:  ${notice.schoolLevel}<br>
+        학력: ${notice.schoolLevel}<br>
         전공: ${notice.major} <br>
         
     </div>
