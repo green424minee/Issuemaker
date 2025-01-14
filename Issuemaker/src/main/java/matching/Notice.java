@@ -6,6 +6,7 @@ import java.util.List;
 import member.Company;
 
 public class Notice {
+
    
    private int no;              
    private String comId;     
@@ -119,14 +120,13 @@ public class Notice {
       this.major = major;
    }
 
+	@Override
+	public String toString() {
+		return "Notice [no=" + no + ", comId=" + comId + ", title=" + title + ", context=" + context + ", postDate="
+				+ postDate + ", deadLine=" + deadLine + ", salary=" + salary + ", jobType=" + jobType + ", exTerm="
+				+ exTerm + ", workday=" + workday + ", type=" + type + ", schoolLevel=" + schoolLevel + ", major="
+				+ major + "]";
+	}  
+	
 
-   @Override
-   public String toString() {
-      return "Notice [no=" + no + ", comId=" + comId + ", title=" + title + ", context=" + context + ", postDate="
-            + postDate + ", deadLine=" + deadLine + ", salary=" + salary + ", jobType=" + jobType + ", exTerm="
-            + exTerm + ", workday=" + workday + ", type=" + type + ", schoolLevel=" + schoolLevel + ", major="
-            + major + "]";
-   }  
-   
-       
 }

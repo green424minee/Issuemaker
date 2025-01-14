@@ -17,6 +17,8 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
+import matching.ComLicenseMapper;
+import matching.NoticeMapper;
 import member.CompanyMapper;
 import member.Guest0Mapper;
 import member.Guest1Mapper;
@@ -44,9 +46,16 @@ public class DBUtil {
         configuration.addMapper(CompanyMapper.class);
         configuration.addMapper(Guest1Mapper.class);
         configuration.addMapper(LoginMapper.class);
+
         configuration.addMapper(myPageMapper.class);
         configuration.addMapper(ResumeMapper.class);
         configuration.addMapper(NoticeListMapper.class);
+
+        configuration.addMapper(NoticeMapper.class);
+        configuration.addMapper(ComLicenseMapper.class);
+        
+       
+
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
 
