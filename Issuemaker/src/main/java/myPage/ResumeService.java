@@ -25,7 +25,7 @@ public class ResumeService {
       }
    }
    
-   public int insert (Resume resume) {
+   public int insert (ResumeForInsert resume) {
       try (SqlSession session = DBUtil.getSqlSession()) {
          ResumeMapper mapper = session.getMapper(ResumeMapper.class);
          
