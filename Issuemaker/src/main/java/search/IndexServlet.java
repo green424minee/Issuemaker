@@ -26,8 +26,6 @@ public class IndexServlet extends HttpServlet {
 		
 		List<Notice> notice = ser.getNoticeByAll();
 		req.setAttribute("notice", notice);
-
-	    
 		req.getRequestDispatcher("/index.jsp")
 		.forward(req, resp);
 	}
@@ -38,6 +36,8 @@ public class IndexServlet extends HttpServlet {
 		//IndexService ser = IndexService.getInseance();
 	//	Notice notice = ser.noticeByNo(no);
 	//	req.setAttribute("notice", notice);
+		System.out.println(req.getParameter("type"));
+	    req.setAttribute("type", req.getParameter("type"));
 		resp.sendRedirect("/noticeDetail");
 	}
 	
