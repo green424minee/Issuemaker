@@ -41,4 +41,11 @@ public class NoticeService {
 	            return mapper.getNoticeByNo(no);
 	        }
 	    }
+	    
+	    public int getType(String comId) {
+	    	 try (SqlSession session = DBUtil.getSqlSession()) {
+	            NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	            return mapper.getType(comId);
+	        }
+	    }
 }
