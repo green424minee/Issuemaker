@@ -1,5 +1,7 @@
 package matching;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -10,6 +12,6 @@ public interface ComLicenseMapper {
 		@Insert("INSERT INTO comlicense (comId, comLicense) VALUES (#{comId}, #{comLicense})")
 		int insert(ComLicense comLicense);
 		
-		 @Select("SELECT * FROM comlicense WHERE comId = #{comId}")
-		 ComLicense getComLicenseById(String comId);
+		 @Select("SELECT comLicense FROM comlicense WHERE comId = #{comId}")
+		 List<String> getComLicenseById(String comId);
 }

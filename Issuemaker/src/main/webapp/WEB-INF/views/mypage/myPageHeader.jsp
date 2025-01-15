@@ -29,6 +29,9 @@
 </head>
 <body>
 	<header>
+		<a href="/">
+			<img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" />
+		</a>
 		<form class="logout-button" action="/logout" >
 			<h1 class="title">마이페이지</h1>
     		<input type="submit" value="로그아웃" class="logout"> <%-- 메인 화면으로- --%>

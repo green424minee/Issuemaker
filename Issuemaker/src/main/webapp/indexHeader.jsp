@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- header.jsp -->
 <html>
 <head>
@@ -29,13 +30,35 @@
 </head>
 <body>
 	<header>
-	<img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" />
-		<form class="login-button" action="/login" method="post">
-    		<input type="submit" value="개인회원 로그인" class="login"> <%-- 메인 화면으로- --%>
-    	</form>
-    	<form class="login-button" action="/login" method="post">
-    		<input type="submit" value="기업으로 전환" class="login" > <%-- 메인 화면으로- --%>
-    	</form>
+	<a href="/">
+		<img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" />
+	</a>
+	<%
+		// 쿠키 확인
+		boolean isLogIn = false;
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				if ("user".equals(c.getName())) {
+					isLogIn = true;
+					break;
+				} 
+			}
+		} 
+		request.setAttribute("isLogIn", isLogIn);
+	%>
+		<c:if test="${ !isLogIn }">
+			<form class="login-button" action="/login">
+				<label>로그인</label>
+	    		<input type="submit" name="type" value="개인회원" class="login"> <%-- 메인 화면으로- --%>
+	    		<input type="submit" name="type" value="기업회원" class="login" > <%-- 메인 화면으로- --%>
+	    	</form>
+    	</c:if>
+		<c:if test="${isLogIn}">
+            <form class="logout-button" action="/logout">
+                <input type="submit" value="로그아웃" class="logout">
+            </form>
+        </c:if>
         <nav>
             <a href="/index" class="link">채용정보</a>
             <a href="/area" class="link">지역별</a>

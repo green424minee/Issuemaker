@@ -19,26 +19,28 @@ import member.CompanyService;
 @WebServlet("/index")
 public class IndexServlet extends HttpServlet {
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		IndexService ser = IndexService.getInstance();
-		
-		List<Notice> notice = ser.getNoticeByAll();
-		req.setAttribute("notice", notice);
+   @Override
+   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+   
+      IndexService ser = IndexService.getInstance();
+      
+      List<Notice> notice = ser.getNoticeByAll();
+      req.setAttribute("notice", notice);
+      req.getRequestDispatcher("/index.jsp")
+      .forward(req, resp);
+   }
 
-	    
-		req.getRequestDispatcher("/index.jsp")
-		.forward(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String no = req.getParameter("noticeNo");
-	    resp.sendRedirect("/noticeDetail?noticeNo=" + no);
-		
-	}
-	
-	
+   @Override
+   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      //String no = req.getParameter("noticeNo");
+      //IndexService ser = IndexService.getInseance();
+   //   Notice notice = ser.noticeByNo(no);
+   //   req.setAttribute("notice", notice);
+      System.out.println(req.getParameter("type"));
+       req.setAttribute("type", req.getParameter("type"));
+      resp.sendRedirect("/noticeDetail");
+   }
+   
+   
 
 }

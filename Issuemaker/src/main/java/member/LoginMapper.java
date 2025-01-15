@@ -6,8 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 public interface LoginMapper {
-	@Select("SELECT id FROM guest")
-	List<String> selectId();
+	@Select("SELECT * FROM guest WHERE id = #{id}")
+	Guest selectGuest(String id);
 	
 	@Select("SELECT pw FROM guest")
 	List<String> selectPw();
