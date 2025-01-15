@@ -19,11 +19,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import matching.ComLicenseMapper;
 import matching.NoticeMapper;
-<<<<<<< HEAD
-
-=======
 import matching.SuggestMapper;
->>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
 import member.CompanyMapper;
 import member.Guest0Mapper;
 import member.Guest1Mapper;
@@ -34,9 +30,6 @@ import myPage.ResumeMapper;
 import myPage.myPageMapper;
 import search.AreaMapper;
 import search.IndexMapper;
-
-import myPage.ResumeMapper;
-
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -57,30 +50,18 @@ public class DBUtil {
         configuration.addMapper(Guest1Mapper.class);
         configuration.addMapper(LoginMapper.class);
 
-<<<<<<< HEAD
-
-        configuration.addMapper(ResumeMapper.class);
-
-=======
         configuration.addMapper(myPageMapper.class);
         configuration.addMapper(ResumeMapper.class);
         configuration.addMapper(NoticeListMapper.class);
->>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
 
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
         
 
-<<<<<<< HEAD
-        
-
-
-=======
         configuration.addMapper(IndexMapper.class);
         configuration.addMapper(AreaMapper.class);
 
         configuration.addMapper(SuggestMapper.class);
->>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
 
         
        

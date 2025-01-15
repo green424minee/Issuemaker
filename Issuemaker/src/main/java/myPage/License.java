@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import member.User;
 
 public class License {
-
    private int no;
    private String userId;
    private int type;
@@ -22,7 +21,6 @@ public class License {
       this.score = score;
    }
 
-
    public int getNo() {
       return no;
    }
@@ -31,19 +29,13 @@ public class License {
       this.no = no;
    }
 
-
    public String getUserId() {
       return userId;
    }
 
-
-
-
-
-	public void setUser(String userId) {
-		this.userId = userId;
-	}
-
+   public void setUser(String userId) {
+      this.userId = userId;
+   }
 
    public int getType() {
       return type;
@@ -82,5 +74,4 @@ public class License {
       if (this.type == 0) return license;
       else return license + " " + score + "점";
    }
-
 }

@@ -109,5 +109,5 @@ public class WriteResumeServlet extends HttpServlet{
 	    req.getRequestDispatcher("/WEB-INF/views/mypage/userPage.jsp").forward(req, resp);
 	   
 	}
-
+//
 }
