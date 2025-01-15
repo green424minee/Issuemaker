@@ -40,7 +40,13 @@ public class WriteResumeServlet extends HttpServlet{
 	            JobMapper jobmapper = session.getMapper(JobMapper.class);
 	            List <Job> jobList = jobmapper.selectAll();
 	            
+	            //아이디 쿠키 설정
+	            String userId = "qwer1234";
+	            SchoolService schoolservice = SchoolService.getInstance();
+	            School school = schoolservice.selectByUserId(userId);
+	            
 	            req.setAttribute("jobList", jobList);
+	            req.setAttribute("school", school);
 	            req.getRequestDispatcher("/WEB-INF/views/mypage/writeResume.jsp").forward(req, resp);
 	        }
 	}
