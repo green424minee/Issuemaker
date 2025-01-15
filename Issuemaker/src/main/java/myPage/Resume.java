@@ -14,19 +14,21 @@ public class Resume {
     private byte[] portfolio;     
     private Integer salary;       
     private LocalDate postDate;
+    private int agree;
     
-   public Resume(int no, String user, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
-         byte[] portfolio, Integer salary, LocalDate postDate) {
+
+   public Resume(String userId, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
+         byte[] portfolio, Integer salary, Integer agree) {
+
       super();
-      this.no = no;
-      this.userId = user;
+      this.userId = userId;
       this.userPhoto = userPhoto;
       this.title = title;
       this.jobType = jobType;
       this.coverLetter = coverLetter;
       this.portfolio = portfolio;
       this.salary = salary;
-      this.postDate = postDate;
+      this.agree = agree;
    }
 
    public int getNo() {
@@ -37,12 +39,15 @@ public class Resume {
       this.no = no;
    }
 
-   public String getUser() {
+
+   public String getUserId() {
       return userId;
    }
 
-   public void setUser(String user) {
-      this.userId = user;
+   public void setUserId(String userId) {
+      this.userId = userId;
+
+
    }
 
    public byte[] getUserPhoto() {
@@ -101,12 +106,21 @@ public class Resume {
       this.postDate = postDate;
    }
 
+   public int getAgree() {
+      return agree;
+   }
+
+   public void setAgree(int agree) {
+      this.agree = agree;
+   }
+
    @Override
    public String toString() {
-      return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title=" + title
-            + ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
-            + Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + "]";
-   } 
-    
-   
+
+      return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title="
+            + title + ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
+            + Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + ", agree=" + agree
+            + "]";
+   }   
+
 }
