@@ -3,10 +3,8 @@ package myPage;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import member.User;
-
 public class Resume {
-	
+   
     private int no;              
     private String userId;           
     private byte[] userPhoto;     
@@ -18,104 +16,111 @@ public class Resume {
     private LocalDate postDate;
     private int agree;
     
-	public Resume(String userId, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
-			byte[] portfolio, Integer salary, Integer agree) {
-		super();
-		this.userId = userId;
-		this.userPhoto = userPhoto;
-		this.title = title;
-		this.jobType = jobType;
-		this.coverLetter = coverLetter;
-		this.portfolio = portfolio;
-		this.salary = salary;
-		this.agree = agree;
-	}
 
-	public int getNo() {
-		return no;
-	}
+   public Resume(String userId, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
+         byte[] portfolio, Integer salary, Integer agree) {
 
-	public void setNo(int no) {
-		this.no = no;
-	}
+      super();
+      this.userId = userId;
+      this.userPhoto = userPhoto;
+      this.title = title;
+      this.jobType = jobType;
+      this.coverLetter = coverLetter;
+      this.portfolio = portfolio;
+      this.salary = salary;
+      this.agree = agree;
+   }
 
-	public String getUserId() {
-		return userId;
-	}
+   public int getNo() {
+      return no;
+   }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+   public void setNo(int no) {
+      this.no = no;
+   }
 
-	public byte[] getUserPhoto() {
-		return userPhoto;
-	}
 
-	public void setUserPhoto(byte[] userPhoto) {
-		this.userPhoto = userPhoto;
-	}
+   public String getUserId() {
+      return userId;
+   }
 
-	public String getTitle() {
-		return title;
-	}
+   public void setUserId(String userId) {
+      this.userId = userId;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
 
-	public String getJobType() {
-		return jobType;
-	}
+   }
 
-	public void setJobType(String jobType) {
-		this.jobType = jobType;
-	}
+   public byte[] getUserPhoto() {
+      return userPhoto;
+   }
 
-	public byte[] getCoverLetter() {
-		return coverLetter;
-	}
+   public void setUserPhoto(byte[] userPhoto) {
+      this.userPhoto = userPhoto;
+   }
 
-	public void setCoverLetter(byte[] coverLetter) {
-		this.coverLetter = coverLetter;
-	}
+   public String getTitle() {
+      return title;
+   }
 
-	public byte[] getPortfolio() {
-		return portfolio;
-	}
+   public void setTitle(String title) {
+      this.title = title;
+   }
 
-	public void setPortfolio(byte[] portfolio) {
-		this.portfolio = portfolio;
-	}
+   public String getJobType() {
+      return jobType;
+   }
 
-	public Integer getSalary() {
-		return salary;
-	}
+   public void setJobType(String jobType) {
+      this.jobType = jobType;
+   }
 
-	public void setSalary(Integer salary) {
-		this.salary = salary;
-	}
+   public byte[] getCoverLetter() {
+      return coverLetter;
+   }
 
-	public LocalDate getPostDate() {
-		return postDate;
-	}
+   public void setCoverLetter(byte[] coverLetter) {
+      this.coverLetter = coverLetter;
+   }
 
-	public void setPostDate(LocalDate postDate) {
-		this.postDate = postDate;
-	}
+   public byte[] getPortfolio() {
+      return portfolio;
+   }
 
-	public int getAgree() {
-		return agree;
-	}
+   public void setPortfolio(byte[] portfolio) {
+      this.portfolio = portfolio;
+   }
 
-	public void setAgree(int agree) {
-		this.agree = agree;
-	}
+   public Integer getSalary() {
+      return salary;
+   }
 
-	@Override
-	public String toString() {
-		return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title="
-				+ title + ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
-				+ Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + ", agree=" + agree
-				+ "]";
-	}	
+   public void setSalary(Integer salary) {
+      this.salary = salary;
+   }
+
+   public LocalDate getPostDate() {
+      return postDate;
+   }
+
+   public void setPostDate(LocalDate postDate) {
+      this.postDate = postDate;
+   }
+
+   public int getAgree() {
+      return agree;
+   }
+
+   public void setAgree(int agree) {
+      this.agree = agree;
+   }
+
+   @Override
+   public String toString() {
+
+      return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title="
+            + title + ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
+            + Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + ", agree=" + agree
+            + "]";
+   }   
+
 }

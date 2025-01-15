@@ -5,102 +5,118 @@ import java.time.LocalDate;
 import member.User;
 
 public class School {
-	
-	private String userId;
-	private int type;
-	private String level;
-	private String schoolName;
-	private int schoolLevel;
-	private String major;
-	private LocalDate startDate;  
+   
+   private String userId;
+   private int type;
+   private String level;
+   private String schoolName;
+   private int schoolLevel;
+   private String major;
+   private LocalDate startDate;  
     private LocalDate endDate;
+    private String levelstr;  // 대학구분(석사, 박사, 2, 3년제, 4년제)
     
-	public School(String userId, int type, String level, String schoolName, int schoolLevel, String major,
-			LocalDate startDate, LocalDate endDate) {
-		super();
-		this.userId = userId;
-		this.type = type;
-		this.level = level;
-		this.schoolName = schoolName;
-		this.schoolLevel = schoolLevel;
-		this.major = major;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		
-		
-	}
+   public School(String userId, int type, String level, String schoolName, int schoolLevel, String major,
+         LocalDate startDate, LocalDate endDate) {
+      super();
+      this.userId = userId;
+      this.type = type;
+      this.level = level;
+      this.schoolName = schoolName;
+      this.schoolLevel = schoolLevel;
+      this.major = major;
+      this.startDate = startDate;
+      this.endDate = endDate;
+      levelstr = levelStr(schoolLevel);
+   }
 
-	public String getUserId() {
-		return userId;
-	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+   public String getLevelstr() {
+      return levelstr;
+   }
 
-	public int getType() {
-		return type;
-	}
 
-	public void setType(int type) {
-		this.type = type;
-	}
+   public String getUserId() {
+      return userId;
+   }
 
-	public String getLevel() {
-		return level;
-	}
+   public void setUserId(String userId) {
+      this.userId = userId;
+   }
 
-	public void setLevel(String level) {
-		this.level = level;
-	}
+   public int getType() {
+      return type;
+   }
 
-	public String getSchoolName() {
-		return schoolName;
-	}
+   public void setType(int type) {
+      this.type = type;
+   }
 
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
+   public String getLevel() {
+      return level;
+   }
 
-	public int getSchoolLevel() {
-		return schoolLevel;
-	}
+   public void setLevel(String level) {
+      this.level = level;
+   }
 
-	public void setSchoolLevel(int schoolLevel) {
-		this.schoolLevel = schoolLevel;
-	}
+   public String getSchoolName() {
+      return schoolName;
+   }
 
-	public String getMajor() {
-		return major;
-	}
+   public void setSchoolName(String schoolName) {
+      this.schoolName = schoolName;
+   }
 
-	public void setMajor(String major) {
-		this.major = major;
-	}
+   public int getSchoolLevel() {
+      return schoolLevel;
+   }
 
-	public LocalDate getStartDate() {
-		return startDate;
-	}
+   public void setSchoolLevel(int schoolLevel) {
+      this.schoolLevel = schoolLevel;
+   }
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
+   public String getMajor() {
+      return major;
+   }
 
-	public LocalDate getEndDate() {
-		return endDate;
-	}
+   public void setMajor(String major) {
+      this.major = major;
+   }
 
-	public void setEndDate(LocalDate endDate) {
-		this.endDate = endDate;
-	}
+   public LocalDate getStartDate() {
+      return startDate;
+   }
 
-	@Override
-	public String toString() {
-		return "School [userId=" + userId + ", type=" + type + ", level=" + level + ", schoolName=" + schoolName
-				+ ", schoolLevel=" + schoolLevel + ", major=" + major + ", startDate=" + startDate + ", endDate="
-				+ endDate + "]";
-	} 
+   public void setStartDate(LocalDate startDate) {
+      this.startDate = startDate;
+   }
+
+   public LocalDate getEndDate() {
+      return endDate;
+   }
+
+   public void setEndDate(LocalDate endDate) {
+      this.endDate = endDate;
+   }
+
+ 
+   // 대학구분(schoolLevel)
+   public String levelStr(int schoolLevel) {
+      String result = "";
+      if (schoolLevel == 0) result = "석사";
+      else if (schoolLevel == 1) result = "박사";
+      else if (schoolLevel == 2) result = "2, 3년제";
+      else result =  "4년제";
+      
+      return result;
+   }
     
-	
+    @Override
+   public String toString() {
+    
+    return levelstr + " " + schoolName + " " + major + " " + level;
+    
+  }
     
 }
