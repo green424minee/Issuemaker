@@ -25,6 +25,18 @@ public class ResumeService {
 		}
 	}
 	
+	public int insert (Resume resume) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			ResumeMapper mapper = session.getMapper(ResumeMapper.class);
+			
+			int row = mapper.insert(resume);
+			
+			session.commit();
+			
+			return row;
+		}
+	}
+	
 	public String selectUserName(String userId) {
 		try (SqlSession session = DBUtil.getSqlSession()) {
 			ResumeMapper mapper = session.getMapper(ResumeMapper.class);

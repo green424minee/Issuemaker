@@ -36,12 +36,12 @@ public class School {
 	}
 
 
-	public String getUser() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUser(String user) {
-		this.userId = user;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getType() {

@@ -16,7 +16,7 @@
 	<c:forEach var="notice" items="${notice}">
 	<c:set var="count" value="${ count + 1 }"/>
        	<div>
-            <a href="/noticeDetial?noticeNo=${notice.no}">${count} ${notice.title} ${notice.postDate}</a>
+            <a href="/noticeDetaill?noticeNo=${notice.no}">${count} ${notice.title} ${notice.postDate}</a>
        	</div>
     </c:forEach>
 </form>
