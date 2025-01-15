@@ -10,16 +10,15 @@
 <link href="/css/main.css" rel="stylesheet">
 </head>
 <body>
-<form>
-		
-	<c:set var="count" value="0"/>
-	<c:forEach var="notice" items="${area}">
-	    <c:set var="count" value="${count + 1}"/>
-	    <div>
-	        <a href="/areaDetial?areaName=${notice.areaName}">${count}</a> <!-- areaName으로 변경 -->
-	    </div>
-	</c:forEach>
-</form>
+    <h1>지역별</h1>
+    <ul>
+	    <c:forEach var="areaName" items="${area}">
+	        <li>
+	            <a href="/area?areaName=${areaName}">${areaName}</a>
+	        </li>
+	    </c:forEach>
+	</ul>
 
 </body>
 </html>
+
