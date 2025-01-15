@@ -14,18 +14,6 @@ public class ResumeService {
    public static ResumeService getInstance() {
       return instance;
    }
-  
-  public int insert (Resume resume) {
-      try (SqlSession session = DBUtil.getSqlSession()) {
-         ResumeMapper mapper = session.getMapper(ResumeMapper.class);
-         
-         int row = mapper.insert(resume);
-         
-         session.commit();
-         
-         return row;
-      }
-   }
    
    public Resume selectResume(int resumeNo) {
       try (SqlSession session = DBUtil.getSqlSession()) {
@@ -34,6 +22,18 @@ public class ResumeService {
          Resume resume = mapper.selectResume(resumeNo);
          
          return resume;
+      }
+   }
+   
+   public int insert (Resume resume) {
+      try (SqlSession session = DBUtil.getSqlSession()) {
+         ResumeMapper mapper = session.getMapper(ResumeMapper.class);
+         
+         int row = mapper.insert(resume);
+         
+         session.commit();
+         
+         return row;
       }
    }
    
@@ -89,4 +89,3 @@ public class ResumeService {
       }
    }
 }
-

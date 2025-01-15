@@ -100,7 +100,11 @@ public class School {
       this.endDate = endDate;
    }
 
- 
+   @Override
+   public String toString() {
+      return levelstr + " " + schoolName + " " + major + " " + level;
+   } 
+    
    // 대학구분(schoolLevel)
    public String levelStr(int schoolLevel) {
       String result = "";
@@ -111,12 +115,4 @@ public class School {
       
       return result;
    }
-    
-    @Override
-   public String toString() {
-    
-    return levelstr + " " + schoolName + " " + major + " " + level;
-    
-  }
-    
 }

@@ -19,17 +19,15 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import matching.ComLicenseMapper;
 import matching.NoticeMapper;
+
 import member.CompanyMapper;
 import member.Guest0Mapper;
 import member.Guest1Mapper;
 import member.LoginMapper;
 import member.UserMapper;
-import myPage.LicenseMapper;
+
 import myPage.ResumeMapper;
-import myPage.SchoolMapper;
-import myPage.WorkHistoryMapper;
-import search.JobMapper;
-import myPage.ResumeMapper;
+
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -49,16 +47,22 @@ public class DBUtil {
         configuration.addMapper(CompanyMapper.class);
         configuration.addMapper(Guest1Mapper.class);
         configuration.addMapper(LoginMapper.class);
+
+
         configuration.addMapper(ResumeMapper.class);
+
+
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
-        configuration.addMapper(ResumeMapper.class);
-        configuration.addMapper(JobMapper.class);
-        configuration.addMapper(SchoolMapper.class);
-        configuration.addMapper(LicenseMapper.class);
-        configuration.addMapper(WorkHistoryMapper.class);       
- 
-   
+        
+
+        
+
+
+
+        
+       
+
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
 

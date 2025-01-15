@@ -12,10 +12,8 @@ public class License {
    private LocalDate acuisition;
    private Integer score;
    
-
    public License(String userId, int type, String license, LocalDate acuisition, Integer score) {
       super();
-
       this.userId = userId;
       this.type = type;
       this.license = license;
@@ -31,9 +29,7 @@ public class License {
       this.no = no;
    }
 
-
    public String getUserId() {
-
       return userId;
    }
 
@@ -75,9 +71,7 @@ public class License {
 
    @Override
    public String toString() {
-
       if (this.type == 0) return license;
       else return license + " " + score + "점";
-
    }
 }
