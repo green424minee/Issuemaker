@@ -15,6 +15,7 @@ public class Resume {
     private Integer salary;       
     private LocalDate postDate;
     
+<<<<<<< HEAD
    public Resume(int no, String user, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
          byte[] portfolio, Integer salary, LocalDate postDate) {
       super();
@@ -28,6 +29,21 @@ public class Resume {
       this.salary = salary;
       this.postDate = postDate;
    }
+=======
+	public Resume(int no, String user, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
+			byte[] portfolio, Integer salary, LocalDate postDate) {
+		super();
+		this.no = no;
+		this.userId = user;
+		this.userPhoto = userPhoto;
+		this.title = title;
+		this.jobType = jobType;
+		this.coverLetter = coverLetter;
+		this.portfolio = portfolio;
+		this.salary = salary;
+		this.postDate = postDate;
+	}
+>>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
 
    public int getNo() {
       return no;
@@ -37,13 +53,25 @@ public class Resume {
       this.no = no;
    }
 
+<<<<<<< HEAD
    public String getUser() {
       return userId;
    }
+=======
+	public String getUser() {
+		return userId;
+	}
+>>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
 
+<<<<<<< HEAD
    public void setUser(String user) {
       this.userId = user;
    }
+=======
+	public void setUser(String user) {
+		this.userId = user;
+	}
+>>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
 
    public byte[] getUserPhoto() {
       return userPhoto;
@@ -101,11 +129,21 @@ public class Resume {
       this.postDate = postDate;
    }
 
+<<<<<<< HEAD
    @Override
    public String toString() {
       return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title=" + title
             + ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
             + Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + "]";
    } 
+=======
+	@Override
+	public String toString() {
+		return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title=" + title
+				+ ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
+				+ Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + "]";
+	} 
+>>>>>>> branch 'master' of https://github.com/000vin000/Issuemaker.git
     
+	
 }

@@ -63,7 +63,7 @@ public class NoticeServlet extends HttpServlet {
         }
 
         NoticeService noticeSer = NoticeService.getInstance();
-        Notice notice = new Notice(comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major); 
+        NoticeForInsert notice = new NoticeForInsert(comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major); 
 
         noticeSer.insert(notice); 
         

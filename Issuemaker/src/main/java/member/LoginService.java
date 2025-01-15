@@ -2,6 +2,7 @@ package member;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import util.DBUtil;
@@ -31,6 +32,14 @@ public class LoginService {
 			List<String> list = mapper.selectPw();
 			
 			return list;
+		}
+	}
+	
+	public int selectType(String id) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			LoginMapper mapper = session.getMapper(LoginMapper.class);
+			
+			return mapper.selectType(id);
 		}
 	}
 }

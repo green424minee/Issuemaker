@@ -2,6 +2,8 @@ package matching;
 
 import org.apache.ibatis.session.SqlSession;
 
+import member.Company;
+import member.CompanyMapper;
 import util.DBUtil;
 
 public class ComLicenseService {
@@ -23,4 +25,11 @@ public class ComLicenseService {
 			return row;
 		}
 	}
+	
+    public ComLicense getComLicenseById(String comId) {
+        try (SqlSession session = DBUtil.getSqlSession()) {
+            ComLicenseMapper mapper = session.getMapper(ComLicenseMapper.class);
+            return mapper.getComLicenseById(comId);
+        }
+    }
 }
