@@ -23,4 +23,12 @@ public class SchoolService {
 			return row;
 		}
 	}
+	public School selectByUserId(String userId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	         SchoolMapper mapper = session.getMapper(SchoolMapper.class);
+	      
+	         return mapper.selectByUserId(userId);
+	      }
+		
+	}
 }
