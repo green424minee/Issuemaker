@@ -28,6 +28,7 @@ import member.UserMapper;
 import myPage.NoticeListMapper;
 import myPage.ResumeMapper;
 import myPage.myPageMapper;
+import search.AreaMapper;
 import search.IndexMapper;
 
 public class DBUtil {
@@ -58,6 +59,7 @@ public class DBUtil {
         
 
         configuration.addMapper(IndexMapper.class);
+        configuration.addMapper(AreaMapper.class);
 
         configuration.addMapper(SuggestMapper.class);
 

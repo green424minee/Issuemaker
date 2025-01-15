@@ -3,6 +3,7 @@ package myPage;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -29,4 +30,9 @@ public interface ResumeMapper {
 	
 	@Select("SELECT * FROM user WHERE userId = #{userId}")
 	User selectUser(String userId);
+	
+	@Insert("INSERT INTO resume (userId, userPhoto, title, jobType, coverLetter, portfolio, agree) " +
+            "VALUES ( #{userId}, #{userPhoto}, #{title}, #{jobType}, #{coverLetter}, #{portfolio}, #{agree})")
+    int insert(Resume resume);
+
 }

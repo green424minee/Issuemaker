@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Resume {
 	
     private int no;              
-    private String user;           
+    private String userId;           
     private byte[] userPhoto;     
     private String title;         
     private String jobType;       
@@ -19,7 +19,7 @@ public class Resume {
 			byte[] portfolio, Integer salary, LocalDate postDate) {
 		super();
 		this.no = no;
-		this.user = user;
+		this.userId = user;
 		this.userPhoto = userPhoto;
 		this.title = title;
 		this.jobType = jobType;
@@ -38,11 +38,11 @@ public class Resume {
 	}
 
 	public String getUser() {
-		return user;
+		return userId;
 	}
 
 	public void setUser(String user) {
-		this.user = user;
+		this.userId = user;
 	}
 
 	public byte[] getUserPhoto() {
@@ -103,7 +103,7 @@ public class Resume {
 
 	@Override
 	public String toString() {
-		return "Resume [no=" + no + ", user=" + user + ", userPhoto=" + Arrays.toString(userPhoto) + ", title=" + title
+		return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title=" + title
 				+ ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
 				+ Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + "]";
 	} 

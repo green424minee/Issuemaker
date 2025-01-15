@@ -11,7 +11,7 @@ import util.DBUtil;
 public class IndexService {
 	private static final IndexService instance = new IndexService();
 	private IndexService() {}
-	public static IndexService getInseance() {
+	public static IndexService getInstance() {
 		return instance;
 	}
 	
