@@ -1,5 +1,7 @@
 package matching;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 
 import member.Company;
@@ -26,7 +28,7 @@ public class ComLicenseService {
 		}
 	}
 	
-    public ComLicense getComLicenseById(String comId) {
+    public List<String> getComLicenseById(String comId) {
         try (SqlSession session = DBUtil.getSqlSession()) {
             ComLicenseMapper mapper = session.getMapper(ComLicenseMapper.class);
             return mapper.getComLicenseById(comId);

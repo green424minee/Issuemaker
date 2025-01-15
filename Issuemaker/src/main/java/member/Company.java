@@ -15,6 +15,7 @@ public class Company {
 	private int comSize;
 	private String comWeb;
 	
+	public Company() {}
 	public Company(String comId, String comName, long comNo, String comPhone, String comCeo, String managerEmail,
 			String comAddress, LocalDate comBirth, int comSize, String comWeb) {
 		super();
@@ -46,7 +47,7 @@ public class Company {
 	public long getComNo() {
 		return comNo;
 	}
-	public void setComNo(int comNo) {
+	public void setComNo(long comNo) {
 		this.comNo = comNo;
 	}
 	public String getComPhone() {

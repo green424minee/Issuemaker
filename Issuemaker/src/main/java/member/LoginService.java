@@ -17,12 +17,10 @@ public class LoginService {
     }
     private LoginService() {}
 	
-	public List<String> selectId() {
+	public Guest selectGuest(String id) {
 		try (SqlSession session = DBUtil.getSqlSession()) {
 			LoginMapper mapper = session.getMapper(LoginMapper.class);
-			List<String> list = mapper.selectId();
-			
-			return list;
+			return mapper.selectGuest(id);
 		}
 	}
 	

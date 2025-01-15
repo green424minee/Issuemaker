@@ -2,6 +2,7 @@
 <%@ page import="matching.Notice" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,17 +24,20 @@
 	    <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
     </form>
     <div class="notice-info">
-        경력: ${notice.exTerm} <br>
-        급여: ${notice.salary} <br>
-        학력: ${notice.schoolLevel}<br>
+        경력: ${notice.exTermStr} <br>
+        급여: ${notice.salaryStr} <br>
+        학력: ${notice.schoolLevelStr}<br>
         전공: ${notice.major} <br>
         
     </div>
     <div class="notice-info">
-        근무요일: ${notice.workday} <br>
-        직무: ${notice.jobType} <br>
-        근무지역: ${company.comAddress} <br>
-        자격증: ${comLicense.comLicense}
+        근무요일 ${notice.workday} <br>
+        직무 ${notice.jobType} <br>
+        근무지역 ${company.comAddress} <br>
+        자격증
+        <c:forEach var="list" items="${ liList }">
+        	${ list }<br>
+        </c:forEach>
     </div>
 </div>
 
