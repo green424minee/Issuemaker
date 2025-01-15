@@ -22,13 +22,13 @@ public class ResumeServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String no = req.getParameter("resumeNo");
 		int resumeNo = Integer.parseInt(no);
 		
 		
 		Resume resume = ser.selectResume(resumeNo);
 		req.setAttribute("resume", resume);
-		
 		// 유저 정보
 		req.setAttribute("user", ser.selectUser(resume.getUserId()));
 		
