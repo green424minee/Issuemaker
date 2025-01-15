@@ -13,7 +13,7 @@ public class LicenseService {
 	}
 	private LicenseService() {}
 	
-	public int insert (License license) {
+	public int insert (LicenseForInsert license) {
 		try (SqlSession session = DBUtil.getSqlSession()) {
 			LicenseMapper mapper = session.getMapper(LicenseMapper.class);
 			

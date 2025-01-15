@@ -7,7 +7,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <jsp:include page="myPageHeader.jsp" />
-	<form>
 		<h2>${ resume.title }</h2>
 		<p>
 			<c:if test="${not empty photo}">
@@ -18,7 +17,7 @@
 			</c:if>
 		</p>
 		<p>${ userName } ${ user.userBirth }</p>
-		<p>${user.userPhone }</p>
+		<p>${ user.userPhone }</p>
 		<p>${ user.userEmail }</p>
 		<p>${ user.userAddress }</p>
 		<hr>
@@ -34,18 +33,29 @@
 				<p>${ li }</p>
 			</c:forEach>
 		</p>
-		<p>
-			<%-- 자기소개서 보기 --%>
-		</p>
-		<p>
-			<%-- 포트폴리오 보기 --%>
-		</p>
-	</form>
-	<form method="post">
-			<input type="submit" name="action" value="수정">
-			<input type="submit" name="action" value="삭제">
-			<input type="hidden" name="no" value="${ resume.no }">
-	</form>
+			<%-- 자기소개서 다운로드 --%>
+			<form action="/cover" method="GET">
+			<label>자기소개서 </label>
+				<input type="hidden" name="resumeNo" value="${ resume.no }">
+				<input type="submit" value="다운로드">
+				<p>${ errorcover }</p>
+				<% session.removeAttribute("errorcover"); %>
+			</form>
+
+			<%-- 포트폴리오 다운로드 --%>
+			<form action="/port" method="GET">
+			<label>포트폴리오 </label>
+				<input type="hidden" name="resumeNo" value="${ resume.no }">
+				<input type="submit" value="다운로드">
+				<p>${ errorport }</p>
+				<% session.removeAttribute("errorport"); %>
+			</form>
+
+			<form method="post">
+				<input type="submit" name="action" value="수정">
+				<input type="submit" name="action" value="삭제">
+				<input type="hidden" name="no" value="${ resume.no }">
+			</form>
 	<a href="/userPage">목록으로 돌아가기</a>
 </body>
 </html>

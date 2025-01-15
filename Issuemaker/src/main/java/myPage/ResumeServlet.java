@@ -22,13 +22,13 @@ public class ResumeServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		String no = req.getParameter("resumeNo");
 		int resumeNo = Integer.parseInt(no);
 		
 		
 		Resume resume = ser.selectResume(resumeNo);
 		req.setAttribute("resume", resume);
-		
 		// 유저 정보
 		req.setAttribute("user", ser.selectUser(resume.getUserId()));
 		
@@ -66,20 +66,20 @@ public class ResumeServlet extends HttpServlet {
 		req.setAttribute("school", school);
 		
 		// 자격증
-		List<License> listLi = ser.selectLicense(id);//
+		List<License> listLi = ser.selectLicense(id);
 		req.setAttribute("listLi", listLi);
 		
 		// 자기소개서 보기
 		// 포트폴리오 보기
 
 		req.getRequestDispatcher("/WEB-INF/views/mypage/resume.jsp").forward(req, resp);
-		//
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("action");
-		
+		String num = req.getParameter("resumeNo");
+		req.setAttribute("resumeNo", num);
 		if (action.equals("수정")) {
 			resp.sendRedirect("#"); // 이력서 수정
 		} else if (action.equals("삭제")) {
