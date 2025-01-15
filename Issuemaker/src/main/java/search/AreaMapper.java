@@ -2,22 +2,17 @@ package search;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import matching.MatchingAreasAndCompanies;
+import matching.Notice;
 
 public interface AreaMapper {
     @Select("SELECT areaName FROM area ")
     List<String> getAreaByAll();
     
-    @Select("""
-            SELECT a.areaName, c.comAddress
-            FROM area a
-            JOIN Notice n ON a.areaId = n.areaId
-            JOIN company c ON n.comId = c.comId
-            WHERE SUBSTRING(c.comAddress, 1, 2) = SUBSTRING(a.areaName, 1, 2)
-        """)
-        List<MatchingAreasAndCompanies> findMatchingAreasAndCompanies();
-    
-    
+    @Select("SELECT * FROM notice WHERE comId IN (SELECT comId FROM company"
+    		+ " WHERE LEFT(comAddress, LOCATE(' ', comAddress) - 1) = #{area})")
+    List<Notice> getComId(@Param("area") String area);
+
 }
