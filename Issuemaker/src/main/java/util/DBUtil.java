@@ -19,15 +19,17 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import matching.ComLicenseMapper;
 import matching.NoticeMapper;
-
+import matching.SuggestMapper;
 import member.CompanyMapper;
 import member.Guest0Mapper;
 import member.Guest1Mapper;
 import member.LoginMapper;
 import member.UserMapper;
-
+import myPage.NoticeListMapper;
 import myPage.ResumeMapper;
-
+import myPage.myPageMapper;
+import search.AreaMapper;
+import search.IndexMapper;
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -48,17 +50,18 @@ public class DBUtil {
         configuration.addMapper(Guest1Mapper.class);
         configuration.addMapper(LoginMapper.class);
 
-
+        configuration.addMapper(myPageMapper.class);
         configuration.addMapper(ResumeMapper.class);
-
+        configuration.addMapper(NoticeListMapper.class);
 
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
         
 
-        
+        configuration.addMapper(IndexMapper.class);
+        configuration.addMapper(AreaMapper.class);
 
-
+        configuration.addMapper(SuggestMapper.class);
 
         
        

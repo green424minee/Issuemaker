@@ -6,26 +6,27 @@ import java.util.List;
 import member.Company;
 
 public class Notice {
-	
-	private int no;              
+
+	private int no;
 	private String comId;     
 	private String title;       
 	private String context;      
 	private LocalDate postDate;      
 	private LocalDate deadLine;       
-	private Integer salary;      
+	private int salary;      
 	private String jobType;      
-	private Integer exTerm;      
+	private int exTerm;      
 	private String workday;      
 	private int type;        
 	private int schoolLevel; 
-	private String major;        
-	       
+	private String major;
 	
-	public Notice(String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
-			Integer salary, String jobType, Integer exTerm, String workday, int type, int schoolLevel, String major) {
+	public Notice() {}
+	
+	public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
+			int salary, String jobType, int exTerm, String workday, int type, int schoolLevel, String major) {
 		super();
-		
+		this.no = no;
 		this.comId = comId;
 		this.title = title;
 		this.context = context;
@@ -38,7 +39,6 @@ public class Notice {
 		this.type = type;
 		this.schoolLevel = schoolLevel;
 		this.major = major;
-		
 	}
 	public int getNo() {
 		return no;
@@ -76,10 +76,10 @@ public class Notice {
 	public void setDeadLine(LocalDate deadLine) {
 		this.deadLine = deadLine;
 	}
-	public Integer getSalary() {
+	public int getSalary() {
 		return salary;
 	}
-	public void setSalary(Integer salary) {
+	public void setSalary(int salary) {
 		this.salary = salary;
 	}
 	public String getJobType() {
@@ -88,10 +88,10 @@ public class Notice {
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
-	public Integer getExTerm() {
+	public int getExTerm() {
 		return exTerm;
 	}
-	public void setExTerm(Integer exTerm) {
+	public void setExTerm(int exTerm) {
 		this.exTerm = exTerm;
 	}
 	public String getWorkday() {
@@ -118,15 +118,16 @@ public class Notice {
 	public void setMajor(String major) {
 		this.major = major;
 	}
-
-
 	@Override
 	public String toString() {
 		return "Notice [no=" + no + ", comId=" + comId + ", title=" + title + ", context=" + context + ", postDate="
 				+ postDate + ", deadLine=" + deadLine + ", salary=" + salary + ", jobType=" + jobType + ", exTerm="
 				+ exTerm + ", workday=" + workday + ", type=" + type + ", schoolLevel=" + schoolLevel + ", major="
 				+ major + "]";
-	}  
-	
-	    
+	}        
+          
+   
+
+
+
 }

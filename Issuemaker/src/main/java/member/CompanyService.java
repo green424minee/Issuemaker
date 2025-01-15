@@ -30,11 +30,20 @@ public class CompanyService {
         }
     }
     
-    public Company getCompanyById(String comId) {
+    public Company getCompanyBycomId(String comId) {
         try (SqlSession session = DBUtil.getSqlSession()) {
             CompanyMapper mapper = session.getMapper(CompanyMapper.class);
-            return mapper.getCompanyById(comId);
+            return mapper.getCompanyBycomId(comId);
         }
     }
+    
+    /*public Company getCompanyBycomName(String comName) {
+    	try (SqlSession session = DBUtil.getSqlSession()){
+    		CompanyMapper mapper = session.getMapper(CompanyMapper.class);
+    		return mapper.getCompanyBycomName(comName);
+    	}
+    }*/
+
+
     
 }

@@ -108,4 +108,5 @@ public class Resume {
             + Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + "]";
    } 
     
+   
 }
