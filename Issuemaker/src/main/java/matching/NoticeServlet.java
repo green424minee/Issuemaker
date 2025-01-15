@@ -13,12 +13,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/notice")
+@WebServlet("/noticeNew")
 public class NoticeServlet extends HttpServlet {
 	
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/company/notice.jsp")
+		req.getRequestDispatcher("/WEB-INF/views/company/noticeNew.jsp")
 		.forward(req, resp);
 	}
 
@@ -67,7 +67,7 @@ public class NoticeServlet extends HttpServlet {
 
         noticeSer.insert(notice); 
         
-        req.getRequestDispatcher("/WEB-INF/views/company/notice.jsp")
+        req.getRequestDispatcher("/WEB-INF/views/company/noticeNew.jsp")
         .forward(req, resp);
     }
 }
