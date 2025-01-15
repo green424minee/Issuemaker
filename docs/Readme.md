@@ -5,16 +5,15 @@
 
 ---
 ```
-고길동 gogil@email.com
-둘리 dooli@email.com
-도우너 dd@email.com
-마이콜 mi@email.com
+강수연 oks456@naver.com
+김정빈 00vin0vin0vin00@naver.com
+정민지 minji970@naver.com
 ```
 ---
 
 # 프로젝트 결과물
 
-- [스케줄 관리](깃허브의 'project' 링크를 삽입해주세요)
+- [스케줄 관리](https://github.com/users/000vin000/projects/2/views/3)
 - [프로젝트 과제 수행 계획서](1_프로젝트_과제_수행_계획서.md)
 - [하부르타노트 목록](2_하브루타_노트_목록.md)
 - [PPT 발표자료](3_팀_프로젝트_결과보고서.pptx)
