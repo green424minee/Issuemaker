@@ -12,7 +12,7 @@ public class WorkHistoryService {
 	}
 	private WorkHistoryService() {}
 	
-	public int insert (WorkHistory workHistory) {
+	public int insert (WorkHistoryForInsert workHistory) {
 		try (SqlSession session = DBUtil.getSqlSession()) {
 			WorkHistoryMapper mapper = session.getMapper(WorkHistoryMapper.class);
 			
