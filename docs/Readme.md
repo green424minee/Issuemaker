@@ -8,7 +8,8 @@
 강수연 oks456@naver.com
 김정빈 00vin0vin0vin00@naver.com
 정민지 minji970@naver.com
-```
+```![춘식1](https://github.com/user-attachments/assets/c316810f-efd1-42c0-921e-0552cc69319e)
+
 ---
 
 # 프로젝트 결과물
