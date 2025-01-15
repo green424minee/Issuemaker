@@ -6,7 +6,7 @@ import member.User;
 
 public class School {
 	
-	private User user;
+	private String userId;
 	private int type;
 	private String level;
 	private String schoolName;
@@ -15,10 +15,10 @@ public class School {
 	private LocalDate startDate;  
     private LocalDate endDate;
     
-	public School(User user, int type, String level, String schoolName, int schoolLevel, String major,
+	public School(String userId, int type, String level, String schoolName, int schoolLevel, String major,
 			LocalDate startDate, LocalDate endDate) {
 		super();
-		this.user = user;
+		this.userId = userId;
 		this.type = type;
 		this.level = level;
 		this.schoolName = schoolName;
@@ -30,12 +30,12 @@ public class School {
 		
 	}
 
-	public User getUser() {
-		return user;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getType() {
@@ -96,7 +96,7 @@ public class School {
 
 	@Override
 	public String toString() {
-		return "School [user=" + user + ", type=" + type + ", level=" + level + ", schoolName=" + schoolName
+		return "School [userId=" + userId + ", type=" + type + ", level=" + level + ", schoolName=" + schoolName
 				+ ", schoolLevel=" + schoolLevel + ", major=" + major + ", startDate=" + startDate + ", endDate="
 				+ endDate + "]";
 	} 

@@ -6,16 +6,15 @@ import member.User;
 
 public class License {
 	private int no;
-	private User user;
+	private String userId;
 	private int type;
 	private String license;
 	private LocalDate acuisition;
 	private Integer score;
 	
-	public License(int no, User user, int type, String license, LocalDate acuisition, Integer score) {
+	public License(String userId, int type, String license, LocalDate acuisition, Integer score) {
 		super();
-		this.no = no;
-		this.user = user;
+		this.userId = userId;
 		this.type = type;
 		this.license = license;
 		this.acuisition = acuisition;
@@ -30,12 +29,12 @@ public class License {
 		this.no = no;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(String userId) {
+		this.userId = userId;
 	}
 
 	public int getType() {
@@ -72,7 +71,7 @@ public class License {
 
 	@Override
 	public String toString() {
-		return "License [no=" + no + ", user=" + user + ", type=" + type + ", license=" + license + ", acuisition="
+		return "License [no=" + no + ", userId=" + userId + ", type=" + type + ", license=" + license + ", acuisition="
 				+ acuisition + ", score=" + score + "]";
 	}
 }

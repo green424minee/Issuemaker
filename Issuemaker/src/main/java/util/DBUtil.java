@@ -24,6 +24,11 @@ import member.Guest0Mapper;
 import member.Guest1Mapper;
 import member.LoginMapper;
 import member.UserMapper;
+import myPage.LicenseMapper;
+import myPage.ResumeMapper;
+import myPage.SchoolMapper;
+import myPage.WorkHistoryMapper;
+import search.JobMapper;
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -45,6 +50,12 @@ public class DBUtil {
         configuration.addMapper(LoginMapper.class);
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
+        configuration.addMapper(ResumeMapper.class);
+        configuration.addMapper(JobMapper.class);
+        configuration.addMapper(SchoolMapper.class);
+        configuration.addMapper(LicenseMapper.class);
+        configuration.addMapper(WorkHistoryMapper.class);
+        
         
        
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
