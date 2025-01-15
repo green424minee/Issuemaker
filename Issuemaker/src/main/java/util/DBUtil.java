@@ -25,11 +25,15 @@ import member.Guest0Mapper;
 import member.Guest1Mapper;
 import member.LoginMapper;
 import member.UserMapper;
+import myPage.LicenseMapper;
 import myPage.NoticeListMapper;
 import myPage.ResumeMapper;
+import myPage.SchoolMapper;
+import myPage.WorkHistoryMapper;
 import myPage.myPageMapper;
 import search.AreaMapper;
 import search.IndexMapper;
+import search.JobMapper;
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -56,6 +60,11 @@ public class DBUtil {
 
         configuration.addMapper(NoticeMapper.class);
         configuration.addMapper(ComLicenseMapper.class);
+        
+        configuration.addMapper(LicenseMapper.class);
+        configuration.addMapper(SchoolMapper.class);
+        configuration.addMapper(WorkHistoryMapper.class);
+        configuration.addMapper(JobMapper.class);
         
 
         configuration.addMapper(IndexMapper.class);
