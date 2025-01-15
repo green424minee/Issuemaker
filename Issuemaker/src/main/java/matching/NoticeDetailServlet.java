@@ -2,6 +2,7 @@ package matching;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -18,14 +19,18 @@ public class NoticeDetailServlet extends HttpServlet {
 		String noticeNo = req.getParameter("noticeNo");
 	    NoticeService noticeService = NoticeService.getInstance();
 	    Notice notice = noticeService.getNoticeByNo(noticeNo); 
-	    
+	    System.out.println(notice.getComId());
 	    String comId = notice.getComId();
 	    CompanyService companyService = CompanyService.getInstance();
 	    Company company = companyService.getCompanyBycomId(comId);
 	    
+	    ComLicenseService ser = ComLicenseService.getInstance();
+	    List<String> list = ser.getComLicenseById(comId);
+	    System.out.println(list);
 
 	    req.setAttribute("notice", notice); 
 	    req.setAttribute("company", company);
+	    req.setAttribute("liList", list);
 	    
 		req.getRequestDispatcher("/WEB-INF/views/company/noticeDetail.jsp")
 		.forward(req, resp);
