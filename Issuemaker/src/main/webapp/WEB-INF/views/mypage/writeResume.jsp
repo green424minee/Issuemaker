@@ -91,7 +91,7 @@
 	</div>
 	<div>
 		<label for="coverLetter">자기소개서</label>
-        <input type="file" name="coverLetter" id="coverLetter"><br>
+        <input type="file" name="coverLetter" id="coverLetter" accept=".pdf"><br>
 	</div>
 	
 	 <div>
@@ -172,7 +172,7 @@
 	</div>
 	
 	<div>
-	 <input type="submit" value="Submit">
+	 <input type="submit" value="이력서 등록">
 	</div>
 		
 	</form>
