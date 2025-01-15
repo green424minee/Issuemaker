@@ -7,6 +7,8 @@ public class Area {
 		super();
 		this.areaName = areaName;
 	}
+	
+	public Area() {}
 
 	public String getAreaName() {
 		return areaName;

@@ -11,13 +11,13 @@
 </head>
 <body>
 <form>
-		
-	<c:set var="count" value="0"/>
-	<c:forEach var="notice" items="${notice}">
-	<c:set var="count" value="${ count + 1 }"/>
-       	<div>
+      
+   <c:set var="count" value="0"/>
+   <c:forEach var="notice" items="${notice}">
+   <c:set var="count" value="${ count + 1 }"/>
+          <div>
             <a href="/noticeDetail?noticeNo=${notice.no}">${count} ${notice.title} ${notice.postDate}</a>
-       	</div>
+          </div>
     </c:forEach>
 </form>
 

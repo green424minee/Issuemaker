@@ -30,7 +30,7 @@ public class ResumeServlet extends HttpServlet {
 		req.setAttribute("resume", resume);
 		
 		// 유저 정보
-		req.setAttribute("user", ser.selectUser(resume.getUser()));
+		req.setAttribute("user", ser.selectUser(resume.getUserId()));
 		
 		// 이력서 사진
 		byte[] userPhoto = resume.getUserPhoto();
@@ -43,7 +43,7 @@ public class ResumeServlet extends HttpServlet {
 		req.setAttribute("photo", Photo);
 		
 		// 유저 이름
-		String id = resume.getUser();
+		String id = resume.getUserId();
 		String userName = ser.selectUserName(id);
 		req.setAttribute("userName", userName);
 		
