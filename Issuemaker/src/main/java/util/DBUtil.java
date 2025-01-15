@@ -18,6 +18,7 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
 import matching.ComLicenseMapper;
+import matching.CompanyPageMapper;
 import matching.NoticeMapper;
 import matching.SuggestMapper;
 import member.CompanyMapper;
@@ -71,6 +72,7 @@ public class DBUtil {
         configuration.addMapper(AreaMapper.class);
 
         configuration.addMapper(SuggestMapper.class);
+        configuration.addMapper(CompanyPageMapper.class);
 
         
        
