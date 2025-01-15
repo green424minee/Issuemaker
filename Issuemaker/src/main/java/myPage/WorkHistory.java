@@ -2,8 +2,6 @@ package myPage;
 
 import java.time.LocalDate;
 
-import member.User;
-
 public class WorkHistory {
    private int no;
    private String userId;
@@ -12,9 +10,9 @@ public class WorkHistory {
    private LocalDate endDate;
    private String jobType;
    
-   public WorkHistory(String userId, String exCom, LocalDate startDate, LocalDate endDate, String jobType) {
+   public WorkHistory(int no, String userId, String exCom, LocalDate startDate, LocalDate endDate, String jobType) {
       super();
-
+      this.no = no;
       this.userId = userId;
       this.exCom = exCom;
       this.startDate = startDate;

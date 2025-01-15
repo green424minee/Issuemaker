@@ -21,6 +21,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -48,7 +49,13 @@ public class WriteResumeServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//이력서
-		String userId = "qwer1234";
+		String userId = "";
+		Cookie[] cookies = req.getCookies();
+		for (Cookie c : cookies) {
+			if ("user".equals(c.getName())) {
+				userId = c.getValue();
+			}
+		}
 		String title = req.getParameter("title");
 	    String jobType = req.getParameter("jobType");
 	    String salaryStr = req.getParameter("salary");
@@ -67,7 +74,7 @@ public class WriteResumeServlet extends HttpServlet{
         
         
 	    ResumeService resumeservice = ResumeService.getInstance();
-	    Resume resume = new Resume(userId, userPhoto, title, jobType, coverLetter, portfolio, salary, agree);
+	    ResumeForInsert resume = new ResumeForInsert(userId, userPhoto, title, jobType, coverLetter, portfolio, salary, agree);
 	    resumeservice.insert(resume);
 	    
 	   //학력  
@@ -93,7 +100,7 @@ public class WriteResumeServlet extends HttpServlet{
         Integer score = (scoreStr == null || scoreStr.trim().isEmpty()) ? null : Integer.parseInt(scoreStr);
         
         LicenseService licenseservice = LicenseService.getInstance();
-        License license2 = new License( userId, type1, license, acuisition, score);
+        LicenseForInsert license2 = new LicenseForInsert(userId, type1, license, acuisition, score);
         licenseservice.insert(license2);
 	    
         //경력
@@ -103,7 +110,7 @@ public class WriteResumeServlet extends HttpServlet{
         String jobType1 = req.getParameter("jobType1");
         
         WorkHistoryService workHistoryservice = WorkHistoryService.getInstance();
-        WorkHistory workHistory = new WorkHistory(userId, exCom, startDate1, endDate1, jobType1);
+        WorkHistoryForInsert workHistory = new WorkHistoryForInsert(userId, exCom, startDate1, endDate1, jobType1);
         workHistoryservice.insert(workHistory);
 	  
 	    req.getRequestDispatcher("/WEB-INF/views/mypage/userPage.jsp").forward(req, resp);

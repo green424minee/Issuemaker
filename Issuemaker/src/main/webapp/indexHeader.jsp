@@ -58,6 +58,9 @@
             <form class="logout-button" action="/logout">
                 <input type="submit" value="로그아웃" class="logout">
             </form>
+            <form action="/userPage">
+            	<input type="submit" value="마이페이지">
+            </form>
         </c:if>
         <nav>
             <a href="/index" class="link">채용정보</a>
