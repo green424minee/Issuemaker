@@ -24,4 +24,13 @@ public class LicenseService {
 			return row;
 		}
 	}
+	 public License selectNo(int licenseNo) {
+	      try (SqlSession session = DBUtil.getSqlSession()) {
+	        LicenseMapper mapper = session.getMapper(LicenseMapper.class);
+	         
+	         License license = mapper.selectNo(licenseNo);
+	         
+	         return license;
+	      }
+	   }
 }

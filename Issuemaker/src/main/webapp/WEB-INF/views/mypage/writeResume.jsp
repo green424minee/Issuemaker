@@ -32,19 +32,48 @@
    	        majorInput.style.display = 'none'; // 전공 입력 필드 숨기기
    	    }
    	}
-        function toggleScoreInput() {
-            const scoreLabel = document.getElementById('scoreLabel');
-            const scoreInput = document.getElementById('score');
-            const selectedValue = document.querySelector('input[name="type1"]:checked');
-
-            if (selectedValue && selectedValue.value === '1') {
+		
+        function toggleScoreInput(radio) {
+        	const licenseEntry = radio.closest('.licenseEntry');
+            const scoreLabel = licenseEntry.querySelector('.scoreLabel');
+            const scoreInput = licenseEntry.querySelector('.scoreInput');
+            
+            if (radio.value === "1") { // 어학시험 선택 시
                 scoreLabel.style.display = 'block';
                 scoreInput.style.display = 'block';
-            } else {
+            } else { // 자격증/면허증 선택 시
                 scoreLabel.style.display = 'none';
                 scoreInput.style.display = 'none';
             }
         }
+        
+        function addLicenseEntry() {
+            const licenseCount = document.getElementById("licenseCount");
+            const count = parseInt(licenseCount.value);
+            
+            const newEntry = document.createElement("div");
+            newEntry.className = "licenseEntry";
+            newEntry.innerHTML = `
+                <label>자격 구분</label><br>
+                <input type="radio" name="licenseType${count}" value="0" onclick="toggleScoreInput(this)">
+                <label>자격증/면허증</label>
+                <input type="radio" name="licenseType${count}" value="1" onclick="toggleScoreInput(this)">
+                <label>어학시험</label><br>
+                
+                <label>자격증 이름</label><br>
+                <input type="text" name="license${count}" placeholder="자격증 이름"><br>
+                
+                <label>취득일</label><br>
+                <input type="date" name="acquisition${count}" placeholder="취득일"><br>
+                
+                <label class="scoreLabel" style="display: none;">점수</label>
+                <input type="text" class="scoreInput" name="score${count}" style="display: none;"><br>
+            `;
+            
+            document.getElementById("licenseContainer").appendChild(newEntry);
+            licenseCount.value = count + 1; // licenseCount 업데이트
+        }
+
     </script>
 </head>
 <body>
@@ -137,25 +166,29 @@
         <input type="file" name="portfolio" id="portfolio" ><br>
 	</div><br>
 	
-	<div>
-		<label for="license">자격증</label><br>
-		
-		<label>자격 구분</label><br>
-		<input type="radio" id="extype0" name="type1" value="0" onclick="toggleScoreInput()">
-		<label for="exType0">자격증/면허증</label>
-		<input type="radio" id="extype1" name="type1" value="1" onclick="toggleScoreInput()">
-		<label for="exType1">어학시험</label><br>
-		
-		<label>자격증 이름</label><br>
-		<input type="text" name="license"><br>
-		
-		<label>취득일</label><br>
-		<input type="date" id="acuisition" name="acuisition"><br>
-		
-		<label id="scoreLabel" style="display: none;">점수</label>
-		<input type="text" id="score" name="score" style="display: none;"><br>
-	</div><br>
-	
+  <div id="licenseContainer">
+    <input type="hidden" id="licenseCount" name="licenseCount" value="1">
+        <div class="licenseEntry">
+        <label for="license">자격증</label><br>
+        
+        <label>자격 구분</label><br>
+        <input type="radio" name="licenseType0" value="0" onclick="toggleScoreInput(this)">
+        <label>자격증/면허증</label>
+        <input type="radio" name="licenseType0" value="1" onclick="toggleScoreInput(this)">
+        <label>어학시험</label><br>
+        
+        <label>자격증 이름</label><br>
+        <input type="text" name="license0" placeholder="자격증 이름"><br> <!-- 수정된 부분 -->
+        
+        <label>취득일</label><br>
+        <input type="date" name="acquisition0" placeholder="취득일"><br> <!-- 수정된 부분 -->
+        
+        <label class="scoreLabel" style="display: none;">점수</label>
+        <input type="text" class="scoreInput" name="score0" style="display: none;"><br> <!-- 수정된 부분 -->
+    </div>
+    <button type="button" onclick="addLicenseEntry()">+ 자격증 추가</button>
+</div>
+
 	<div>
 		<label for="salary">희망 연봉</label>
 		<input type="text" name="salary"><br>
