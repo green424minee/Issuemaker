@@ -37,8 +37,6 @@
     	</form>
         <nav>
             <a href="/companyPage" class="link">공고관리</a>
-            <a href="/bestUser" class="link">구직자추천</a>
-            <a href="/passUser" class="link">합격자관리</a>
             
         </nav>
     </header>

@@ -30,6 +30,7 @@ import member.CompanyMapper;
 import search.Job;
 import search.JobMapper;
 import util.DBUtil;
+import util.GetCookie;
 
 @WebServlet("/writeResume")
 @MultipartConfig
@@ -41,9 +42,9 @@ public class WriteResumeServlet extends HttpServlet{
 	            JobMapper jobmapper = session.getMapper(JobMapper.class);
 	            List <String> jobList = jobmapper.selectAll();
 	            
-	            
 	            SchoolService schoolservice = SchoolService.getInstance();
-	            String userId = req.getParameter("userId");
+	            GetCookie co = new GetCookie();
+	            String userId = co.getCookieUserId(req);
 	            School school = schoolservice.selectByUserId(userId);
 	            
 	            
@@ -56,14 +57,9 @@ public class WriteResumeServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//이력서
-		/* String userId = "";
-		Cookie[] cookies = req.getCookies();
-		for (Cookie c : cookies) {
-			if ("user".equals(c.getName())) {
-				userId = c.getValue();
-			}
-		}*/
-		String userId ="qwer1234";
+		GetCookie co = new GetCookie();
+		String userId = co.getCookieUserId(req);
+		
 		String title = req.getParameter("title");
 	    String jobType = req.getParameter("jobType");
 	    String salaryStr = req.getParameter("salary");

@@ -81,7 +81,7 @@ public class ResumeServlet extends HttpServlet {
 		String num = req.getParameter("resumeNo");
 		req.setAttribute("resumeNo", num);
 		if (action.equals("수정")) {
-			resp.sendRedirect("#"); // 이력서 수정
+			resp.sendRedirect("/resumesetting"); // 이력서 수정
 		} else if (action.equals("삭제")) {
 			Integer no = Integer.parseInt(req.getParameter("no"));
 			ser.deleteResume(no);
