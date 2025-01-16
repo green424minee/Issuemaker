@@ -105,7 +105,7 @@
     	<label for="jobType">직무</label>
     	<select id="jobType" name="jobType1">
         <c:forEach var="job" items="${jobList}">
-            <option><c:out value="${job.jobType}"></c:out></option>
+            <option><c:out value="${job}"></c:out></option>
         </c:forEach>
     </select>
 	</div><br>

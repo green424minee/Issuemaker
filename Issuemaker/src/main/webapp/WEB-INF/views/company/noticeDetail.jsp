@@ -1,3 +1,4 @@
+<%@page import="util.GetCookie"%>
 <%@page import="matching.NoticeService"%>
 <%@page import="member.Company"%>
 <%@ page import="matching.Notice" %>
@@ -13,7 +14,8 @@
 <body>
 
 <div class="notice-details">
-	<form action="/noticeSetting">
+	<form method="post">
+		<c:set var="noticeNo" value="${notice.no}" scope="session" />
 	    <div class="notice-header">
 	        ${company.comName} / ${notice.title}
 	    </div>
@@ -39,27 +41,15 @@
     </div>
     	<%
 		// 사용자 아이디 종류 확인
-		NoticeService ser = NoticeService.getInstance();
-		int check = 0;
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie c : cookies) {
-				if ("user".equals(c.getName())) {
-					// check = 사용자의 회원 종류
-					check = ser.getType(c.getValue());
-				} 
-			}
-		} 
-		
-		request.setAttribute("type", check);
-	%>
+		GetCookie co = new GetCookie();
+		request.setAttribute("type", co.getCookieUserType(request));
+		%>
 	<c:if test="${ type == 1 }">
-    	<input type="submit" value="수정">
-	    <input type="hidden" name="no" value="${ notice.no }">
-	    <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
+    	<a href="/noticeSetting" class="button">수정</a>
+	    <button type="button" class="button" onclick="window.history.back()">취소</button>
 	</c:if>
 	<c:if test="${ type != 1 }">
-		<input type="submit" value="지원하기">
+		<a href="/selectResume" class="button">지원하기</a>
 	</c:if>
     </form>
 </div>
@@ -68,8 +58,5 @@
     <h3>공고내용</h3>
     <p>${notice.context} </p>
 </div>
-<form method="post">
-	<input type="hidden" name="no" value="${ notice.no }">
-</form>
 </body>
 </html>
