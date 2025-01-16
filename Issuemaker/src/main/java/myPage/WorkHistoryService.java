@@ -23,5 +23,14 @@ public class WorkHistoryService {
 			return row;
 		}
 	}
+	public WorkHistory selectNo(int historyNo) {
+		 try (SqlSession session = DBUtil.getSqlSession()) {
+	         WorkHistoryMapper mapper = session.getMapper(WorkHistoryMapper.class);
+	         
+	         WorkHistory workHistory = mapper.selectNo(historyNo);
+	         
+	         return workHistory;
+	      }
+	}
 
 }
