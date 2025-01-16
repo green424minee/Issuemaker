@@ -41,10 +41,11 @@ public class WriteResumeServlet extends HttpServlet{
 	            JobMapper jobmapper = session.getMapper(JobMapper.class);
 	            List <Job> jobList = jobmapper.selectAll();
 	            
-	            //아이디 쿠키 설정
-	            String userId = "qwer1234";
+	            
 	            SchoolService schoolservice = SchoolService.getInstance();
+	            String userId = req.getParameter("userId");
 	            School school = schoolservice.selectByUserId(userId);
+	            
 	            
 	            req.setAttribute("jobList", jobList);
 	            req.setAttribute("school", school);
@@ -55,13 +56,14 @@ public class WriteResumeServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//이력서
-		String userId = "";
+		/* String userId = "";
 		Cookie[] cookies = req.getCookies();
 		for (Cookie c : cookies) {
 			if ("user".equals(c.getName())) {
 				userId = c.getValue();
 			}
-		}
+		}*/
+		String userId ="qwer1234";
 		String title = req.getParameter("title");
 	    String jobType = req.getParameter("jobType");
 	    String salaryStr = req.getParameter("salary");
@@ -81,7 +83,8 @@ public class WriteResumeServlet extends HttpServlet{
         
 	    ResumeService resumeservice = ResumeService.getInstance();
 	    ResumeForInsert resume = new ResumeForInsert(userId, userPhoto, title, jobType, coverLetter, portfolio, salary, agree);
-	    resumeservice.insert(resume);
+	    System.out.println("Inserting : " + resume);
+	    
 	    
 	   //학력  
 	    int type = Integer.parseInt(req.getParameter("type"));
@@ -96,19 +99,40 @@ public class WriteResumeServlet extends HttpServlet{
 	          
 	    SchoolService schoolservice = SchoolService.getInstance();
 	  	School school = new School(userId, type, level, schoolName, schoolLevel, major, startDate, endDate);
-	  	schoolservice.insert(school);
+	  	System.out.println("Inserting : " + school);
+	  	
 	  	
 	  	// 자격증
-        int type1 = Integer.parseInt(req.getParameter("type1"));
-        String license = req.getParameter("license");
-        LocalDate acuisition = LocalDate.parse(req.getParameter("acuisition"));
-        String scoreStr = req.getParameter("score");
-        Integer score = (scoreStr == null || scoreStr.trim().isEmpty()) ? null : Integer.parseInt(scoreStr);
-        
-        LicenseService licenseservice = LicenseService.getInstance();
-        LicenseForInsert license2 = new LicenseForInsert(userId, type1, license, acuisition, score);
-        licenseservice.insert(license2);
-	    
+	 // LicenseService 객체 생성
+	  	LicenseService licenseService = LicenseService.getInstance();
+
+	  	// 동적으로 입력된 자격증 항목 처리
+	  	int licenseCount = Integer.parseInt(req.getParameter("licenseCount")); // 추가된 자격증의 개수를 가져옵니다.
+
+	  	for (int i = 0; i < licenseCount; i++) {
+	  	    // 각 자격증에 대한 값들을 개별적으로 가져옵니다.
+	  	    String license = req.getParameter("license" + i);
+	  	    String acquisitionDate = req.getParameter("acquisition" + i);
+	  	    String score = req.getParameter("score" + i);
+	  	    String type1 = req.getParameter("licenseType" + i);
+	  	  System.out.println("License " + i + ": " + license);
+
+	  	    // 값이 비어있는지 확인하고, 처리합니다.
+	  	    if (license != null && !license.trim().isEmpty()) {
+	  	        LocalDate acquisition = LocalDate.parse(acquisitionDate); // 취득일
+	  	        Integer scoreValue = (score == null || score.trim().isEmpty()) ? null : Integer.parseInt(score); // 점수
+	  	        int typeValue = Integer.parseInt(type1); // 자격증 구분 값
+
+	  	        // LicenseForInsert 객체 생성 및 데이터베이스 삽입
+	  	        LicenseForInsert licenseForInsert = new LicenseForInsert(userId, typeValue, license, acquisition, scoreValue);
+	  	        System.out.println("Inserting License: " + licenseForInsert);
+	  	        System.out.println("License Count: " + licenseCount);
+	  	        
+	  	        //licenseService.insert(licenseForInsert); // 데이터베이스에 삽입
+	  	    }
+	  	}
+
+
         //경력
         String exCom = req.getParameter("exCom");
         LocalDate startDate1 = LocalDate.parse(req.getParameter("startDate1"));
@@ -117,10 +141,12 @@ public class WriteResumeServlet extends HttpServlet{
         
         WorkHistoryService workHistoryservice = WorkHistoryService.getInstance();
         WorkHistoryForInsert workHistory = new WorkHistoryForInsert(userId, exCom, startDate1, endDate1, jobType1);
-        workHistoryservice.insert(workHistory);
+        System.out.println("Inserting : " + workHistory);
+        
 	  
 	    req.getRequestDispatcher("/WEB-INF/views/mypage/userPage.jsp").forward(req, resp);
 	   
 	}
+
 //
 }
