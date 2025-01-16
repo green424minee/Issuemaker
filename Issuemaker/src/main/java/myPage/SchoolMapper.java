@@ -12,5 +12,6 @@ public interface SchoolMapper {
 	
 	 @Select("SELECT * FROM school WHERE userId = #{userId}")
 	   School selectByUserId(@Param("userId") String userId);
+	 
 
 }
