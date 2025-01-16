@@ -26,14 +26,6 @@ public class NoticeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		GetCookie co = new GetCookie();
 		String comId = co.getCookieUserId(req);
-/*	      Cookie[] cookies = req.getCookies();
-	      for (Cookie c : cookies) {
-	         if ("user".equals(c.getName())) {
-	            comId = c.getValue();
-	         }
-	      }
-*/
-		
 		
         String title = req.getParameter("title");
         String context = req.getParameter("context");

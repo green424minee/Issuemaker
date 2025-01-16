@@ -40,6 +40,5 @@
             <a href="/userPage" class="link">이력서 관리</a>
             <a href="/noticeList" class="link">지원 내역</a>
             <a href="/suggest" class="link">받은 제안</a>
-            <a href="#" class="link">스크랩/관심 기업</a>
         </nav>
     </header>
