@@ -114,7 +114,7 @@
     <label for="jobType">직무</label>
     <select id="jobType" name="jobType">
         <c:forEach var="job" items="${jobList}">
-            <option><c:out value="${job.jobType}"></c:out></option>
+            <option><c:out value="${job}"></c:out></option>
         </c:forEach>
     </select>
 	</div>
@@ -193,16 +193,6 @@
 		<label for="salary">희망 연봉</label>
 		<input type="text" name="salary"><br>
 	</div><br>
-	
-	<div>
-		<label>
-           <input type="radio" name="agree" value="0"> 동의
-        </label>
-        <label>
-            <input type="radio" name="agree" value="1"> 비동의
-        </label>
-        <br>
-	</div>
 	
 	<div>
 	 <input type="submit" value="이력서 등록">

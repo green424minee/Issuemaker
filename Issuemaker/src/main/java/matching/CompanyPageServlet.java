@@ -10,19 +10,14 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.GetCookie;
 
 @WebServlet("/companyPage")
 public class CompanyPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	String comId = "test"; 
-    	Cookie[] cookies = req.getCookies();
-    	for (Cookie c : cookies) {
-    		if ("user".equals(c.getName())) {
-    			comId = c.getValue();
-    		}
-    	}
-    	
+    	GetCookie co = new GetCookie();
+    	String comId = co.getCookieUserId(req);
     	
     	CompanyPageService ser = CompanyPageService.getInstance();
     	List<Notice> notice = ser.noticeByComId(comId);

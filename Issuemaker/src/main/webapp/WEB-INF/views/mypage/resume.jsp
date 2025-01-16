@@ -52,7 +52,6 @@
 			</form>
 
 			<form method="post">
-				<input type="submit" name="action" value="수정">
 				<input type="submit" name="action" value="삭제">
 				<input type="hidden" name="no" value="${ resume.no }">
 			</form>
