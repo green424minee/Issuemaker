@@ -15,7 +15,7 @@ public class NoticeSettingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String no = req.getParameter("no");
-      
+        System.out.println(no);
         NoticeService service = NoticeService.getInstance();
         Notice notice = service.getNoticeByNo(no); 
         

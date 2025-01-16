@@ -35,6 +35,7 @@ import myPage.myPageMapper;
 import search.AreaMapper;
 import search.IndexMapper;
 import search.JobMapper;
+import search.JobService;
 
 public class DBUtil {
     private static DataSource dataSource;
@@ -74,7 +75,7 @@ public class DBUtil {
         configuration.addMapper(SuggestMapper.class);
         configuration.addMapper(CompanyPageMapper.class);
 
-        
+        configuration.addMapper(JobService.class);
        
 
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
