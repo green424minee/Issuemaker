@@ -39,7 +39,7 @@ public class WriteResumeServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		 try (SqlSession session = DBUtil.getSqlSession()) {
 	            JobMapper jobmapper = session.getMapper(JobMapper.class);
-	            List <Job> jobList = jobmapper.selectAll();
+	            List <String> jobList = jobmapper.selectAll();
 	            
 	            
 	            SchoolService schoolservice = SchoolService.getInstance();

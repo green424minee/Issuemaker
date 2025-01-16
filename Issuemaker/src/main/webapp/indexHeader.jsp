@@ -1,3 +1,4 @@
+<%@page import="matching.NoticeService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -41,16 +42,20 @@
 	</a>
 	<%
 		// 쿠키 확인
+		NoticeService ser = NoticeService.getInstance();
+		int check = 0;
 		boolean isLogIn = false;
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie c : cookies) {
 				if ("user".equals(c.getName())) {
 					isLogIn = true;
+					check = ser.getType(c.getValue());
 					break;
 				} 
 			}
 		} 
+		request.setAttribute("check", check);
 		request.setAttribute("isLogIn", isLogIn);
 	%>
 		<c:if test="${ !isLogIn }">
@@ -61,13 +66,13 @@
 	    	</form>
     	</c:if>
 		<c:if test="${isLogIn}">
-            <form class="logout-button" action="/logout">
-                <input type="submit" value="로그아웃" class="logout">
-            </form>
-            <form action="/userPage">
-            	<input type="submit" value="마이페이지">
-            </form>
-        </c:if>
+   			<form class="logout-button" action="/logout">
+        		<input type="submit" value="로그아웃" class="logout">
+    		</form>
+    		<form action="${check == 0 ? '/userPage' : '/companyPage'}">
+        		<input type="submit" value="마이페이지">
+    		</form>
+</c:if>
         <nav>
             <a href="/index" class="link">채용정보</a>
             <a href="/area" class="link">지역별</a>

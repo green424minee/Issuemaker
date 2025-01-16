@@ -5,6 +5,7 @@ import java.util.List;
 
 import member.Company;
 import search.AreaService;
+import search.JobService;
 
 public class Notice {
 
@@ -25,7 +26,6 @@ public class Notice {
 	private String exTermStr = strExTerm(exTerm);  // 경력
 	private String salaryStr = strSalary(salary);  // 급여
 	private String schoolLevelStr = strSchoolLevel(type, schoolLevel);	// 학교 구분(?년제 ?)
-
 	
 	public Notice() {}
 	

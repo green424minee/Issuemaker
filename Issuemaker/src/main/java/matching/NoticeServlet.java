@@ -11,6 +11,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.GetCookie;
 
 
 @WebServlet("/noticeNew")
@@ -23,8 +24,8 @@ public class NoticeServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		String comId = "test";
+		GetCookie co = new GetCookie();
+		String comId = co.getCookieUserId(req);
 /*	      Cookie[] cookies = req.getCookies();
 	      for (Cookie c : cookies) {
 	         if ("user".equals(c.getName())) {
