@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import member.Company;
 import member.CompanyService;
+import util.GetCookie;
 
 @WebServlet("/noticeDetail")
 public class NoticeDetailServlet extends HttpServlet {
@@ -38,6 +39,20 @@ public class NoticeDetailServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		//resp.sendRedirect("/noticeSetting");
+		GetCookie co = new GetCookie();
+		String action = req.getParameter("action");
+		int check = co.getCookieUserType(req);
+		
+		/*
+		if (action.equals("지원하기")) {
+			if (check == 0) {
+				resp.sendRedirect("/selectResume");
+			} else {
+				resp.sendRedirect("/login"); // 로그인 X - 로그인창으로
+			}
+		} else { // action == 수정
+			resp.sendRedirect("/noticeSetting");
+		}
+		*/
 	}
 }
