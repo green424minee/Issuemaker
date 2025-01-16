@@ -35,7 +35,7 @@
         <input type="text" id="workday" name="workday" required><br><br>
 
 		<label>학교구분:</label><br>
-		    <input type="radio" id="type0" name="type" value="0" required>
+		    <input type="radio" id="type0" name="type" value="0" required checked>
 		    <label for="type0">무관</label><br>
 		    <input type="radio" id="type1" name="type" value="1">
 		    <label for="type1">초/중학교</label><br>
@@ -45,7 +45,7 @@
 		    <label for="type3">대학교</label><br>
 
         <label>대학구분:</label><br>
-	        <input type="radio" id="schoolLevel0" name="schoolLevel" value="0" required>
+	        <input type="radio" id="schoolLevel0" name="schoolLevel" value="0" required checked>
 	        <label for="schoolLevel0">무관</label><br>
 	        <input type="radio" id="schoolLevel1" name="schoolLevel" value="1">
 	        <label for="schoolLevel2">2, 3년제</label><br>

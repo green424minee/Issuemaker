@@ -10,10 +10,10 @@
 <p>${ errorMessage }</p>
 	<form method="post">
         <label for="context">내용:</label><br>
-        <textarea id="context" name="context">${ notice.context }</textarea><br><br>
+        <textarea id="context" name="context" required>${ notice.context }</textarea><br><br>
 
         <label for="deadLine">공고마감:</label>
-        <input type="date" id="deadLine" name="deadLine" value="${ notice.deadLine }"><br><br>
+        <input type="date" id="deadLine" name="deadLine" value="${ notice.deadLine }" required><br><br>
 
 	
 	<div>

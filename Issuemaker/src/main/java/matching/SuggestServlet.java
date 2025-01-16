@@ -10,6 +10,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import util.GetCookie;
 
 @WebServlet("/suggest")
 public class SuggestServlet extends HttpServlet{
@@ -17,13 +18,8 @@ public class SuggestServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String user = "";
-		Cookie[] cookies = req.getCookies();
-		for (Cookie c : cookies) {
-			if ("user".equals(c.getName())) {
-				user = c.getValue();
-			}
-		}
+		GetCookie co = new GetCookie();
+		String user = co.getCookieUserId(req);
 		
 		List<Suggest> sugList = null;
 		sugList = ser.selectSuggest(user);  // user가 제안받은 suggest

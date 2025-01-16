@@ -16,10 +16,10 @@
 			<%= "기업회원".equals(request.getParameter("type")) ? "checked" : "" %> disabled>기업</label>
 		<br>
 		<label for="id">아이디</label>
-		<input type="text" id="id" name="id">
+		<input type="text" id="id" name="id" required>
 		<br>
 		<label for="pw">비밀번호</label>
-		<input type="password" id="pw" name="pw">
+		<input type="password" id="pw" name="pw" required>
 		<br>
 		<input type="submit" value="로그인">
 	</form>
