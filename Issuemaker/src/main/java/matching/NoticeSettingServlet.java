@@ -29,6 +29,7 @@ public class NoticeSettingServlet extends HttpServlet {
         String context = req.getParameter("context");
         String deadLineStr = req.getParameter("deadLine");
         
+        System.out.println(deadLineStr);
         LocalDate deadLine = LocalDate.parse(deadLineStr);
      
         NoticeService ser = NoticeService.getInstance();
@@ -40,7 +41,7 @@ public class NoticeSettingServlet extends HttpServlet {
         ser.update(existingNotice);
         
         req.setAttribute("notice", existingNotice);
-        req.getRequestDispatcher("/WEB-INF/views/company/noticeSetting.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/company/noticeDetail.jsp").forward(req, resp);
     }
 
 }

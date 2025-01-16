@@ -42,7 +42,7 @@ public class LoginServlet extends HttpServlet {
 				if (type == 0) {
 					resp.sendRedirect("/userPage"); // 마이페이지
 				} else {
-					resp.sendRedirect("#");  // 기업 메인페이지
+					resp.sendRedirect("/companyPage");  // 기업 메인페이지
 				}
 			} else {
 				req.setAttribute("error", "회원 종류를 확인해주세요.");

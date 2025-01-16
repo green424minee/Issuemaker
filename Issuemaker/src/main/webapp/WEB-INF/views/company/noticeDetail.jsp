@@ -1,3 +1,4 @@
+<%@page import="matching.NoticeService"%>
 <%@page import="member.Company"%>
 <%@ page import="matching.Notice" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,10 +20,7 @@
 	    <div class="notice-info">
 	        공고시작기간: ${notice.postDate} ~ 공고마감기간: ${notice.deadLine} <br>
 	    </div>
-	    <input type="submit" value="수정">
-	    <input type="hidden" name="no" value="${ notice.no }">
-	    <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
-    </form>
+    
     <div class="notice-info">
         경력: ${notice.exTermStr} <br>
         급여: ${notice.salaryStr} <br>
@@ -39,6 +37,31 @@
         	${ list }<br>
         </c:forEach>
     </div>
+    	<%
+		// 사용자 아이디 종류 확인
+		NoticeService ser = NoticeService.getInstance();
+		int check = 0;
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie c : cookies) {
+				if ("user".equals(c.getName())) {
+					// check = 사용자의 회원 종류
+					check = ser.getType(c.getValue());
+				} 
+			}
+		} 
+		
+		request.setAttribute("type", check);
+	%>
+	<c:if test="${ type == 1 }">
+    	<input type="submit" value="수정">
+	    <input type="hidden" name="no" value="${ notice.no }">
+	    <button type="button" onclick="window.location.href='noticeSetting.jsp'">취소</button>
+	</c:if>
+	<c:if test="${ type != 1 }">
+		<input type="submit" value="지원하기">
+	</c:if>
+    </form>
 </div>
 
 <div class="notice-content">

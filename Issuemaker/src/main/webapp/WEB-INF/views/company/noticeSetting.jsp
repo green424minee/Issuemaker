@@ -8,14 +8,14 @@
 </head>
 <body>
 <p>${ errorMessage }</p>
-
+	<form method="post">
         <label for="context">내용:</label><br>
         <textarea id="context" name="context">${ notice.context }</textarea><br><br>
 
         <label for="deadLine">공고마감:</label>
         <input type="date" id="deadLine" name="deadLine" value="${ notice.deadLine }"><br><br>
 
-	<form method="post">
+	
 	<div>
         <input type="submit" value="수정">
         <button type="button" onclick="window.history.back()">취소</button>

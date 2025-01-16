@@ -26,12 +26,18 @@
     		cursor: pointer;
     		transition: background-color 0.3s;
     	}
+    	.class {
+    		padding: 10px 0;
+    		display: flex;
+    		justify-content: center;
+    		align-items: center;
+    	}
     </style>
 </head>
 <body>
 	<header>
 	<a href="/">
-		<img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" />
+		<img src="${pageContext.request.contextPath}/images/logo.png" class="logo" alt="로고" />
 	</a>
 	<%
 		// 쿠키 확인

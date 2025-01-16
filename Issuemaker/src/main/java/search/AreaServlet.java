@@ -11,27 +11,17 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/area")
 public class AreaServlet extends HttpServlet{
-
+	AreaService ser = AreaService.getInstance();
+	List<String> areaName = ser.getAreaByAll();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    AreaService ser = AreaService.getInstance();
-	    
-	
-	    List<String> areaName = ser.getAreaByAll();
-	    
-	    req.setAttribute("area", areaName);
-	    req.getRequestDispatcher("/area.jsp")
-	       .forward(req, resp);
+	    req.getSession().setAttribute("areaName", areaName);
+	    req.getRequestDispatcher("/area.jsp").forward(req, resp);
 	}
-
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		resp.sendRedirect("/areaDetail");
 	}
-	
-	
-
 }
