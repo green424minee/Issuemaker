@@ -65,8 +65,8 @@ public class WriteResumeServlet extends HttpServlet{
 	    String salaryStr = req.getParameter("salary");
 	    int salary = (salaryStr == null || salaryStr.trim().isEmpty()) ? 0 : Integer.parseInt(salaryStr);
 
-		int agree = Integer.parseInt(req.getParameter("agree")); 
-
+		//int agree = Integer.parseInt(req.getParameter("agree")); 
+	    int agree = 0;
 	    // 파일 데이터 받기 (사진, 자기소개서, 포트폴리오)
         Part userPhotoPart = req.getPart("userPhoto");
         Part coverLetterPart = req.getPart("coverLetter");
