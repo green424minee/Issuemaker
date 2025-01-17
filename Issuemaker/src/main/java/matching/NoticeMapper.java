@@ -1,5 +1,7 @@
 package matching;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -11,8 +13,8 @@ import myPage.Resume;
 
 
 public interface NoticeMapper {
-	@Insert("INSERT INTO notice (comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major) " +
-            "VALUES (#{comId}, #{title}, #{context}, #{postDate}, #{deadLine}, #{salary}, #{jobType}, #{exTerm}, #{workday}, #{type}, #{schoolLevel}, #{major})")
+	@Insert("INSERT INTO notice (comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major, comLicense) " +
+            "VALUES (#{comId}, #{title}, #{context}, #{postDate}, #{deadLine}, #{salary}, #{jobType}, #{exTerm}, #{workday}, #{type}, #{schoolLevel}, #{major}, #{comLicense})")
 	int insert(NoticeForInsert notice);
 
 	 @Update("UPDATE notice SET context = #{context}, deadLine = #{deadLine}" +
@@ -39,5 +41,11 @@ public interface NoticeMapper {
 	 // 기업 지역 받아오기
 	 @Select("SELECT comAddress FROM company WHERE comId = #{comId}")
 	 String selectComAddress(@Param("comId") String comId);
+	 
+	 @Select("SELECT comLicense FROM notice WHERE comId = #{comId}")
+	 List<String> getComLicenseByNoticeComId(String comId);
+
+	
+
 
 }
