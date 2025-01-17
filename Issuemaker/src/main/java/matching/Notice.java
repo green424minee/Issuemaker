@@ -15,12 +15,12 @@ public class Notice {
 	private String context;      
 	private LocalDate postDate;      
 	private LocalDate deadLine;       
-	private int salary;      
+	private Integer salary;      
 	private String jobType;      
-	private int exTerm;      
+	private Integer exTerm;      
 	private String workday;      
-	private int type;        
-	private int schoolLevel; 
+	private Integer type;        
+	private Integer schoolLevel; 
 	private String major;
 	private String comLicense;
 	
@@ -28,7 +28,7 @@ public class Notice {
 	
 	
 	public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
-				int salary, String jobType, int exTerm, String workday, int type, int schoolLevel, String major,
+				Integer salary, String jobType, Integer exTerm, String workday, Integer type, Integer schoolLevel, String major,
 				String comLicense) {
 			super();
 			this.no = no;
@@ -57,168 +57,136 @@ public class Notice {
 	public String getSchoolLevelStr() {
 		return strSchoolLevel(type, schoolLevel);
 	}
+	
+
+
 	public int getNo() {
 		return no;
 	}
-	
-	
-	
+
+
 	public void setNo(int no) {
 		this.no = no;
 	}
-	
-	
-	
+
+
 	public String getComId() {
 		return comId;
 	}
-	
-	
-	
+
+
 	public void setComId(String comId) {
 		this.comId = comId;
 	}
-	
-	
-	
+
+
 	public String getTitle() {
 		return title;
 	}
-	
-	
-	
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
-	
-	
+
+
 	public String getContext() {
 		return context;
 	}
-	
-	
-	
+
+
 	public void setContext(String context) {
 		this.context = context;
 	}
-	
-	
-	
+
+
 	public LocalDate getPostDate() {
 		return postDate;
 	}
-	
-	
-	
+
+
 	public void setPostDate(LocalDate postDate) {
 		this.postDate = postDate;
 	}
-	
-	
-	
+
+
 	public LocalDate getDeadLine() {
 		return deadLine;
 	}
-	
-	
-	
+
+
 	public void setDeadLine(LocalDate deadLine) {
 		this.deadLine = deadLine;
 	}
-	
-	
-	
-	public int getSalary() {
+
+
+	public Integer getSalary() {
 		return salary;
 	}
-	
-	
-	
-	public void setSalary(int salary) {
+
+
+	public void setSalary(Integer salary) {
 		this.salary = salary;
 	}
-	
-	
-	
+
+
 	public String getJobType() {
 		return jobType;
 	}
-	
-	
-	
+
+
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
 	}
-	
-	
-	
-	public int getExTerm() {
+
+
+	public Integer getExTerm() {
 		return exTerm;
 	}
-	
-	
-	
-	public void setExTerm(int exTerm) {
+
+
+	public void setExTerm(Integer exTerm) {
 		this.exTerm = exTerm;
 	}
-	
-	
-	
+
+
 	public String getWorkday() {
 		return workday;
 	}
-	
-	
-	
+
+
 	public void setWorkday(String workday) {
 		this.workday = workday;
 	}
-	
-	
-	
-	public int getType() {
+
+
+	public Integer getType() {
 		return type;
 	}
-	
-	
-	
-	public void setType(int type) {
+
+
+	public void setType(Integer type) {
 		this.type = type;
 	}
-	
-	
-	
-	public int getSchoolLevel() {
+
+
+	public Integer getSchoolLevel() {
 		return schoolLevel;
 	}
-	
-	
-	
-	public void setSchoolLevel(int schoolLevel) {
+
+
+	public void setSchoolLevel(Integer schoolLevel) {
 		this.schoolLevel = schoolLevel;
 	}
-	
-	
-	
+
+
 	public String getMajor() {
 		return major;
 	}
-	
-	
-	
+
+
 	public void setMajor(String major) {
 		this.major = major;
-	}
-	
-	
-	
-	
-	
-	
-	
-	public void setComLicense(String comLicense) {
-		this.comLicense = comLicense;
 	}
 
 
@@ -226,6 +194,10 @@ public class Notice {
 		return comLicense;
 	}
 
+
+	public void setComLicense(String comLicense) {
+		this.comLicense = comLicense;
+	}
 
 
 	@Override
@@ -238,25 +210,28 @@ public class Notice {
 	
 	
 	
-	public String strExTerm(int exTerm) {
-	   String info;
-	   if (exTerm == 0)  info = "무관"; 
-	   else info = exTerm + "년 이상";
+	public String strExTerm(Integer exTerm) {
+	   String info = "신입";
+	   if (exTerm != null) {
+		   if (exTerm == 0)  info = "무관"; 
+		   else info = exTerm + "년 이상";
+	   }
 	   
 	   return info;
    }
 
-   public String strSalary(int salary) {
-	   if (salary == 0) return "협의 후 결정"; 
-	   else {
+   public String strSalary(Integer salary) {
+	   String info = "협의 후 결정";
+	   if (salary != null) {
 		   int result = salary / 10000; 
-		   return "연봉 " + result + "만원";
+		   info =  "연봉 " + result + "만원";
 	   }
+	   return info;
    }
    
    
    
-   public String strSchoolLevel(int type, int schoolLevel) {
+   public String strSchoolLevel(Integer type, Integer schoolLevel) {
 	   if (type == 2) {
 		   if (schoolLevel == 0) return "석사";
 		   else if (schoolLevel == 1) return "박사";
