@@ -49,18 +49,19 @@ public class NoticeServlet extends HttpServlet {
         Integer schoolLevel = Integer.parseInt(req.getParameter("schoolLevel"));
         String major = req.getParameter("major");
         
-        // comLicense 처리
+     // comLicense 처리
         String comLicense = req.getParameter("comLicense");
         List<String> comLicenseList = new ArrayList<>();
         if (comLicense != null && !comLicense.trim().isEmpty()) {
-            String[] licenses = comLicense.split(",");
+            String[] licenses = comLicense.split(","); // comLicense가 null이 아닐 때만 호출
             for (String license : licenses) {
                 comLicenseList.add(license.trim());
             }
         }
-        
-        // comLicenseList가 비어있지 않으면 null이 아닌 값으로 설정
+
+        // comLicenseList가 비어있으면 null로 설정
         String com = comLicenseList.isEmpty() ? null : String.join(", ", comLicenseList);
+
 
         if (major != null && major.trim().isEmpty()) {
             major = null;
