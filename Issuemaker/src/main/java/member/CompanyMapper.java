@@ -10,7 +10,7 @@ public interface CompanyMapper {
 	            "VALUES (#{comId}, #{comName}, #{comNo}, #{comPhone}, #{comCeo}, #{managerEmail}, #{comAddress}, #{comBirth}, #{comSize}, #{comWeb})")
 	 int insert(Company company);
 
-	 @Update("UPDATE company SET comPhone = #{comPhone}, managerEmail = #{managerEmail}, comAddress = #{comAddress}, comSize = #{comSize}, comWeb = #{comWeb} " +
+	 @Update("UPDATE company SET comNo = #{comNo}, comPhone = #{comPhone}, managerEmail = #{managerEmail}, comAddress = #{comAddress}, comSize = #{comSize}, comWeb = #{comWeb} " +
 				"WHERE comId = #{comId}")
 	 int update(Company company);
 

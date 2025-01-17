@@ -24,12 +24,15 @@ public class NoticeDetailServlet extends HttpServlet {
         CompanyService companyService = CompanyService.getInstance();
         Company company = companyService.getCompanyBycomId(comId);
         
-        ComLicenseService ser = ComLicenseService.getInstance();
-        List<String> list = ser.getComLicenseById(comId);
-
+        
+        String comLicense = notice.getComLicense(); 
+        String[] licenses = comLicense.split(", "); 
+        
+      
+        
         req.setAttribute("notice", notice); 
         req.setAttribute("company", company);
-        req.setAttribute("liList", list);
+        req.setAttribute("licenses", licenses); 
         
         GetCookie co = new GetCookie();
         String currentComId = co.getCookieUserId(req);

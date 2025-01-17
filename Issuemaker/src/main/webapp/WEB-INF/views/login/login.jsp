@@ -10,10 +10,8 @@
 	<div><h2>로그인</h2></div>
 	<p>${ error }</p>
 	<form method="post">
-		<label><input type="radio" name="type" value="0" 
-			<%= "개인회원".equals(request.getParameter("type")) ? "checked" : "" %> disabled>개인</label>
-		<label><input type="radio" name="type" value="1"
-			<%= "기업회원".equals(request.getParameter("type")) ? "checked" : "" %> disabled>기업</label>
+		<label><input type="radio" name="type" value="0">개인</label>
+		<label><input type="radio" name="type" value="1">기업</label>
 		<br>
 		<label for="id">아이디</label>
 		<input type="text" id="id" name="id" required>
