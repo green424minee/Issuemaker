@@ -60,9 +60,7 @@
 	%>
 		<c:if test="${ !isLogIn }">
 			<form class="login-button" action="/login">
-				<label>로그인</label>
-	    		<input type="submit" name="type" value="개인회원" class="login"> <%-- 메인 화면으로- --%>
-	    		<input type="submit" name="type" value="기업회원" class="login" > <%-- 메인 화면으로- --%>
+	    		<input type="submit" value="로그인" class="login"> <%-- 메인 화면으로- --%>
 	    	</form>
     	</c:if>
 		<c:if test="${isLogIn}">
