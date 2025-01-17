@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import member.Company;
 import member.CompanyMapper;
+import myPage.Resume;
 import util.DBUtil;
 
 public class NoticeService {
@@ -57,12 +58,19 @@ public class NoticeService {
 		}
 	}
 
-	    public Notice getNoticeById(String comId) {
-	    	try(SqlSession session = DBUtil.getSqlSession()){
-	    		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-	    		return mapper.getNoticeById(comId);
-	    	}
+	public Notice getNoticeById(String comId) {
+			try(SqlSession session = DBUtil.getSqlSession()){
+	    	NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	    	return mapper.getNoticeById(comId);
 	    }
+
+	}
+	
+
+	    
+	    
+
+
 
 	    public String selectComName(@Param("comId") String comId) {
 	    	try(SqlSession session = DBUtil.getSqlSession()){
@@ -70,4 +78,5 @@ public class NoticeService {
 	    		return mapper.selectComName(comId);
 	    	}
 	    }
+
 }
