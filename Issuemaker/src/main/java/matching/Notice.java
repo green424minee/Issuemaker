@@ -164,6 +164,7 @@ public class Notice {
    }
    
    public String getComName(String comId) {
-	   return null;
+	   NoticeService ser = NoticeService.getInstance();
+	   return ser.selectComName(comId);
    }
 }
