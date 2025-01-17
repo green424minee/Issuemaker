@@ -15,6 +15,7 @@ public class Resume {
     private Integer salary;       
     private LocalDate postDate;
     private int agree;
+    
 	public int getNo() {
 		return no;
 	}

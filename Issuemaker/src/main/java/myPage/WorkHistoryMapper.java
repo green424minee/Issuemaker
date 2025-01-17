@@ -9,6 +9,8 @@ public interface WorkHistoryMapper {
 			"VALUES ( #{userId}, #{exCom}, #{startDate}, #{endDate}, #{jobType})")
 	int insert(WorkHistoryForInsert workHistory);
 	
-	@Select("SELECT * FROM workHistory WHERE no = #{ no }")
-	WorkHistory selectNo(@Param("no") int no);
+	@Select("SELECT * FROM workHistory WHERE userId = #{ userId }")
+	WorkHistory selectByUserId(@Param("userId") String userId);
+	
+	
 }
