@@ -49,8 +49,8 @@
         <label for="deadLine">공고마감:</label>
         <input type="date" id="deadLine" name="deadLine" required><br><br>
 
-        <label for="salary">연봉:</label>
-        <input type="text" id="salary" name="salary" placeholder="공백 시 협의 후 결정">만원<br><br>
+        <label for="salary">연봉(원 단위 입력)</label>
+        <input type="number" id="salary" name="salary" placeholder="공백 시 협의 후 결정"><br><br>
 
         <div>
             <label for="jobType">직무</label>
