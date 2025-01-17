@@ -37,7 +37,11 @@ public class SchoolService {
 	        try (SqlSession session = DBUtil.getSqlSession()) {
 	            SchoolMapper mapper = session.getMapper(SchoolMapper.class);
 	            
-	            return mapper.update(school); 
+	            int rowUpdated = mapper.update(school);
+	            
+	            session.commit();
+	            
+	            return rowUpdated;
 	        }
 	    }
 	

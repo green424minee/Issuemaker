@@ -34,7 +34,10 @@ public class WorkHistoryService {
 		try (SqlSession session = DBUtil.getSqlSession()) {
 			WorkHistoryMapper mapper = session.getMapper(WorkHistoryMapper.class);
 			
-			return mapper.update(workHistory);
+			int rowUpdated = mapper.update(workHistory);
+			session.commit();
+			
+			return rowUpdated;
 		}
 	}
 

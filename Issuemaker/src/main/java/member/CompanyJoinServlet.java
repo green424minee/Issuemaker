@@ -2,20 +2,33 @@ package member;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import search.Area;
+import search.AreaMapper;
+import search.AreaService;
+import util.DBUtil;
 
 @WebServlet("/companyJoin")
 public class CompanyJoinServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("/WEB-INF/views/login/companyJoin.jsp").forward(req, resp);
+	    try (SqlSession session = DBUtil.getSqlSession()) {
+	        AreaMapper areaMapper = session.getMapper(AreaMapper.class);
+	        List<String> areas = areaMapper.getAreaByAll();
+	        req.setAttribute("areas", areas);
+	        req.getRequestDispatcher("/WEB-INF/views/login/companyJoin.jsp").forward(req, resp);
+	    }
 	}
+
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,6 +41,7 @@ public class CompanyJoinServlet extends HttpServlet{
 		String comCeo = req.getParameter("comCeo");
 		String managerEmail = req.getParameter("managerEmail");
 		String comAddress = req.getParameter("comAddress");
+		String otherAddress = req.getParameter("otherAddress");
 		String comBirthStr = req.getParameter("comBirth"); // comBirth는 문자열로 받아온 후 변환
 		String comSizeStr = req.getParameter("comSize"); //
 		String comWeb = req.getParameter("comWeb");
@@ -57,7 +71,7 @@ public class CompanyJoinServlet extends HttpServlet{
         Guest1Service ser = Guest1Service.getInstance();
         ser.insert(comId, pwAgain);
 	    
-	    Company company = new Company(comId, comName, comNo, comPhone, comCeo, managerEmail, comAddress, comBirth, comSize, comWeb);
+	    Company company = new Company(comId, comName, comNo, comPhone, comCeo, managerEmail, comAddress, otherAddress, comBirth, comSize, comWeb);
 	    CompanyService service = CompanyService.getInstance();
 	    service.insert(company);
 		  

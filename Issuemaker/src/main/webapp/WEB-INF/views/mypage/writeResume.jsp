@@ -64,7 +64,7 @@
                 <input type="text" name="license${count+1}" placeholder="자격증 이름"><br>
                 
                 <label>취득일</label><br>
-                <input type="date" name="acquisition${count+1}" placeholder="취득일"><br>
+                <input type="date" name="acuisition${count+1}" placeholder="취득일"><br>
                 
                 <label class="scoreLabel" style="display: none;">점수</label>
                 <input type="text" class="scoreInput" name="score${count+1}" style="display: none;"><br>
@@ -184,7 +184,7 @@
         <input type="text" name="license0" placeholder="자격증 이름"><br> <!-- 수정된 부분 -->
         
         <label>취득일</label><br>
-        <input type="date" name="acquisition0" placeholder="취득일"><br> <!-- 수정된 부분 -->
+        <input type="date" name="acuisition0" placeholder="취득일"><br> <!-- 수정된 부분 -->
         
         <label class="scoreLabel" style="display: none;">점수</label>
         <input type="text" class="scoreInput" name="score0" style="display: none;"><br> <!-- 수정된 부분 -->

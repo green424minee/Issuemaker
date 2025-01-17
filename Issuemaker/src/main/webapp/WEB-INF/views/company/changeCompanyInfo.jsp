@@ -20,17 +20,7 @@
         <label for="pwAgain">비밀번호 확인:</label>
         <input type="password" name="pwAgain" id="pwAgain" required><br>
     </div>
-    
-    <div>
-        <label for="comName">기업명</label>
-        <input type="text" name="comName" id="comName" value="${ comInfo.getComName() }" required><br>
-    </div>
-    
-    <div>
-        <label for="comNo">사업자 등록번호</label>
-        <input type="text" name="comNo" id="comNo" value="${ comInfo.getComNo() }" requeired><br>
-    </div>
-    
+
     <div>
         <label for="comPhone">전화번호</label>
         <input type="tel" name="comPhone" id="comPhone" value="${ comInfo.getComPhone() }" required><br>
@@ -51,10 +41,10 @@
         <input type="text" name="comAddress" id="comAddress" value="${ comInfo.getComAddress() }" required><br>
     </div>
     
-    <div>
-    	<label for="comBirth">설립일</label>
-    	<input type="date" name="comBirth" id="comBirth"  value="${ comInfo.getComBirth() }" required><br>
-    </div>
+	<div>
+		<label for="otherAddress">상세주소</label>
+		<input type="text" name="otherAddress" id="otherAddress" value="${ comInfo.getComAddress() }" required><br>
+	</div>
     
     <div>
     	<label for="comSize">사원수</label>
