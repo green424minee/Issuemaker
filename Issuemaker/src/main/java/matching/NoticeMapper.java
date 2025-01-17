@@ -20,4 +20,7 @@ public interface NoticeMapper {
 	 
 	 @Select("SELECT type FROM guest WHERE id = #{id}")
 	 int getType(String id);
+
+	 @Select("SELECT * FROM notice WHERE comId = #{comId}")
+	 Notice getNoticeById(String comId);
 }

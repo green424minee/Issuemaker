@@ -17,11 +17,18 @@
 	<form method="post">
 		<c:set var="noticeNo" value="${notice.no}" scope="session" />
 	    <div class="notice-header">
-	        ${company.comName} / ${notice.title}
+	        ${company.comName} / ${notice.title} <br>
+	        연락처: ${company.comPhone} 담당자: ${company.managerEmail} <br>
+	       	위치: ${company.comAddress} 사원수: ${company.comSize} <br>
+	       	사이트: ${company.comWeb}
+	        
 	    </div>
+    
 	    <div class="notice-info">
 	        공고시작기간: ${notice.postDate} ~ 공고마감기간: ${notice.deadLine} <br>
 	    </div>
+	    
+	    <hr>
     
     <div class="notice-info">
         경력: ${notice.exTermStr} <br>
@@ -44,19 +51,23 @@
 		GetCookie co = new GetCookie();
 		request.setAttribute("type", co.getCookieUserType(request));
 		%>
-	<c:if test="${ type == 1 }">
-    	<a href="/noticeSetting" class="button">수정</a>
-	    <button type="button" class="button" onclick="window.history.back()">취소</button>
+	<c:if test="${ currentComId == notice.comId }">
+    <a href="/noticeSetting?no=${notice.no}" class="button">수정</a>
+    <button type="button" class="button" onclick="window.history.back()">취소</button>
 	</c:if>
-	<c:if test="${ type != 1 }">
-		<a href="/selectResume" class="button">지원하기</a>
-	</c:if>
+
     </form>
 </div>
 
+<hr>
+
 <div class="notice-content">
-    <h3>공고내용</h3>
     <p>${notice.context} </p>
+    
+    <hr>
+    
+    사업자등록번호: ${company.comNo} 대표자: ${company.comCeo} <br>
+    개설일자: ${company.comBirth }
 </div>
 </body>
 </html>
