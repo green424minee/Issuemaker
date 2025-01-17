@@ -35,5 +35,9 @@ public interface NoticeMapper {
 	 // 기업 이름 받아오기
 	 @Select("SELECT comName FROM company WHERE comId = #{comId}")
 	 String selectComName(@Param("comId") String comId);
+	 
+	 // 기업 지역 받아오기
+	 @Select("SELECT comAddress FROM company WHERE comId = #{comId}")
+	 String selectComAddress(@Param("comId") String comId);
 
 }
