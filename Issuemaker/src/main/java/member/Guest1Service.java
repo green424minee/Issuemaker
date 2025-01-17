@@ -24,4 +24,16 @@ public class Guest1Service {
 			return row;
 		}
 	}
+	
+	public int updateInfo(String id, String pw) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			Guest1Mapper mapper = session.getMapper(Guest1Mapper.class);
+			
+			int row = mapper.updateInfo(id,pw);
+			
+			session.commit();
+			
+			return row;
+		}
+	}
 }

@@ -1,5 +1,6 @@
 package matching;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import member.Company;
@@ -63,4 +64,10 @@ public class NoticeService {
 	    	}
 	    }
 
+	    public String selectComName(@Param("comId") String comId) {
+	    	try(SqlSession session = DBUtil.getSqlSession()){
+	    		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	    		return mapper.selectComName(comId);
+	    	}
+	    }
 }

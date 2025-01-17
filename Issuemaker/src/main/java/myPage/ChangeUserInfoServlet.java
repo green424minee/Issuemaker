@@ -32,7 +32,7 @@ public class ChangeUserInfoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 수정하기 링크 클릭했을 때
         String userPw = req.getParameter("userPw");
-        String userPwOK = req.getParameter("userPwOK");
+        String pw = req.getParameter("userPwOK");
         String userName = req.getParameter("userName");
         String userBirthStr = req.getParameter("userBirth");
         
@@ -44,7 +44,7 @@ public class ChangeUserInfoServlet extends HttpServlet {
 		String userId = co.getCookieUserId(req);
 		
         // 비밀번호와 비밀번호 확인이 다를 때 
-		if (!userPw.equals(userPwOK)) {
+		if (!userPw.equals(pw)) {
             req.setAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
             doGet(req, resp);
             return;
@@ -55,7 +55,7 @@ public class ChangeUserInfoServlet extends HttpServlet {
 		
 		// guest 테이블 -> userId로 pw 수정(update)
 		Guest0Service ser = Guest0Service.getInstance();
-		ser.updateInfo(userId, userPwOK);
+		ser.updateInfo(userId, pw);
 		
 		// user 테이블 -> userId로 다른 컬럼 수정(update)
 		UserService userSer = UserService.getInstance();
