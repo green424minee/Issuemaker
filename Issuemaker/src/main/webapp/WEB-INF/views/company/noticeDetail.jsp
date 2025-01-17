@@ -42,9 +42,10 @@
         직무 ${notice.jobType} <br>
         근무지역 ${company.comAddress} <br>
         자격증
-        <c:forEach var="list" items="${ liList }">
-        	${ list }<br>
-        </c:forEach>
+		<c:forEach var="license" items="${licenses}">
+		    <p>${license}</p>
+		</c:forEach>
+
     </div>
 
 	<c:if test="${ currentComId == notice.comId }">
