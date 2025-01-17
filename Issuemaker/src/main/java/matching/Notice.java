@@ -47,6 +47,7 @@ public class Notice {
 	public String getSchoolLevelStr() { return strSchoolLevel(type, schoolLevel); } // 학교구분
 
 	public String getComName() { return getComName(comId); } // 기업이름
+	public String getArea() { return getArea(comId); }
 	
 	public int getNo() {
 		return no;
@@ -166,5 +167,12 @@ public class Notice {
    public String getComName(String comId) {
 	   NoticeService ser = NoticeService.getInstance();
 	   return ser.selectComName(comId);
+   }
+   
+   public String getArea(String comId) {
+	   NoticeService ser = NoticeService.getInstance();
+	   String area = ser.selectComAddress(comId);
+	   int index = area.indexOf(' '); 
+       return area.substring(0, index);
    }
 }

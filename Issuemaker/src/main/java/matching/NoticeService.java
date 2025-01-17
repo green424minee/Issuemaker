@@ -65,18 +65,18 @@ public class NoticeService {
 	    }
 
 	}
-	
 
-	    
-	    
+	public String selectComName(String comId) {
+		try(SqlSession session = DBUtil.getSqlSession()){
+			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			return mapper.selectComName(comId);
+		}
+	}
 
-
-
-	    public String selectComName(@Param("comId") String comId) {
-	    	try(SqlSession session = DBUtil.getSqlSession()){
-	    		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-	    		return mapper.selectComName(comId);
-	    	}
-	    }
-
+	public String selectComAddress(String comId) {
+		try(SqlSession session = DBUtil.getSqlSession()){
+			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			return mapper.selectComAddress(comId);
+		}
+	}
 }
