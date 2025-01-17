@@ -49,8 +49,8 @@
         <label for="deadLine">공고마감:</label>
         <input type="date" id="deadLine" name="deadLine" required><br><br>
 
-        <label for="salary">연봉(원 단위 입력)</label>
-        <input type="number" id="salary" name="salary" placeholder="공백 시 협의 후 결정"><br><br>
+        <label for="salary">연봉</label>
+        <input type="number" id="salary" name="salary" placeholder="공백 시 협의 후 결정">원<br><br>
 
         <div>
             <label for="jobType">직무</label>
@@ -97,7 +97,7 @@
         </div>
 
         <label for="comLicense">자격증:</label>
-        <input type="text" id="comLicense" name="comLicense"><br>
+        <input type="text" id="comLicense" name="comLicense" placeholder="공백 시 무관"><br>
         <small>자격증을 여러 개 입력하려면 쉼표로 구분하세요.</small><br><br>
 
         <input type="submit" value="등록">
