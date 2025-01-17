@@ -46,28 +46,28 @@
                 scoreInput.style.display = 'none';
             }
         }
-        
+         
         function addLicenseEntry() {
             const licenseCount = document.getElementById("licenseCount");
             const count = parseInt(licenseCount.value);
-            
+                  
             const newEntry = document.createElement("div");
             newEntry.className = "licenseEntry";
             newEntry.innerHTML = `
                 <label>자격 구분</label><br>
-                <input type="radio" name="licenseType${count}" value="0" onclick="toggleScoreInput(this)">
+                <input type="radio" name="licenseType${count+1}" value="0" onclick="toggleScoreInput(this)">
                 <label>자격증/면허증</label>
-                <input type="radio" name="licenseType${count}" value="1" onclick="toggleScoreInput(this)">
+                <input type="radio" name="licenseType${count+1}" value="1" onclick="toggleScoreInput(this)">
                 <label>어학시험</label><br>
                 
                 <label>자격증 이름</label><br>
-                <input type="text" name="license${count}" placeholder="자격증 이름"><br>
+                <input type="text" name="license${count+1}" placeholder="자격증 이름"><br>
                 
                 <label>취득일</label><br>
-                <input type="date" name="acquisition${count}" placeholder="취득일"><br>
+                <input type="date" name="acquisition${count+1}" placeholder="취득일"><br>
                 
                 <label class="scoreLabel" style="display: none;">점수</label>
-                <input type="text" class="scoreInput" name="score${count}" style="display: none;"><br>
+                <input type="text" class="scoreInput" name="score${count+1}" style="display: none;"><br>
             `;
             
             document.getElementById("licenseContainer").appendChild(newEntry);
@@ -94,19 +94,22 @@
 		<label for="workHistory">경력</label><br>
 		
 		<label>경력회사</label>
-		<input type="text" name="exCom" id="exCom"><br>
+		<input type="text" name="exCom" id="exCom" value="${ workHistory.exCom }"><br>
 		
 		<label>경력 시작일</label>
-		<input type="date" name="startDate1" id="startDate"><br>
+		<input type="date" name="startDate1" id="startDate" value="${workHistory.startDate }"><br>
 		
 		<label>경력 종료일</label>
-		<input type="date" name="endDate1" id="endDate"><br>
+		<input type="date" name="endDate1" id="endDate" value="${ workHistory.endDate }"><br>
 		
     	<label for="jobType">직무</label>
-    	<select id="jobType" name="jobType1">
-        <c:forEach var="job" items="${jobList}">
-            <option><c:out value="${job}"></c:out></option>
-        </c:forEach>
+		<select id="jobType" name="jobType1">
+   		<c:forEach var="job" items="${jobList}">
+        <option value="${job}" 
+                <c:if test="${job == workHistory.jobType}">selected</c:if>>
+            <c:out value="${job}"></c:out>
+        </option>
+    </c:forEach>
     </select>
 	</div><br>
 	
@@ -165,9 +168,9 @@
 		<label for="portfolio">포토폴리오</label><br>
         <input type="file" name="portfolio" id="portfolio" ><br>
 	</div><br>
-	
-  <div id="licenseContainer">
-    <input type="hidden" id="licenseCount" name="licenseCount" value="1">
+	 	
+  		<div id="licenseContainer">  
+  		<input type="hidden" id="licenseCount" name="licenseCount" value="1"> 		 
         <div class="licenseEntry">
         <label for="license">자격증</label><br>
         
