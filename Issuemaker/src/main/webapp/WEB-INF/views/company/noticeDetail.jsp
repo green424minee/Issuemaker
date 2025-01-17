@@ -46,16 +46,21 @@
         	${ list }<br>
         </c:forEach>
     </div>
-    	<%
-		// 사용자 아이디 종류 확인
-		GetCookie co = new GetCookie();
-		request.setAttribute("type", co.getCookieUserType(request));
-		%>
+
 	<c:if test="${ currentComId == notice.comId }">
     <a href="/noticeSetting?no=${notice.no}" class="button">수정</a>
     <button type="button" class="button" onclick="window.history.back()">취소</button>
 	</c:if>
-
+	
+	<%
+		// 사용자 아이디 종류 확인
+		GetCookie co = new GetCookie();
+		request.setAttribute("type", co.getCookieUserType(request));
+		request.setAttribute("user", co.getCookieUserId(request));
+	%>
+	<c:if test="${ type == 0 || empty type }">
+		<a href="/selectResume?user=${user}">지원하기</a>
+	</c:if>
     </form>
 </div>
 
