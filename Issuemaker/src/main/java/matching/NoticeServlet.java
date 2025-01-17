@@ -43,9 +43,11 @@ public class NoticeServlet extends HttpServlet {
         String context = req.getParameter("context");
         LocalDate postDate = LocalDate.parse(req.getParameter("postDate"));
         LocalDate deadLine = LocalDate.parse(req.getParameter("deadLine"));
-        Integer salary = req.getParameter("salary") != null ? Integer.parseInt(req.getParameter("salary")) : null;
+        String salaryParam = req.getParameter("salary");
+        Integer salary = (salaryParam != null && !salaryParam.isEmpty()) ? Integer.parseInt(salaryParam) : null;
         String jobType = req.getParameter("jobType");
-        Integer exTerm = req.getParameter("exTerm") != null ? Integer.parseInt(req.getParameter("exTerm")) : null;
+        String exTermParam = req.getParameter("exTerm");
+        Integer exTerm =(exTermParam != null && !exTermParam.isEmpty()) ? Integer.parseInt(exTermParam) : null;
         String workday = req.getParameter("workday");
         int type = Integer.parseInt(req.getParameter("type"));
         int schoolLevel = Integer.parseInt(req.getParameter("schoolLevel"));
