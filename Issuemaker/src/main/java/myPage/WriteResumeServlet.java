@@ -74,7 +74,6 @@ public class WriteResumeServlet extends HttpServlet{
 					String jobType = req.getParameter("jobType");
 					String salaryStr = req.getParameter("salary");
 					int salary = (salaryStr == null || salaryStr.trim().isEmpty()) ? 0 : Integer.parseInt(salaryStr);
-
 					int agree = 0;
 					
 
