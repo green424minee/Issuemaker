@@ -55,4 +55,12 @@ public class NoticeService {
 	            return mapper.selectCom(comId);
 		}
 	}
+
+	    public Notice getNoticeById(String comId) {
+	    	try(SqlSession session = DBUtil.getSqlSession()){
+	    		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	    		return mapper.getNoticeById(comId);
+	    	}
+	    }
+
 }

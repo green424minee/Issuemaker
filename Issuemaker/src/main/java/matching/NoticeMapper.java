@@ -25,4 +25,8 @@ public interface NoticeMapper {
 	 
 	 @Select("SELECT * FROM company WHERE comId = #{comId}")
 	 Company selectCom(String comId);
+
+	 @Select("SELECT * FROM notice WHERE comId = #{comId}")
+	 Notice getNoticeById(String comId);
+
 }
