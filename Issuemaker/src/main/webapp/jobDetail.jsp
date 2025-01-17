@@ -13,7 +13,7 @@
     <form>
 		<c:forEach var="notice" items="${ noticeList }">
 			<div>
-				<a href="/noticeDetail?noticeNo=${ notice.no }">${ notice.title } ${notice.postDate} ~ ${ notice.deadLine }</a>
+				<a href="/noticeDetail?noticeNo=${ notice.no }">${notice.getArea()} ${ notice.title } ${notice.postDate} ~ ${ notice.deadLine }</a>
 			</div>
 		</c:forEach>
 	</form>
