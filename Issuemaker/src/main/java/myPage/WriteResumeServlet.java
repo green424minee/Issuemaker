@@ -151,21 +151,27 @@ public class WriteResumeServlet extends HttpServlet{
 			  	for (int i = 0; i < licenseCount; i++) {
 			  	    // 각 자격증에 대한 값들을 개별적으로 가져옵니다.
 			  	    String license = req.getParameter("license" + i);
-			  	    String acquisitionDate = req.getParameter("acquisition" + i);
+			  	    String acuisitionDate = req.getParameter("acuisition" + i);
 			  	    String score = req.getParameter("score" + i);
 			  	    String type1 = req.getParameter("licenseType" + i);
 
 			  	   
 
 			  	    // 취득일을 LocalDate로 변환
-			  	    LocalDate acquisition = LocalDate.parse(acquisitionDate); // 취득일
+			  	    LocalDate acuisition = LocalDate.parse(acuisitionDate); // 취득일
 			  	    Integer scoreValue = (score == null || score.trim().isEmpty()) ? null : Integer.parseInt(score); // 점수
 			  	    int typeValue = Integer.parseInt(type1); // 자격증 구분 값
 
 			  	    // LicenseForInsert 객체 생성 및 데이터베이스 삽입
-			  	    LicenseForInsert licenseForInsert = new LicenseForInsert(userId, typeValue, license, acquisition, scoreValue);
-			  	    licenseService.insert(licenseForInsert); 
-			  	}
+			  	    boolean isExist = licenseService.isLicenseExist(userId, license);
+			  	    LicenseForInsert licenseForInsert = new LicenseForInsert(userId, typeValue, license, acuisition, scoreValue);
+			  	    if (isExist) {
+			          licenseService.update(licenseForInsert);
+			      } else {
+			          licenseService.insert(licenseForInsert);
+			      }
+			  } 
+			  	
 			  	
 
 

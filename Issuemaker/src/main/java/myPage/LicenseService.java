@@ -24,6 +24,18 @@ public class LicenseService {
 			return row;
 		}
 	}
+	 public int update(LicenseForInsert licenseForInsert) {
+		 try (SqlSession session = DBUtil.getSqlSession()) {
+			 LicenseMapper mapper = session.getMapper(LicenseMapper.class);
+			 
+			 int rowsUpdated = mapper.update(licenseForInsert);
+		        
+		      session.commit();
+		        
+		      return rowsUpdated;
+	    }
+	 }
+
 	 public License selectNo(int licenseNo) {
 	      try (SqlSession session = DBUtil.getSqlSession()) {
 	        LicenseMapper mapper = session.getMapper(LicenseMapper.class);
@@ -33,4 +45,15 @@ public class LicenseService {
 	         return license;
 	      }
 	   }
+	 
+	 public boolean isLicenseExist(String userId, String license) {
+		 try (SqlSession session = DBUtil.getSqlSession()) {
+			 LicenseMapper mapper = session.getMapper(LicenseMapper.class);
+			
+			 License license1 = mapper.selectByUserIdAndName(userId, license); 
+			 return license1 != null;  
+			 
+		 }
+	 }
+	 
 }
