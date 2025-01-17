@@ -35,24 +35,32 @@ public class NoticeService {
 	        }
 	    }
 	    
-	    public Notice getNoticeByNo(String no) {
-	        try (SqlSession session = DBUtil.getSqlSession()) {
-	            NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-	            return mapper.getNoticeByNo(no);
-	        }
-	    }
+	 public Notice getNoticeByNo(String no) {
+		 try (SqlSession session = DBUtil.getSqlSession()) {
+			 NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	         return mapper.getNoticeByNo(no);
+	     }
+	 }
 	    
-	    public int getType(String comId) {
-	    	 try (SqlSession session = DBUtil.getSqlSession()) {
-	            NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	public int getType(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+				NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 	            return mapper.getType(comId);
-	        }
-	    }
+		}
+	}	
 	    
+	public Company selectCom(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+				NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	            return mapper.selectCom(comId);
+		}
+	}
+
 	    public Notice getNoticeById(String comId) {
 	    	try(SqlSession session = DBUtil.getSqlSession()){
 	    		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 	    		return mapper.getNoticeById(comId);
 	    	}
 	    }
+
 }

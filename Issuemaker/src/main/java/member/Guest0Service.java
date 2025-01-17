@@ -25,4 +25,15 @@ private static final Guest0Service instance = new Guest0Service();
 			return row;
 		}
 	}
+	
+	public int updateInfo(String id, String pw) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			Guest0Mapper mapper = session.getMapper(Guest0Mapper.class);
+			
+			int row = mapper.updateInfo(id, pw);
+			session.commit();
+				
+			return row;
+		}
+	}
 }
