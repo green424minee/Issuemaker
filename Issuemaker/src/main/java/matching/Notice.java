@@ -23,10 +23,6 @@ public class Notice {
 	private int schoolLevel; 
 	private String major;
 	
-	private String exTermStr = strExTerm(exTerm);  // 경력
-	private String salaryStr = strSalary(salary);  // 급여
-	private String schoolLevelStr = strSchoolLevel(type, schoolLevel);	// 학교 구분(?년제 ?)
-	
 	public Notice() {}
 	
 	public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
@@ -46,21 +42,12 @@ public class Notice {
 		this.schoolLevel = schoolLevel;
 		this.major = major;
 	}
+	public String getExTermStr() { return strExTerm(exTerm); } // 경력
+	public String getSalaryStr() { return strSalary(salary); } // 급여
+	public String getSchoolLevelStr() { return strSchoolLevel(type, schoolLevel); } // 학교구분
 
-
-
-	public String getExTermStr() {
-		return exTermStr;
-	}
-
-	public String getSalaryStr() {
-		return salaryStr;
-	}
-
-	public String getSchoolLevelStr() {
-		return schoolLevelStr;
-	}
-
+	public String getComName() { return getComName(comId); } // 기업이름
+	
 	public int getNo() {
 		return no;
 	}
@@ -149,7 +136,7 @@ public class Notice {
           
    public String strExTerm(int exTerm) {
 	   String info;
-	   if (exTerm == 0)  info =  "무관"; 
+	   if (exTerm == 0)  info = "무관"; 
 	   else info = exTerm + "년 이상";
 	   
 	   return info;
@@ -174,5 +161,9 @@ public class Notice {
 	   } else {
 		   return "무관";
 	   }
+   }
+   
+   public String getComName(String comId) {
+	   return null;
    }
 }

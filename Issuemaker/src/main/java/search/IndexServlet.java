@@ -21,13 +21,12 @@ public class IndexServlet extends HttpServlet {
 
    @Override
    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-   
       IndexService ser = IndexService.getInstance();
-      
       List<Notice> notice = ser.getNoticeByAll();
+      
       req.setAttribute("notice", notice);
-      req.getRequestDispatcher("/index.jsp")
-      .forward(req, resp);
+      
+      req.getRequestDispatcher("/index.jsp").forward(req, resp);
    }
 
    @Override
