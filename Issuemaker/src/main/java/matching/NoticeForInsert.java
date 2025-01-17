@@ -13,8 +13,8 @@ public class NoticeForInsert {
 		   private String jobType;      
 		   private Integer exTerm;      
 		   private String workday;      
-		   private int type;        
-		   private int schoolLevel; 
+		   private Integer type;        
+		   private Integer schoolLevel; 
 		   private String major;   
 		   private String comLicense;
 		   
