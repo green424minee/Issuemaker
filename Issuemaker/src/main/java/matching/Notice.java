@@ -58,7 +58,10 @@ public class Notice {
 		return strSchoolLevel(type, schoolLevel);
 	}
 	
-
+	public String getComName() {
+		NoticeService ser = NoticeService.getInstance();
+		return ser.selectComName(comId);
+	}
 
 	public int getNo() {
 		return no;
