@@ -33,5 +33,12 @@ public class SchoolService {
 	      }
 		
 	}
+	 public int update(School school) {
+	        try (SqlSession session = DBUtil.getSqlSession()) {
+	            SchoolMapper mapper = session.getMapper(SchoolMapper.class);
+	            
+	            return mapper.update(school); 
+	        }
+	    }
 	
 }

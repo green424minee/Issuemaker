@@ -14,6 +14,9 @@ public interface SchoolMapper {
 	 @Select("SELECT * FROM school WHERE userId = #{userId}")
 	   School selectByUserId(@Param("userId") String userId);
 	 
+	 @Update("UPDATE school SET type = #{type}, level = #{level}, schoolName = #{schoolName}, schoolLevel = #{schoolLevel}, " +
+	            "major = #{major}, startDate = #{startDate}, endDate = #{endDate} WHERE userId = #{userId}")
+	    int update(School school);
 	 
 
 }

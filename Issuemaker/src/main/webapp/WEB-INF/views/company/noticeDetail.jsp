@@ -41,6 +41,12 @@
         근무요일 ${notice.workday} <br>
         직무 ${notice.jobType} <br>
         근무지역 ${company.comAddress} <br>
+    <style>
+	    .notice-info p {
+	        margin: 0; /* 기본 마진 제거 */
+	        display: inline; /* 인라인으로 표시하여 빈틈 없애기 */
+	    }
+	</style>
         자격증
 		<c:forEach var="license" items="${licenses}">
 		    <p>${license}</p>
