@@ -31,9 +31,9 @@
 	    <hr>
     
     <div class="notice-info">
-        경력: ${notice.exTermStr} <br>
-        급여: ${notice.salaryStr} <br>
-        학력: ${notice.schoolLevelStr}<br>
+        경력: ${notice.getExTermStr()} <br>
+        급여: ${notice.getSalaryStr()} <br>
+        학력: ${notice.getSchoolLevelStr()}<br>
         전공: ${notice.major} <br>
         
     </div>
