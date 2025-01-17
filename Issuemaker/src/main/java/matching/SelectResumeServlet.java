@@ -18,11 +18,8 @@ import util.GetCookie;
 public class SelectResumeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GetCookie co = new GetCookie();
+        String user = req.getParameter("user");
         myPageService ser = myPageService.getInstance();
-        String user = co.getCookieUserId(req);
-        System.out.println(user);
-        
 		List<Resume> resume = ser.selectResume(user);
 		req.setAttribute("resume", resume);
 		req.getRequestDispatcher("/WEB-INF/views/company/selectResume.jsp").forward(req, resp);

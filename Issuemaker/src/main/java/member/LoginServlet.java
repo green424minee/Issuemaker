@@ -22,8 +22,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String typeStr = req.getParameter("type"); // 개인 or 기업
-		int type = ("개인회원".equals(typeStr)) ? 0 : 1;
-		System.out.println(type);
+		int type = ("0".equals(typeStr)) ? 0 : 1;
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
 		
