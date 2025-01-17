@@ -43,13 +43,22 @@ public class NoticeServlet extends HttpServlet {
         LocalDate deadLine = LocalDate.parse(req.getParameter("deadLine"));
         Integer salary = parseInteger(req.getParameter("salary"));
         String jobType = req.getParameter("jobType");
-        Integer exTerm = parseInteger(req.getParameter("exTerm"));
+        Integer exTerm = parseInteger(req.getParameter("exTerm")) ;
         String workday = req.getParameter("workday");
-        int type = Integer.parseInt(req.getParameter("type"));
-        int schoolLevel = Integer.parseInt(req.getParameter("schoolLevel"));
+        Integer type = Integer.parseInt(req.getParameter("type"));
+        Integer schoolLevel = Integer.parseInt(req.getParameter("schoolLevel"));
         String major = req.getParameter("major");
-        String comLicense = req.getParameter("comLicense");
+        String com = (req.getParameter("comLicense") == null) ? null : "무관";
+
+        if (major != null && major.trim().isEmpty()) {
+        	major = null;
+        }
+        if (com != null && com.trim().isEmpty()) {
+        	com = null;
+        }
         
+        
+        /*
         List<String> comLicenseList = new ArrayList<>();
         if (comLicense != null && !comLicense.isEmpty()) {
             String[] licenses = comLicense.split(",");
@@ -57,9 +66,9 @@ public class NoticeServlet extends HttpServlet {
                 comLicenseList.add(license.trim()); 
             }
         }
-        
+        */
         NoticeService noticeSer = NoticeService.getInstance();   
-        NoticeForInsert notice = new NoticeForInsert(comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major, comLicense);
+        NoticeForInsert notice = new NoticeForInsert(comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major, com);
         noticeSer.insert(notice);
         resp.sendRedirect(req.getContextPath() + "/companyPage");
         }
