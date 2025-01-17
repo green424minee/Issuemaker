@@ -28,6 +28,17 @@ public class UserService {
 		}
 	}
 	
+	public int updateInfo(User user) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			
+			int row = mapper.updateInfo(user);
+			session.commit();
+				
+			return row;
+		}
+	}
+	
 
 }
 

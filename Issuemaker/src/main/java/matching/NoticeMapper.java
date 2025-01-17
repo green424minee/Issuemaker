@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import member.Company;
+
 
 
 public interface NoticeMapper {
@@ -20,4 +22,7 @@ public interface NoticeMapper {
 	 
 	 @Select("SELECT type FROM guest WHERE id = #{id}")
 	 int getType(String id);
+	 
+	 @Select("SELECT * FROM company WHERE comId = #{comId}")
+	 Company selectCom(String comId);
 }
