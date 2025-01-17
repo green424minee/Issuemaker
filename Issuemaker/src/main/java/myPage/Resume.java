@@ -16,6 +16,22 @@ public class Resume {
     private LocalDate postDate;
     private int agree;
     
+    
+    public Resume() { }
+	public Resume(int no, String userId, byte[] userPhoto, String title, String jobType, byte[] coverLetter,
+			byte[] portfolio, Integer salary, LocalDate postDate, int agree) {
+		super();
+		this.no = no;
+		this.userId = userId;
+		this.userPhoto = userPhoto;
+		this.title = title;
+		this.jobType = jobType;
+		this.coverLetter = coverLetter;
+		this.portfolio = portfolio;
+		this.salary = salary;
+		this.postDate = postDate;
+		this.agree = agree;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -81,7 +97,7 @@ public class Resume {
 		return "Resume [no=" + no + ", userId=" + userId + ", userPhoto=" + Arrays.toString(userPhoto) + ", title="
 				+ title + ", jobType=" + jobType + ", coverLetter=" + Arrays.toString(coverLetter) + ", portfolio="
 				+ Arrays.toString(portfolio) + ", salary=" + salary + ", postDate=" + postDate + ", agree=" + agree
-				+ "]";
+				+ "]\n";
 	}
     
 

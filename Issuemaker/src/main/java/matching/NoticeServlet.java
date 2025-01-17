@@ -45,24 +45,32 @@ public class NoticeServlet extends HttpServlet {
         String jobType = req.getParameter("jobType");
         Integer exTerm = parseInteger(req.getParameter("exTerm"));
         String workday = req.getParameter("workday");
-        int type = Integer.parseInt(req.getParameter("type"));
-        int schoolLevel = Integer.parseInt(req.getParameter("schoolLevel"));
+        Integer type = Integer.parseInt(req.getParameter("type"));
+        Integer schoolLevel = Integer.parseInt(req.getParameter("schoolLevel"));
         String major = req.getParameter("major");
-        String comLicense = req.getParameter("comLicense");
         
+        // comLicense 처리
+        String comLicense = req.getParameter("comLicense");
         List<String> comLicenseList = new ArrayList<>();
-        if (comLicense != null && !comLicense.isEmpty()) {
+        if (comLicense != null && !comLicense.trim().isEmpty()) {
             String[] licenses = comLicense.split(",");
             for (String license : licenses) {
-                comLicenseList.add(license.trim()); 
+                comLicenseList.add(license.trim());
             }
         }
         
+        // comLicenseList가 비어있지 않으면 null이 아닌 값으로 설정
+        String com = comLicenseList.isEmpty() ? null : String.join(", ", comLicenseList);
+
+        if (major != null && major.trim().isEmpty()) {
+            major = null;
+        }
+        
         NoticeService noticeSer = NoticeService.getInstance();   
-        NoticeForInsert notice = new NoticeForInsert(comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major, comLicense);
+        NoticeForInsert notice = new NoticeForInsert(comId, title, context, postDate, deadLine, salary, jobType, exTerm, workday, type, schoolLevel, major, com);
         noticeSer.insert(notice);
         resp.sendRedirect(req.getContextPath() + "/companyPage");
-        }
+    }
     
 
     private Integer parseInteger(String param) {
