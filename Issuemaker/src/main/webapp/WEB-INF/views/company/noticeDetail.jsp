@@ -60,7 +60,7 @@
 		request.setAttribute("user", co.getCookieUserId(request));
 	%>
 	<c:if test="${ type == 0 || empty type }">
-		<a href="/selectResume?user=${user}">지원하기</a>
+		<a href="/selectResume?noticeNo=${notice.no}">지원하기</a>
 	</c:if>
     </form>
 </div>
@@ -75,5 +75,6 @@
     사업자등록번호: ${company.comNo} 대표자: ${company.comCeo} <br>
     개설일자: ${company.comBirth }
 </div>
+<button type="button" onclick="window.history.back()">리스트로 돌아가기</button>
 </body>
 </html>

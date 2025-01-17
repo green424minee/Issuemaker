@@ -63,6 +63,13 @@ public class Notice {
 		return ser.selectComName(comId);
 	}
 
+	public String getArea() {
+		NoticeService ser = NoticeService.getInstance();
+		String area =  ser.selectComAddress(comId);
+		int index = area.indexOf(' ');
+		return area.substring(0, index);
+	}
+	
 	public int getNo() {
 		return no;
 	}

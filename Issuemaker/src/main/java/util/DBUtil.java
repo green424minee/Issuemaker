@@ -17,7 +17,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
-
+import matching.ApplyMapper;
 import matching.CompanyPageMapper;
 import matching.NoticeMapper;
 import matching.SuggestMapper;
@@ -76,7 +76,7 @@ public class DBUtil {
         configuration.addMapper(CompanyPageMapper.class);
 
         configuration.addMapper(JobService.class);
-       
+        configuration.addMapper(ApplyMapper.class);
 
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
     }
