@@ -34,6 +34,7 @@
 		</a>
 		<form class="logout-button" action="/logout" >
 			<h1 class="title">마이페이지</h1>
+			<a href="/changeUserInfo">회원정보 수정</a>
     		<input type="submit" value="로그아웃" class="logout"> <%-- 메인 화면으로- --%>
     	</form>
         <nav>

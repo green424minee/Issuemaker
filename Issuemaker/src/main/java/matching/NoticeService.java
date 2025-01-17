@@ -1,9 +1,13 @@
 package matching;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import member.Company;
 import member.CompanyMapper;
+import myPage.Resume;
 import util.DBUtil;
 
 public class NoticeService {
@@ -35,24 +39,57 @@ public class NoticeService {
 	        }
 	    }
 	    
-	    public Notice getNoticeByNo(String no) {
-	        try (SqlSession session = DBUtil.getSqlSession()) {
-	            NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-	            return mapper.getNoticeByNo(no);
-	        }
-	    }
+	 public Notice getNoticeByNo(String no) {
+		 try (SqlSession session = DBUtil.getSqlSession()) {
+			 NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	         return mapper.getNoticeByNo(no);
+	     }
+	 }
 	    
-	    public int getType(String comId) {
-	    	 try (SqlSession session = DBUtil.getSqlSession()) {
-	            NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	public int getType(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+				NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 	            return mapper.getType(comId);
-	        }
-	    }
+		}
+	}	
 	    
-	    public Notice getNoticeById(String comId) {
-	    	try(SqlSession session = DBUtil.getSqlSession()){
-	    		NoticeMapper mapper = session.getMapper(NoticeMapper.class);
-	    		return mapper.getNoticeById(comId);
-	    	}
+	public Company selectCom(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+				NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	            return mapper.selectCom(comId);
+		}
+	}
+
+	public Notice getNoticeById(String comId) {
+			try(SqlSession session = DBUtil.getSqlSession()){
+	    	NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	    	return mapper.getNoticeById(comId);
 	    }
+
+	}
+
+	public String selectComName(String comId) {
+		try(SqlSession session = DBUtil.getSqlSession()){
+			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			return mapper.selectComName(comId);
+		}
+	}
+
+	public String selectComAddress(String comId) {
+		try(SqlSession session = DBUtil.getSqlSession()){
+			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			return mapper.selectComAddress(comId);
+		}
+	}
+	
+	public List<String> getComLicenseByNoticeComId(String comId) {
+	    try (SqlSession session = DBUtil.getSqlSession()) {
+	        NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	        return mapper.getComLicenseByNoticeComId(comId);
+	    }
+	}
+
+
+
+
 }

@@ -18,7 +18,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserJoinServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		req.getRequestDispatcher("/WEB-INF/views/login/userJoin.jsp")
 			.forward(req, resp);
 	}
@@ -53,7 +52,6 @@ public class UserJoinServlet extends HttpServlet {
         service.insert(user);
         
         
-        req.getRequestDispatcher("/WEB-INF/views/login/login.jsp")
-            .forward(req, resp);
+        resp.sendRedirect("/login");
     }
 }

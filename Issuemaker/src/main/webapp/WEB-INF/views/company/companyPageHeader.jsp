@@ -33,6 +33,8 @@
 			<img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" />
 		</a>
 		<form class="logout-button" action="/logout" >
+			<h1 class="title">기업</h1>
+			<a href="/changeCompanyInfo">기업정보 수정</a>
     		<input type="submit" value="로그아웃" class="logout"> <%-- 메인 화면으로- --%>
     	</form>
         <nav>

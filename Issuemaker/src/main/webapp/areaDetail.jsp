@@ -11,7 +11,7 @@
     <h1>${area} 공고</h1>
     <form>
 		<c:forEach var="notice" items="${ noticeList }">
-			<div><a href="/noticeDetail?noticeNo=${ notice.no }">${ notice.jobType } ${ notice.title }</a></div>
+			<div><a href="/noticeDetail?noticeNo=${ notice.no }">${ notice.jobType } ${notice.getComName()} ${ notice.title } ${notice.postDate} ~ ${notice.deadLine}</a></div>
 		</c:forEach>
 	</form>
    
