@@ -22,7 +22,7 @@
         <label for="deadLine">공고마감:</label>
         <input type="date" id="deadLine" name="deadLine" required><br><br>
 
-        <label for="salary">연봉:</label>
+        <label for="salary">연봉(원 단위 입력)</label>
         <input type="number" id="salary" name="salary" placeholder="협의 후 결정"><br><br>
 
         <label for="jobType">직무:</label>
