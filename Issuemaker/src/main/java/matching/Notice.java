@@ -48,7 +48,15 @@ public class Notice {
 		}
 	
 	
-	
+	public String getExTermStr() {
+		return strExTerm(exTerm);
+	}
+	public String getSalaryStr() {
+		return strSalary(salary);
+	}
+	public String getSchoolLevelStr() {
+		return strSchoolLevel(type, schoolLevel);
+	}
 	public int getNo() {
 		return no;
 	}
@@ -209,6 +217,11 @@ public class Notice {
 	
 	
 	
+	public void setComLicense(String comLicense) {
+		this.comLicense = comLicense;
+	}
+
+
 	public String getComLicense() {
 		return comLicense;
 	}
