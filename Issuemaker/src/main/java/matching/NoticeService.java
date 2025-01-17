@@ -1,5 +1,7 @@
 package matching;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
@@ -79,4 +81,15 @@ public class NoticeService {
 			return mapper.selectComAddress(comId);
 		}
 	}
+	
+	public List<String> getComLicenseByNoticeComId(String comId) {
+	    try (SqlSession session = DBUtil.getSqlSession()) {
+	        NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	        return mapper.getComLicenseByNoticeComId(comId);
+	    }
+	}
+
+
+
+
 }
