@@ -32,7 +32,7 @@ public interface ResumeMapper {
    User selectUser(String userId);
    
    @Insert("INSERT INTO resume (userId, userPhoto, title, jobType, coverLetter, portfolio, agree) " +
-            "VALUES (#{userId}, #{userPhoto}, #{title}, #{jobType}, #{coverLetter}, #{portfolio}, #{agree})")
-    int insert(ResumeForInsert resume);
+           "VALUES (#{userId}, #{userPhoto}, #{title}, #{jobType}, #{coverLetter}, #{portfolio}, #{agree})")
+   int insert(ResumeForInsert resume);
 
 }

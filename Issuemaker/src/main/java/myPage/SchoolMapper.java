@@ -3,6 +3,7 @@ package myPage;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 public interface SchoolMapper {
 	
@@ -12,6 +13,7 @@ public interface SchoolMapper {
 	
 	 @Select("SELECT * FROM school WHERE userId = #{userId}")
 	   School selectByUserId(@Param("userId") String userId);
+	 
 	 
 
 }
