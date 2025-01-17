@@ -1,6 +1,7 @@
 package matching;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -29,6 +30,10 @@ public interface NoticeMapper {
 
 	 @Select("SELECT * FROM notice WHERE comId = #{comId}")
 	 Notice getNoticeById(String comId);
-	 
+
+
+	 // 기업 이름 받아오기
+	 @Select("SELECT comName FROM company WHERE comId = #{comId}")
+	 String selectComName(@Param("comId") String comId);
 
 }

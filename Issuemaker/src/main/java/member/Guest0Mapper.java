@@ -12,7 +12,7 @@ public interface Guest0Mapper {
 			, @Param("pw") String pw);
 	
 	@Update("UPDATE guest SET pw = #{pw} WHERE id = #{id};")
-	int updateInfo(String id, String pw);
+	int updateInfo(@Param("id") String id, @Param("pw") String pw);
 
 	
 }
