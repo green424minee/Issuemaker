@@ -6,7 +6,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>공고 상세보기</title>
@@ -66,6 +66,7 @@
     </style>
 </head>
 <body>
+
 <div class="centered-title"><h2>${ notice.title }</h2></div>
 <div class="card notice-details">
     <form method="post">
@@ -105,7 +106,6 @@
         </table>
     </form>
 </div>
-
 <div class="card">
     <table>
         <thead>
@@ -148,7 +148,6 @@
         </tbody>
     </table>
 </div>
-
 <div class="card notice-content">
     <p>${notice.context}</p>
     <hr>

@@ -9,17 +9,47 @@
 <head>
     <title>합격자 관리</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
         table {
-            width: 1000px;
+            width: 100%; /* 전체 너비 사용 */
+            max-width: 1000px; /* 최대 너비 설정 */
             border-collapse: collapse;
+            margin: 20px auto; /* 중앙 정렬 */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            background-color: white; /* 배경색 */
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 12px; /* 패딩 증가 */
             text-align: left;
+            max-width: 200px; /* 최대 너비 설정 */
+            overflow: hidden; /* 넘치는 내용 숨기기 */
+            text-overflow: ellipsis; /* 생략 기호 추가 */
+            white-space: nowrap; /* 줄 바꿈 방지 */
         }
         th {
             background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f1f1f1; /* 마우스 오버 시 배경색 변경 */
+        }
+        a {
+            color: #007bff; /* 링크 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        a:hover {
+            text-decoration: underline; /* 마우스 오버 시 밑줄 추가 */
         }
     </style>
 </head>
