@@ -3,27 +3,65 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:include page="myPageHeader.jsp" />
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
     <title>지원 내역</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
         table {
-            width: 800px;
+            width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         th, td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 10px;
             text-align: left;
         }
         th {
-            background-color: #f2f2f2;
+            background-color: #7DA5E1;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        a {
+            color: #4a6a9a;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .no-data {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            color: #777;
         }
     </style>
 </head>
 <body>
-    <h2>지원 내역</h2>
-    <form>
+<h2>지원 내역</h2>
+    <div class="container">
         <c:if test="${ not empty list }">
             <table>
                 <thead>
@@ -37,22 +75,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="list" items="${ list }">
+                    <c:forEach var="item" items="${ list }">
                         <tr>
-                            <td>${ list.getNoticeDetail().jobType }</td>
-                            <td>${ list.getNoticeDetail().getComName() }</td>
-                            <td><a href="/noticeDetail?noticeNo=${ list.getNoticeDetail().no }">${ list.getNoticeDetail().title }</a></td>
-                            <td>${ list.getNoticeDetail().deadLine }</td>
-                            <td>${ list.applicationDate }</td>
-                            <td>${ list.strResult() }</td>
+                            <td>${ item.getNoticeDetail().jobType }</td>
+                            <td>${ item.getNoticeDetail().getComName() }</td>
+                            <td><a href="/noticeDetail?noticeNo=${ item.getNoticeDetail().no }">${ item.getNoticeDetail().title }</a></td>
+                            <td>${ item.getNoticeDetail().deadLine }</td>
+                            <td>${ item.applicationDate }</td>
+                            <td>${ item.strResult() }</td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </c:if>
         <c:if test="${ empty list }">
-            <label>지원 내역이 없습니다.</label>
+            <div class="no-data">지원 내역이 없습니다.</div>
         </c:if>
-    </form>
+    </div>
 </body>
 </html>

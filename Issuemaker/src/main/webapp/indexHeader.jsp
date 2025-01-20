@@ -15,7 +15,7 @@
         }
         header {
             background-color: #FFFFFF;
-            color: white;
+            color: black; /* 텍스트 색상 수정 */
             padding: 20px;
             display: flex;
             align-items: center;
@@ -23,16 +23,6 @@
         }
         .logo {
             height: 50px; /* 로고 크기 조정 */
-        }
-        .link {
-            margin-right: 20px; /* 오른쪽 여백 20px */
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            transition: background-color 0.3s;
-        }
-        .link:hover {
-            background-color: rgba(255, 255, 255, 0.2); /* 호버 시 배경색 변경 */
         }
         .logout-button, .login-button {
             display: flex;
@@ -74,62 +64,72 @@
         .search input[type="submit"]:hover {
             background-color: #218838; /* 호버 시 배경색 변경 */
         }
-
+        nav {
+            display: flex; /* 가로로 정렬 */
+            margin-left: 20px; /* 링크와 버튼 사이의 간격 */
+        }
         .link {
-            color: black; /* 원하는 색상으로 변경 */
+            margin-right: 20px; /* 링크 간격 조정 */
+            color: black; /* 링크 색상 */
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .link:hover {
+            background-color: rgba(0, 0, 0, 0.1); /* 호버 시 배경색 변경 */
         }
     </style>
 </head>
 <body>
-	<header>
-		<a href="/">
-			<img src="${pageContext.request.contextPath}/images/logo.png" class="logo" alt="로고" />
-		</a>
-		<%
-			// 쿠키 확인
-			NoticeService ser = NoticeService.getInstance();
-			int check = 0;
-			boolean isLogIn = false;
-			Cookie[] cookies = request.getCookies();
-			if (cookies != null) {
-				for (Cookie c : cookies) {
-					if ("user".equals(c.getName())) {
-						isLogIn = true;
-						check = ser.getType(c.getValue());
-						break;
-					} 
-				}
-			} 
-			request.setAttribute("check", check);
-			request.setAttribute("isLogIn", isLogIn);
-		%>
-		<c:if test="${ !isLogIn }">
-			<form class="login-button" action="/login">
-	    		<input type="submit" value="로그인" class="login"> 
-	    	</form>
-    	</c:if>
-		<c:if test="${isLogIn}">
-   			<form class="logout-button" action="/logout">
-        		<input type="submit" value="로그아웃" class="logout">
-    		</form>
-    		<form action="${check == 0 ? '/userPage' : '/companyPage'}">
-        		<input type="submit" value="마이페이지" class="logout">
-    		</form>
-		</c:if>
-		<form class="search" action="search">
-			<select name="findType">
-				<option value="">검색유형</option>
-				<option value="1">직업별</option> 
-				<option value="2">지역별</option> 
-			</select>
-			<input type="search" id="keyword" name="keyword" placeholder="검색어 입력">
-			<input type="submit" value="검색">
-		</form>
+    <header>
+        <a href="/">
+            <img src="${pageContext.request.contextPath}/images/logo.png" class="logo" alt="로고" />
+        </a>
+        <form class="search" action="search">
+            <select name="findType">
+                <option value="">검색유형</option>
+                <option value="1">직업별</option> 
+                <option value="2">지역별</option> 
+            </select>
+            <input type="search" id="keyword" name="keyword" placeholder="검색어 입력">
+            <input type="submit" value="검색">
+        </form>
         <nav>
             <a href="/index" class="link">채용정보</a>
             <a href="/area" class="link">지역별</a>
             <a href="/job" class="link">직업별</a>
         </nav>
+        <%
+            // 쿠키 확인
+            NoticeService ser = NoticeService.getInstance();
+            int check = 0;
+            boolean isLogIn = false;
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie c : cookies) {
+                    if ("user".equals(c.getName())) {
+                        isLogIn = true;
+                        check = ser.getType(c.getValue());
+                        break;
+                    } 
+                }
+            } 
+            request.setAttribute("check", check);
+            request.setAttribute("isLogIn", isLogIn);
+        %>
+        <c:if test="${ !isLogIn }">
+            <form class="login-button" action="/login">
+                <input type="submit" value="로그인" class="login"> 
+            </form>
+        </c:if>
+        <c:if test="${isLogIn}">
+            <form class="logout-button" action="/logout">
+                <input type="submit" value="로그아웃" class="logout">
+            </form>
+            <form action="${check == 0 ? '/userPage' : '/companyPage'}">
+                <input type="submit" value="마이페이지" class="logout">
+            </form>
+        </c:if>
     </header>
 </body>
 </html>
