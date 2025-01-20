@@ -33,7 +33,11 @@ public interface ApplyMapper {
 	@Update("UPDATE apply SET result = 0 WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo}")
 	int updateResult0(@Param("noticeNo") int noticeNo, @Param("resumeNo") int resumeNo);
 	
-	// Apply 기업 공고들
+	// Apply 기업 공고들(합격)
 	@Select("SELECT * FROM apply WHERE noticeNo IN (SELECT no FROM notice WHERE comId = #{comId}) AND result = 1")
 	List<Apply> selectNotices(@Param("comId") String comId);
+	
+	// userId기준 Apply
+	@Select("SELECT * FROM apply WHERE resumeNo IN (SELECT no FROM resume WHERE userId = #{userId})")
+	List<Apply> selectResumes(@Param("userId") String userId);
 }
