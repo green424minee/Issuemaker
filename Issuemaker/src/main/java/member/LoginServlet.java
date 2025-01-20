@@ -22,6 +22,11 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String typeStr = req.getParameter("type"); // 개인 or 기업
+		if (typeStr == null) {
+			req.setAttribute("error", "회원 종류를 선택해주세요.");
+			doGet(req, resp);
+			return;
+		}
 		int type = ("0".equals(typeStr)) ? 0 : 1;
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
@@ -49,22 +54,6 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 		
-		/*
-		if (idList.contains(id) && pwList.contains(pw)){
-			Cookie cookie = new Cookie("user", id);
-			//cookie.setMaxAge(30 * 60); // 30분 동안 유지
-			resp.addCookie(cookie);
-			// 기업/개인 나누기
-			type = ser.selectType(id);
-			if (type == 0) {
-				resp.sendRedirect("/userPage");  // 마이페이지 메인홈(이력서 관리)
-			} else {
-				resp.sendRedirect("#");  // 기업 메인홈
-			}
-		} else {                      // 마이페이지로 이동
-			
-		}
-		*/
 	}
 	
 	

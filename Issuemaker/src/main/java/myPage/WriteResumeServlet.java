@@ -44,7 +44,7 @@ public class WriteResumeServlet extends HttpServlet{
 	        JobMapper jobmapper = session.getMapper(JobMapper.class);
 	        List<String> jobList = jobmapper.selectAll();
 
-	        GetCookie co = new GetCookie();
+	        GetCookie co = GetCookie.getInstance();
 	        String userId = co.getCookieUserId(req);
 
 	        if (userId == null || userId.trim().isEmpty()) {
@@ -73,7 +73,7 @@ public class WriteResumeServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//이력서
 		try {
-				GetCookie co = new GetCookie();
+				GetCookie co = GetCookie.getInstance();
 				String userId = co.getCookieUserId(req);
 				if (userId == null || userId.trim().isEmpty()) {
 					throw new ServletException("유효한 userId가 아닙니다.");

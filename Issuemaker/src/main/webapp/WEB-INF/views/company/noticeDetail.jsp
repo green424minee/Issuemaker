@@ -1,3 +1,4 @@
+<%@page import="matching.ApplyService"%>
 <%@page import="util.GetCookie"%>
 <%@page import="matching.NoticeService"%>
 <%@page import="member.Company"%>
@@ -61,12 +62,15 @@
 	
 	<%
 		// 사용자 아이디 종류 확인
-		GetCookie co = new GetCookie();
+		GetCookie co = GetCookie.getInstance();
 		request.setAttribute("type", co.getCookieUserType(request));
 		request.setAttribute("user", co.getCookieUserId(request));
 	%>
 	<c:if test="${ type == 0 || empty type }">
 		<a href="/selectResume?noticeNo=${notice.no}">지원하기</a>
+	</c:if>
+	<c:if test="${ check }">
+		<a href="/cancelApply?noticeNo=${notice.no}">지원 취소</a>
 	</c:if>
     </form>
 </div>

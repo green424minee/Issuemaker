@@ -1,5 +1,7 @@
 package matching;
 
+import myPage.Resume;
+
 public class Apply {
 	private int notice;
 	private int resume;
@@ -14,6 +16,15 @@ public class Apply {
 		this.result = result;
 	}
 
+	public Resume getResumeDetail() {
+		NoticeService ser = NoticeService.getInstance();
+		return ser.getResume(resume);
+	}
+	public Notice getNoticeDetail() {
+		NoticeService ser = NoticeService.getInstance();
+		return ser.getNotice(notice);
+	}
+	
 	public int getNotice() {
 		return notice;
 	}

@@ -52,9 +52,11 @@
 			</form>
 
 			<form method="post">
-				<input type="submit" name="action" value="삭제">
-				<input type="hidden" name="no" value="${ resume.no }">
+				<c:if test="${ currentUserId == resume.userId }">
+					<input type="submit" name="action" value="삭제">
+					<input type="hidden" name="no" value="${ resume.no }">
+				</c:if>
 			</form>
-	<a href="/userPage">목록으로 돌아가기</a>
+	<button onclick="window.history.back()">뒤로가기</button>
 </body>
 </html>
