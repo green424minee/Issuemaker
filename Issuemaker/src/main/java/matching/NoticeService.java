@@ -89,7 +89,31 @@ public class NoticeService {
 	    }
 	}
 
+	public List<Notice> getNotices(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	        NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	        return mapper.getNotices(comId);
+	    }
+	}
 
-
-
+	public List<Apply> getResumeByNotice(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	        NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	        return mapper.getResumeByNotice(comId);
+	    }
+	}
+	
+	public Notice getNotice(int no) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	        NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	        return mapper.getNotice(no);
+	    }
+	}
+	
+	public Resume getResume(int no) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	        NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+	        return mapper.getResume(no);
+	    }
+	}
 }

@@ -26,25 +26,33 @@ public class NoticeDetailServlet extends HttpServlet {
         
         
         String comLicense = notice.getComLicense(); 
-        String[] licenses = comLicense.split(", "); 
-        
-      
-        
+        String[] licenses;
+
+        if (comLicense != null) {
+            licenses = comLicense.split(", "); 
+        } else {
+            licenses = new String[1]; 
+            licenses[0] = "무관";
+        }
+
         req.setAttribute("notice", notice); 
         req.setAttribute("company", company);
         req.setAttribute("licenses", licenses); 
         
-        GetCookie co = new GetCookie();
+        GetCookie co = GetCookie.getInstance();
         String currentComId = co.getCookieUserId(req);
         req.setAttribute("currentComId", currentComId); 
         
-        req.getRequestDispatcher("/WEB-INF/views/company/noticeDetail.jsp")
-        .forward(req, resp);
+        ApplyService ser = ApplyService.getInstance();
+        boolean check = ser.checkApply(Integer.parseInt(noticeNo), currentComId);
+        req.setAttribute("check", check);
+        
+        req.getRequestDispatcher("/WEB-INF/views/company/noticeDetail.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GetCookie co = new GetCookie();
+    	GetCookie co = GetCookie.getInstance();
         String action = req.getParameter("action");
         String noticeNo = req.getParameter("noticeNo");
         

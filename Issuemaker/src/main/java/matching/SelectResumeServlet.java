@@ -20,7 +20,7 @@ public class SelectResumeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // String user = req.getParameter("user");
 		String noticeNo = req.getParameter("noticeNo");
-		GetCookie co = new GetCookie();
+		GetCookie co = GetCookie.getInstance();
 		String user = co.getCookieUserId(req);
         myPageService ser = myPageService.getInstance();
 		List<Resume> resume = ser.selectResume(user);
@@ -39,8 +39,12 @@ public class SelectResumeServlet extends HttpServlet {
 		
 		// apply 테이블에 값 넣기
 		ApplyService ser = ApplyService.getInstance();
-		ser.insertApply(notice, resume);
-		
+		if (ser.isApplyExists(notice, resume)) {
+			req.setAttribute("result", "이미 지원한 공고입니다.");
+		} else {
+			ser.insertApply(notice, resume);
+			req.setAttribute("result", "지원 완료");
+		}
 		req.getRequestDispatcher("/WEB-INF/views/user/applyResult.jsp").forward(req, resp);
 	}
 }
