@@ -50,7 +50,7 @@ public interface NoticeMapper {
 	 List<Notice> getNotices(String comId);
 	 
 	 // 기업에 지원한 이력서 받아오기
-	 @Select("SELECT * FROM apply WHERE noticeNo IN (SELECT no FROM notice WHERE comId = #{comId}) ORDER BY noticeNo")
+	 @Select("SELECT * FROM apply WHERE noticeNo IN (SELECT no FROM notice WHERE comId = #{comId}) ORDER BY applicationDate")
 	 List<Apply> getResumeByNotice(String comId);
 	 
 	 // 공고 받아오기

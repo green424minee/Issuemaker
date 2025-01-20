@@ -1,5 +1,7 @@
 package matching;
 
+import java.time.LocalDate;
+
 import myPage.Resume;
 
 public class Apply {
@@ -7,13 +9,17 @@ public class Apply {
 	private int resume;
 	private int view;
 	private int result;
+	private LocalDate applicationDate;
+	private LocalDate passingDate;
 	
-	public Apply(int notice, int resume, int view, int result) {
+	public Apply(int notice, int resume, int view, int result, LocalDate applicationDate, LocalDate passingDate) {
 		super();
 		this.notice = notice;
 		this.resume = resume;
 		this.view = view;
 		this.result = result;
+		this.applicationDate = applicationDate;
+		this.passingDate = passingDate;
 	}
 
 	public Resume getResumeDetail() {
@@ -25,6 +31,23 @@ public class Apply {
 		return ser.getNotice(notice);
 	}
 	
+	
+	public LocalDate getApplicationDate() {
+		return applicationDate;
+	}
+
+	public void setApplicationDate(LocalDate applicationDate) {
+		this.applicationDate = applicationDate;
+	}
+
+	public LocalDate getPassingDate() {
+		return passingDate;
+	}
+
+	public void setPassingDate(LocalDate passingDate) {
+		this.passingDate = passingDate;
+	}
+
 	public int getNotice() {
 		return notice;
 	}

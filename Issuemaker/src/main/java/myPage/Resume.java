@@ -3,6 +3,9 @@ package myPage;
 import java.time.LocalDate;
 import java.util.Arrays;
 
+import member.User;
+import member.UserService;
+
 public class Resume {
    
     private int no;              
@@ -31,6 +34,11 @@ public class Resume {
 		this.salary = salary;
 		this.postDate = postDate;
 		this.agree = agree;
+	}
+	
+	public User getUser() {
+		UserService ser = UserService.getInstance();
+		return ser.selectUser(userId);
 	}
 	public int getNo() {
 		return no;
