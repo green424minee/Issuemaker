@@ -2,6 +2,7 @@ package member;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 
 import util.DBUtil;
@@ -39,6 +40,12 @@ public class UserService {
 		}
 	}
 	
-
+	public User selectUser(String userId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			UserMapper mapper = session.getMapper(UserMapper.class);
+			
+			return mapper.selectUser(userId);
+		}
+	}
 }
 

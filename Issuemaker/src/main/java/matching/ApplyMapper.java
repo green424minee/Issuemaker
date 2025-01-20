@@ -1,5 +1,7 @@
 package matching;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -20,10 +22,18 @@ public interface ApplyMapper {
 	int deleteApply(@Param("noticeNo") int noticeNo, @Param("userId") String userId);
 	
 	// Apply.result = 1로 변경
-	@Update("UPDATE apply SET result = 1 WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo}")
+	@Update("UPDATE apply SET result = 1, passingDate = CURRENT_TIMESTAMP WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo};")
 	int updateResult1(@Param("noticeNo") int noticeNo, @Param("resumeNo") int resumeNo);
 	
 	// Apply.result = 2로 변경
 	@Update("UPDATE apply SET result = 2 WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo}")
 	int updateResult2(@Param("noticeNo") int noticeNo, @Param("resumeNo") int resumeNo);
+	
+	// Apply.result = 0로 변경
+	@Update("UPDATE apply SET result = 0 WHERE noticeNo = #{noticeNo} AND resumeNo = #{resumeNo}")
+	int updateResult0(@Param("noticeNo") int noticeNo, @Param("resumeNo") int resumeNo);
+	
+	// Apply 기업 공고들
+	@Select("SELECT * FROM apply WHERE noticeNo IN (SELECT no FROM notice WHERE comId = #{comId}) AND result = 1")
+	List<Apply> selectNotices(@Param("comId") String comId);
 }
