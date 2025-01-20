@@ -5,50 +5,78 @@
 <head>
     <title>공고관리</title>
     <style>
-    	.link {
-    		margin-right: 8em;  /* 오른쪽 여백 8em */
-    	}
-    	.logout-button {
-    		padding: 10px 0;
-    		display: flex;
-    		justify-content: center;
-    		align-items: center;
-    	}
-    	.title {
-    		flex-grow: 1;
-    		text-align: center;
-    	}
-    	.logout {
-    		background-color: #ffd677;
-    		border: none;
-    		padding: 10px 20px;
-    		cursor: pointer;
-    		transition: background-color 0.3s;
-    	}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #ffffff;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            height: 40px; /* 로고 크기 조정 */
+            margin: 0 10px; /* 좌우 여백 */
+        }
+        .link {
+            color: #333;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .link:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 호버 시 배경색 변경 */
+            color: #007BFF; /* 호버 시 글자색 변경 */
+        }
+        .title {
+            flex-grow: 1;
+            text-align: center;
+            font-size: 35px;
+            font-weight: bold;
+            color: black; /* 제목 색상 */
+        }
+        .logout-button {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* 오른쪽으로 이동 */
+        }
+        .logout {
+            margin-left: 20px; /* 로그아웃 버튼과의 간격 */
+            background-color: #ffd677;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .logout:hover {
+            background-color: #ffcc00; /* 호버 시 배경색 변경 */
+        }
     </style>
 </head>
 <body>
-	<header>
-		<a href="/">
-			<img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" />
-		</a>
-		<form class="logout-button" action="/logout" >
-			<h1 class="title">기업</h1>
-			<a href="/changeCompanyInfo">기업정보 수정</a>
-    		<input type="submit" value="로그아웃" class="logout"> <%-- 메인 화면으로- --%>
-    	</form>
-    	<form class="serach" action="search">
-			<select name="findType">
-				<option value="">검색유형</option>
-				<option value="1">직업별</option>
-				<option value="2">지역별</option> 
-			</select>
-			<input type="search" id="keyword" name="keyword">
-			<input type="submit" value="검색">
-		</form>
+    <header>
+        <a href="/">
+            <img src="${pageContext.request.contextPath}/images/logo.png" alt="로고" class="logo" />
+        </a>
         <nav>
             <a href="/companyPage" class="link">공고관리</a>
             <a href="/applicant" class="link">지원자 관리</a>
             <a href="/successCandidate" class="link">합격자 관리</a>
         </nav>
+        <h1 class="title">기업</h1> <!-- 타이틀을 중앙에 위치 -->
+        <form class="logout-button" action="/logout">
+            <a href="/changeCompanyInfo" class="link">기업정보 수정</a>
+            <input type="submit" value="로그아웃" class="logout">
+        </form>
     </header>
+</body>
+</html>
