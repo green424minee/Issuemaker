@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,25 +40,33 @@ public class WriteResumeServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 try (SqlSession session = DBUtil.getSqlSession()) {
-	            JobMapper jobmapper = session.getMapper(JobMapper.class);
-	            List <String> jobList = jobmapper.selectAll();
-	            
-	            
-	            GetCookie co = new GetCookie();
-	            String userId = co.getCookieUserId(req);
-	            
-	            SchoolService schoolservice = SchoolService.getInstance();
-	            School school = schoolservice.selectByUserId(userId);
-	            
-	            WorkHistoryService workHistoryService = WorkHistoryService.getInstance();
-	            WorkHistory workHistory = workHistoryService.selectByUserId(userId);
-	            
-	            req.setAttribute("jobList", jobList);
-	            req.setAttribute("school", school);
-	            req.setAttribute("workHistory", workHistory);
-	            req.getRequestDispatcher("/WEB-INF/views/mypage/writeResume.jsp").forward(req, resp);
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	        JobMapper jobmapper = session.getMapper(JobMapper.class);
+	        List<String> jobList = jobmapper.selectAll();
+
+	        GetCookie co = new GetCookie();
+	        String userId = co.getCookieUserId(req);
+
+	        if (userId == null || userId.trim().isEmpty()) {
+	            resp.sendRedirect(req.getContextPath() + "/login");
+	            return;
 	        }
+
+	        SchoolService schoolservice = SchoolService.getInstance();
+	        School school = schoolservice.selectByUserId(userId);
+
+	        WorkHistoryService workHistoryService = WorkHistoryService.getInstance();
+	        WorkHistory workHistory = workHistoryService.selectByUserId(userId);
+
+	        req.setAttribute("jobList", jobList);
+	        req.setAttribute("school", school);
+	        req.setAttribute("workHistory", workHistory);
+
+	        req.getRequestDispatcher("/WEB-INF/views/mypage/writeResume.jsp").forward(req, resp);
+
+	    } catch (Exception e) {
+	        req.setAttribute("errorMessage", "오류가 발생했습니다. 다시 시도해 주세요.");
+	    }
 	}
 
 	@Override
@@ -88,7 +97,6 @@ public class WriteResumeServlet extends HttpServlet{
 			        
 					ResumeService resumeservice = ResumeService.getInstance();
 					ResumeForInsert resume = new ResumeForInsert(userId, userPhoto, title, jobType, coverLetter, portfolio, salary, agree);
-					//System.out.println("Inserting : " + resume);
 					resumeservice.insert(resume);
 
 				} catch (Exception e) {
@@ -96,30 +104,45 @@ public class WriteResumeServlet extends HttpServlet{
 			}
 	    
 	    
-	   //학력  
-			try {
-				int type = Integer.parseInt(req.getParameter("type"));
-				String level = req.getParameter("level");
-				String schoolName = req.getParameter("schoolName");
-				String schoolLevelStr = req.getParameter("schoolLevel");
-				int schoolLevel = (schoolLevelStr == null || schoolLevelStr.trim().isEmpty()) ? 0 : Integer.parseInt(schoolLevelStr);
-				String majorStr = req.getParameter("major");
-				String major = (majorStr == null || majorStr.trim().isEmpty()) ? null : majorStr;
-				LocalDate startDate = LocalDate.parse(req.getParameter("startDate"));
-				LocalDate endDate = LocalDate.parse(req.getParameter("endDate"));
+			//학력  
+			 try {
+			        
+			        int type = Integer.parseInt(req.getParameter("type"));
+			        String level = req.getParameter("level");
+			        String schoolName = req.getParameter("schoolName");
+			        String schoolLevelStr = req.getParameter("schoolLevel");
+			        int schoolLevel = (schoolLevelStr == null || schoolLevelStr.trim().isEmpty()) ? 0 : Integer.parseInt(schoolLevelStr);
+			        String majorStr = req.getParameter("major");
+			        String major = (majorStr == null || majorStr.trim().isEmpty()) ? null : majorStr;
+			        LocalDate startDate = LocalDate.parse(req.getParameter("startDate"));
+			        LocalDate endDate = LocalDate.parse(req.getParameter("endDate"));
 
-				SchoolService schoolService = SchoolService.getInstance();
-				School school = new School(userId, type, level, schoolName, schoolLevel, major, startDate, endDate);
-				//System.out.println("Inserting : " + school);
-				schoolService.insert(school);
-			} catch (Exception e) {
-				System.err.println("Error processing school data: " + e.getMessage());
-				throw new ServletException("학력 처리 중 오류가 발생했습니다.", e);
-			}
+			        // 서비스 호출
+			        SchoolService schoolService = SchoolService.getInstance();
+			        School schooldata = schoolService.selectByUserId(userId);
+
+			        // 이미 데이터가 있는 경우 업데이트
+			        if (schooldata != null) {
+			            School school = new School(userId, type, level, schoolName, schoolLevel, major, startDate, endDate);
+			            schoolService.update(school);
+			           
+			        } else {
+			            School school = new School(userId, type, level, schoolName, schoolLevel, major, startDate, endDate);
+			            schoolService.insert(school);			        
+			        }
+			    } catch (NumberFormatException e) {
+			        
+			        req.setAttribute("errorMessage", "유효하지 않은 입력 값이 있습니다. 다시 시도해 주세요.");
+			    } catch (DateTimeParseException e) {
+			        // 날짜 형식 오류 처리
+			        req.setAttribute("errorMessage", "날짜 형식이 잘못되었습니다. 다시 시도해 주세요.");
+			    } catch (Exception e) {
+			        req.setAttribute("errorMessage", "학교 정보 처리 중 오류가 발생했습니다. 다시 시도해 주세요.");
+			    }
+			
 	  	
 	  	
-	  	// 자격증
-		// LicenseService 객체 생성
+			 	// 자격증
 			  	LicenseService licenseService = LicenseService.getInstance();
 
 			  	// 동적으로 입력된 자격증 항목 처리
@@ -128,50 +151,49 @@ public class WriteResumeServlet extends HttpServlet{
 			  	for (int i = 0; i < licenseCount; i++) {
 			  	    // 각 자격증에 대한 값들을 개별적으로 가져옵니다.
 			  	    String license = req.getParameter("license" + i);
-			  	    String acquisitionDate = req.getParameter("acquisition" + i);
+			  	    String acuisitionDate = req.getParameter("acuisition" + i);
 			  	    String score = req.getParameter("score" + i);
 			  	    String type1 = req.getParameter("licenseType" + i);
 
-			  	    // 값 확인을 위한 로그
-			  	    //System.out.println("License " + i + ": " + license + ", " + acquisitionDate + ", " + score + ", " + type1);
-
-			  	   // if (license == null || acquisitionDate == null || type1 == null) {
-			  	        // 필수 항목이 누락된 경우 처리 (디버깅용)
-			  	       // System.out.println("Missing value for license " + i);
-			  	       // continue;
-			  	   // }
+			  	   
 
 			  	    // 취득일을 LocalDate로 변환
-			  	    LocalDate acquisition = LocalDate.parse(acquisitionDate); // 취득일
+			  	    LocalDate acuisition = LocalDate.parse(acuisitionDate); // 취득일
 			  	    Integer scoreValue = (score == null || score.trim().isEmpty()) ? null : Integer.parseInt(score); // 점수
 			  	    int typeValue = Integer.parseInt(type1); // 자격증 구분 값
 
 			  	    // LicenseForInsert 객체 생성 및 데이터베이스 삽입
-			  	    LicenseForInsert licenseForInsert = new LicenseForInsert(userId, typeValue, license, acquisition, scoreValue);
-			  	    //System.out.println("Inserting License: " + licenseForInsert);
-			  	   
-			  	    licenseService.insert(licenseForInsert); // 데이터베이스에 삽입
-			  	}
+			  	    boolean isExist = licenseService.isLicenseExist(userId, license);
+			  	    LicenseForInsert licenseForInsert = new LicenseForInsert(userId, typeValue, license, acuisition, scoreValue);
+			  	    if (isExist) {
+			          licenseService.update(licenseForInsert);
+			      } else {
+			          licenseService.insert(licenseForInsert);
+			      }
+			  } 
+			  	
 			  	
 
 
         //경력
-			try {
 				String exCom = req.getParameter("exCom");
 				LocalDate startDate1 = LocalDate.parse(req.getParameter("startDate1"));
 				LocalDate endDate1 = LocalDate.parse(req.getParameter("endDate1"));
 				String jobType1 = req.getParameter("jobType1");
 
 				WorkHistoryService workHistoryService = WorkHistoryService.getInstance();
-				WorkHistoryForInsert workHistory = new WorkHistoryForInsert(userId, exCom, startDate1, endDate1, jobType1);
-				//System.out.println("Inserting : " + workHistory);
-				workHistoryService.insert(workHistory);
+				WorkHistory workdata = workHistoryService.selectByUserId(userId);
+				
+				if (workdata != null) {
+					WorkHistoryForInsert workHistory = new WorkHistoryForInsert(userId, exCom, startDate1, endDate1, jobType1);
+					workHistoryService.update(workHistory);
+				} else {
+					WorkHistoryForInsert workHistory = new WorkHistoryForInsert(userId, exCom, startDate1, endDate1, jobType1);
+					workHistoryService.insert(workHistory);
+				}
 				
 				
-			} catch (Exception e) {
-				System.err.println("Error processing work history data: " + e.getMessage());
-				throw new ServletException("경력 처리 중 오류가 발생했습니다.", e);
-			}
+			
 			req.getRequestDispatcher("/WEB-INF/views/mypage/userPage.jsp").forward(req, resp);
 		} catch (Exception e) {
 			System.err.println("Error during form submission: " + e.getMessage());

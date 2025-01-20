@@ -41,6 +41,7 @@ public class ChangeCompanyInfoServlet extends HttpServlet {
 		String comCeo = req.getParameter("comCeo");
 		String managerEmail = req.getParameter("managerEmail");
 		String comAddress = req.getParameter("comAddress");
+		String otherAddress = req.getParameter("otherAddress");
 		String comBirthStr = req.getParameter("comBirth"); // comBirth는 문자열로 받아온 후 변환
 		String comSizeStr = req.getParameter("comSize"); //
 		String comWeb = req.getParameter("comWeb");
@@ -75,7 +76,7 @@ public class ChangeCompanyInfoServlet extends HttpServlet {
 	    System.out.println(num1);
 	    // company 테이블 -> comId로 다른 컬럼 수정(update)
 	    CompanyService sercom = CompanyService.getInstance();
-	    Company company = new Company(comId, comName, comNo, comPhone, comCeo, managerEmail, comAddress, comBirth, comSize, comWeb);
+	    Company company = new Company(comId, comName, comNo, comPhone, comCeo, managerEmail, comAddress, otherAddress, comBirth, comSize, comWeb);
 	    int num2 = sercom.update(company);
 	    System.out.println(num2);
 	    // 수정 후 다시 정보보기 테이블로-

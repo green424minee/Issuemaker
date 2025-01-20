@@ -11,27 +11,25 @@ public class Company {
 	private String comCeo;
 	private String managerEmail;
 	private String comAddress;
+	private String otherAddress;
 	private LocalDate comBirth;
 	private int comSize;
 	private String comWeb;
-	
-	public Company() {}
 	public Company(String comId, String comName, long comNo, String comPhone, String comCeo, String managerEmail,
-			String comAddress, LocalDate comBirth, int comSize, String comWeb) {
+			String comAddress, String otherAddress, LocalDate comBirth, int comSize, String comWeb) {
 		super();
-		
 		this.comId = comId;
 		this.comName = comName;
 		this.comNo = comNo;
-		this.comPhone = comPhone;//
+		this.comPhone = comPhone;
 		this.comCeo = comCeo;
 		this.managerEmail = managerEmail;
 		this.comAddress = comAddress;
+		this.otherAddress = otherAddress;
 		this.comBirth = comBirth;
 		this.comSize = comSize;
 		this.comWeb = comWeb;
 	}
-	
 	public String getComId() {
 		return comId;
 	}
@@ -74,6 +72,12 @@ public class Company {
 	public void setComAddress(String comAddress) {
 		this.comAddress = comAddress;
 	}
+	public String getOtherAddress() {
+		return otherAddress;
+	}
+	public void setOtherAddress(String otherAddress) {
+		this.otherAddress = otherAddress;
+	}
 	public LocalDate getComBirth() {
 		return comBirth;
 	}
@@ -95,9 +99,12 @@ public class Company {
 	@Override
 	public String toString() {
 		return "Company [comId=" + comId + ", comName=" + comName + ", comNo=" + comNo + ", comPhone=" + comPhone
-				+ ", comCeo=" + comCeo + ", managerEmail=" + managerEmail + ", comAddress=" + comAddress + ", comBirth="
-				+ comBirth + ", comSize=" + comSize + ", comWeb=" + comWeb + "]";
+				+ ", comCeo=" + comCeo + ", managerEmail=" + managerEmail + ", comAddress=" + comAddress
+				+ ", otherAddress=" + otherAddress + ", comBirth=" + comBirth + ", comSize=" + comSize + ", comWeb="
+				+ comWeb + "]";
 	}
+	
+	
 	
 	
 

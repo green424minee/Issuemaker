@@ -30,5 +30,15 @@ public class WorkHistoryService {
 	         return mapper.selectByUserId(userId);
 	      }
 	}
+	public int update(WorkHistoryForInsert workHistory) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			WorkHistoryMapper mapper = session.getMapper(WorkHistoryMapper.class);
+			
+			int rowUpdated = mapper.update(workHistory);
+			session.commit();
+			
+			return rowUpdated;
+		}
+	}
 
 }
