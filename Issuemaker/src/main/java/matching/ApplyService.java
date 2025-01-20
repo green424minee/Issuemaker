@@ -81,4 +81,23 @@ public class ApplyService {
 	        return row > 0; 
 	    }
 	}
+	
+	public boolean updateResult0(int noticeNo, int resumeNo) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+	        ApplyMapper mapper = session.getMapper(ApplyMapper.class);
+	        
+	        int row = mapper.updateResult0(noticeNo, resumeNo);
+	        session.commit();
+	        
+	        return row > 0; 
+	    }
+	}
+	
+	public List<Apply> selectNotices(String comId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			ApplyMapper mapper = session.getMapper(ApplyMapper.class);
+			
+			return mapper.selectNotices(comId);
+		}
+	}
 }
