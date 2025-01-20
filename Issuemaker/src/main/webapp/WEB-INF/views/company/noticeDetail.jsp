@@ -3,8 +3,7 @@
 <%@page import="matching.NoticeService"%>
 <%@page import="member.Company"%>
 <%@ page import="matching.Notice" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -14,133 +13,170 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
             background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
         }
-        .notice-details {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .card {
+            background: #fff;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
             margin-bottom: 20px;
         }
-        .notice-header {
-            font-size: 20px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 10px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
         }
-        .notice-info {
-            margin-bottom: 15px;
-            color: #555;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
         }
-        .notice-info p {
-            margin: 0; /* 기본 마진 제거 */
-            display: inline; /* 인라인으로 표시하여 빈틈 없애기 */
+        th {
+            background-color: #f2f2f2;
         }
-        .button {
-            background-color: #007BFF;
+        a.button, button.button {
+            background-color: #6482B9;
             color: white;
-            border: none;
-            border-radius: 5px;
             padding: 10px 15px;
-            cursor: pointer;
             text-decoration: none;
-            margin-right: 10px;
-            transition: background-color 0.3s;
+            border-radius: 5px;
+            margin: 5px;
+            display: inline-block;
+            border: none;
         }
-        .button:hover {
-            background-color: #0056b3; /* 호버 시 배경색 변경 */
-        }
-        .notice-content {
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 20px;
+        a.button:hover, button.button:hover {
+            background-color: #4a6a9a;
         }
         hr {
-            border: 1px solid #e0e0e0;
             margin: 20px 0;
         }
-        .back-button {
-            background-color: #6c757d;
-            color: white;
-            border: none;
+        .notice-content {
+            background: #f9f9f9;
+            padding: 15px;
             border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            transition: background-color 0.3s;
         }
-        .back-button:hover {
-            background-color: #5a6268; /* 호버 시 배경색 변경 */
-        }
+    	.centered-title {
+        	text-align: center; /* 텍스트를 중앙 정렬 */
+        	margin: 20px 0; /* 위아래 여백 추가 */
+    	}
     </style>
 </head>
 <body>
 
-<div class="notice-details">
+<div class="centered-title"><h2>${ notice.title }</h2></div>
+<div class="card notice-details">
     <form method="post">
         <c:set var="noticeNo" value="${notice.no}" scope="session" />
-        <div class="notice-header">
-            ${company.comName} / ${notice.title} <br>
-            연락처: ${company.comPhone} 담당자: ${company.managerEmail} <br>
-            위치: ${company.comAddress} ${' '} ${company.otherAddress} 사원수: ${company.comSize} <br>
-            사이트: ${company.comWeb}
-        </div>
-    
-        <div class="notice-info">
-            공고시작기간: ${notice.postDate} ~ 공고마감기간: ${notice.deadLine} <br>
-        </div>
-        
-        <hr>
-    
-        <div class="notice-info">
-            경력: ${notice.getExTermStr()} <br>
-            급여: ${notice.getSalaryStr()} <br>
-            학력: ${notice.getSchoolLevelStr()}<br>
-            전공: ${notice.major} <br>
-        </div>
-        <div class="notice-info">
-            근무요일: ${notice.workday} <br>
-            직무: ${notice.jobType} <br>
-            근무지역: ${company.comAddress} <br>
-            자격증:
-            <c:forEach var="license" items="${licenses}">
-                <p>${license}</p>
-            </c:forEach>
-        </div>
-
-        <c:if test="${ currentComId == notice.comId }">
-            <a href="/noticeSetting?no=${notice.no}" class="button">수정</a>
-            <button type="button" class="button" onclick="window.history.back()">취소</button>
-        </c:if>
-        
-        <%
-            // 사용자 아이디 종류 확인
-            GetCookie co = GetCookie.getInstance();
-            request.setAttribute("type", co.getCookieUserType(request));
-            request.setAttribute("user", co.getCookieUserId(request));
-        %>
-        <c:if test="${ type == 0 || empty type }">
-            <a href="/selectResume?noticeNo=${notice.no}" class="button">지원하기</a>
-        </c:if>
-        <c:if test="${ check }">
-            <a href="/cancelApply?noticeNo=${notice.no}" class="button">지원 취소</a>
-        </c:if>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">${company.comName} </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>연락처</td>
+                    <td>${company.comPhone}</td>
+                </tr>
+                <tr>
+                    <td>담당자</td>
+                    <td>${company.managerEmail}</td>
+                </tr>
+                <tr>
+                    <td>위치</td>
+                    <td>${company.comAddress} ${' '} ${company.otherAddress}</td>
+                </tr>
+                <tr>
+                    <td>사원수</td>
+                    <td>${company.comSize}</td>
+                </tr>
+                <tr>
+                    <td>사이트</td>
+                    <td><a href="${company.comWeb}" target="_blank">${company.comWeb}</a></td>
+                </tr>
+                <tr>
+                    <td>공고 기간</td>
+                    <td>${notice.postDate} ~ ${notice.deadLine}</td>
+                </tr>
+            </tbody>
+        </table>
     </form>
 </div>
-
-<hr>
-
-<div class="notice-content">
-    <p>${notice.context}</p>
-    
-    <hr>
-    
-    사업자등록번호: ${company.comNo} 대표자: ${company.comCeo} <br>
-    개설일자: ${company.comBirth}
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>경력</th>
+                <th>급여</th>
+                <th>학력</th>
+                <th>전공</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${notice.getExTermStr()}</td>
+                <td>${notice.getSalaryStr()}</td>
+                <td>${notice.getSchoolLevelStr()}</td>
+                <td>${notice.major}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>근무요일</th>
+                <th>직무</th>
+                <th>근무지역</th>
+                <th>자격증</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${notice.workday}</td>
+                <td>${notice.jobType}</td>
+                <td>${company.comAddress}</td>
+                <td>
+                    <c:forEach var="license" items="${licenses}">
+                        <p>${license}</p>
+                    </c:forEach>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<button type="button" class="back-button" onclick="window.history.back()">리스트로 돌아가기</button>
+<div class="card notice-content">
+    <p>${notice.context}</p>
+    <hr>
+    <p>사업자등록번호 : ${company.comNo} <br> 대표자 : ${company.comCeo} <br>
+    설립일 : ${company.comBirth }</p>
+</div>
+
+<c:if test="${ currentComId == notice.comId }">
+    <div class="card">
+        <a href="/noticeSetting?no=${notice.no}" class="button">수정</a>
+        <button type="button" class="button" onclick="window.history.back()">취소</button>
+    </div>
+</c:if>
+
+<div class="card">
+<%
+    // 사용자 아이디 종류 확인
+    GetCookie co = GetCookie.getInstance();
+    request.setAttribute("type", co.getCookieUserType(request));
+    request.setAttribute("user", co.getCookieUserId(request));
+%>
+<c:if test="${ type == 0 || empty type }">
+    <a href="/selectResume?noticeNo=${notice.no}" class="button">지원하기</a>
+</c:if>
+<c:if test="${ check }">
+    <a href="/cancelApply?noticeNo=${notice.no}" class="button">지원 취소</a>
+</c:if>
+    <button type="button" onclick="window.history.back()" class="button">리스트로 돌아가기</button>
+</div>
+
 </body>
 </html>
