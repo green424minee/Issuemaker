@@ -16,7 +16,7 @@ import util.GetCookie;
 public class CompanyPageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	GetCookie co = new GetCookie();
+    	GetCookie co = GetCookie.getInstance();
     	String comId = co.getCookieUserId(req);
     	
     	CompanyPageService ser = CompanyPageService.getInstance();

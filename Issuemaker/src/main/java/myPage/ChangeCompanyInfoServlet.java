@@ -20,7 +20,7 @@ public class ChangeCompanyInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 기업 정보 수정 링크 클릭했을 때
-		GetCookie co = new GetCookie();
+		GetCookie co = GetCookie.getInstance();
 		String comId = co.getCookieUserId(req);
 		
 		// 로그인한 기업의 정보 가져오기
@@ -46,7 +46,7 @@ public class ChangeCompanyInfoServlet extends HttpServlet {
 		String comSizeStr = req.getParameter("comSize"); //
 		String comWeb = req.getParameter("comWeb");
 		
-		GetCookie co = new GetCookie();
+		GetCookie co = GetCookie.getInstance();
 		String comId = co.getCookieUserId(req);
 		
 		// 비밀번호와 비밀번호 확인이 다를 때 

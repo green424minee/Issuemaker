@@ -18,7 +18,7 @@ public class ChangeUserInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 회원 정보 수정 링크 클릭했을 때
-		GetCookie co = new GetCookie();
+		GetCookie co = GetCookie.getInstance();
 		String userId = co.getCookieUserId(req);
 		
 		// 로그인한 유저의 개인정보 가져오기
@@ -40,7 +40,7 @@ public class ChangeUserInfoServlet extends HttpServlet {
         String userEmail = req.getParameter("userEmail");
         String userAddress = req.getParameter("userAddress");
         
-        GetCookie co = new GetCookie();
+        GetCookie co = GetCookie.getInstance();
 		String userId = co.getCookieUserId(req);
 		
         // 비밀번호와 비밀번호 확인이 다를 때 
