@@ -7,60 +7,105 @@
 <head>
     <title>시작페이지</title>
     <style>
-    	.link {
-    		margin-right: 8em;  /* 오른쪽 여백 8em */
-    	}
-    	.logout-button {
-    		padding: 10px 0;
-    		display: flex;
-    		justify-content: center;
-    		align-items: center;
-    	}
-    	.title {
-    		flex-grow: 1;
-    		text-align: center;
-    	}
-    	.logout {
-    		background-color: #ffd677;
-    		border: none;
-    		padding: 10px 20px;
-    		cursor: pointer;
-    		transition: background-color 0.3s;
-    	}
-    	.class {
-    		padding: 10px 0;
-    		display: flex;
-    		justify-content: center;
-    		align-items: center;
-    	}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #FFFFFF;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            height: 50px; /* 로고 크기 조정 */
+        }
+        .link {
+            margin-right: 20px; /* 오른쪽 여백 20px */
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        .link:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* 호버 시 배경색 변경 */
+        }
+        .logout-button, .login-button {
+            display: flex;
+            align-items: center;
+        }
+        .logout, .login {
+            background-color: #4CAF50; /* 로그인 버튼 색상 변경 */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+        .logout:hover, .login:hover {
+            background-color: #45a049; /* 호버 시 배경색 변경 */
+        }
+        .search {
+            display: flex;
+            justify-content: center; /* 중앙 정렬 */
+            align-items: center;
+            margin: 0 auto; /* 중앙 정렬을 위한 마진 */
+            flex-grow: 1; /* 남은 공간을 차지하게 */
+        }
+        .search select, .search input[type="search"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .search input[type="submit"]:hover {
+            background-color: #218838; /* 호버 시 배경색 변경 */
+        }
+
+        .link {
+            color: black; /* 원하는 색상으로 변경 */
+        }
     </style>
 </head>
 <body>
 	<header>
-	<a href="/">
-		<img src="${pageContext.request.contextPath}/images/logo.png" class="logo" alt="로고" />
-	</a>
-	<%
-		// 쿠키 확인
-		NoticeService ser = NoticeService.getInstance();
-		int check = 0;
-		boolean isLogIn = false;
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie c : cookies) {
-				if ("user".equals(c.getName())) {
-					isLogIn = true;
-					check = ser.getType(c.getValue());
-					break;
-				} 
-			}
-		} 
-		request.setAttribute("check", check);
-		request.setAttribute("isLogIn", isLogIn);
-	%>
+		<a href="/">
+			<img src="${pageContext.request.contextPath}/images/logo.png" class="logo" alt="로고" />
+		</a>
+		<%
+			// 쿠키 확인
+			NoticeService ser = NoticeService.getInstance();
+			int check = 0;
+			boolean isLogIn = false;
+			Cookie[] cookies = request.getCookies();
+			if (cookies != null) {
+				for (Cookie c : cookies) {
+					if ("user".equals(c.getName())) {
+						isLogIn = true;
+						check = ser.getType(c.getValue());
+						break;
+					} 
+				}
+			} 
+			request.setAttribute("check", check);
+			request.setAttribute("isLogIn", isLogIn);
+		%>
 		<c:if test="${ !isLogIn }">
 			<form class="login-button" action="/login">
-	    		<input type="submit" value="로그인" class="login"> <%-- 메인 화면으로- --%>
+	    		<input type="submit" value="로그인" class="login"> 
 	    	</form>
     	</c:if>
 		<c:if test="${isLogIn}">
@@ -68,16 +113,16 @@
         		<input type="submit" value="로그아웃" class="logout">
     		</form>
     		<form action="${check == 0 ? '/userPage' : '/companyPage'}">
-        		<input type="submit" value="마이페이지">
+        		<input type="submit" value="마이페이지" class="logout">
     		</form>
-</c:if>
-		<form class="serach" action="search">
+		</c:if>
+		<form class="search" action="search">
 			<select name="findType">
 				<option value="">검색유형</option>
-				<option value="1">직업별</option>
+				<option value="1">직업별</option> 
 				<option value="2">지역별</option> 
 			</select>
-			<input type="search" id="keyword" name="keyword">
+			<input type="search" id="keyword" name="keyword" placeholder="검색어 입력">
 			<input type="submit" value="검색">
 		</form>
         <nav>
@@ -86,3 +131,5 @@
             <a href="/job" class="link">직업별</a>
         </nav>
     </header>
+</body>
+</html>

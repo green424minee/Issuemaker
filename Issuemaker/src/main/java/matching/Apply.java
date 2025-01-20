@@ -22,6 +22,12 @@ public class Apply {
 		this.passingDate = passingDate;
 	}
 
+	public String strResult() {
+		if (result == 0) return "대기 중";
+		else if (result == 1) return "합격";
+		else return "불합격";
+	}
+	
 	public Resume getResumeDetail() {
 		NoticeService ser = NoticeService.getInstance();
 		return ser.getResume(resume);

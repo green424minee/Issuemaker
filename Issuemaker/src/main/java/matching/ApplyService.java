@@ -100,4 +100,12 @@ public class ApplyService {
 			return mapper.selectNotices(comId);
 		}
 	}
+	
+	public List<Apply> selectResumes(String userId) {
+		try (SqlSession session = DBUtil.getSqlSession()) {
+			ApplyMapper mapper = session.getMapper(ApplyMapper.class);
+			
+			return mapper.selectResumes(userId);
+		}
+	}
 }

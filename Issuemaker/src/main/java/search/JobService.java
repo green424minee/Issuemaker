@@ -38,4 +38,12 @@ public class JobService {
 			return mapper.getArea(comId);	
 		}
 	}
+	public List<Notice> getJobType(String jobType) {
+		try(SqlSession session = DBUtil.getSqlSession()){
+			JobMapper mapper  = session.getMapper(JobMapper.class);
+			
+			return mapper.getJobType(jobType);	
+		}
+	}
+
 }
