@@ -71,6 +71,15 @@
         		<input type="submit" value="마이페이지">
     		</form>
 </c:if>
+		<form class="serach" action="search">
+			<select name="findType">
+				<option value="">검색유형</option>
+				<option value="1">직업별</option>
+				<option value="2">지역별</option> 
+			</select>
+			<input type="search" id="keyword" name="keyword">
+			<input type="submit" value="검색">
+		</form>
         <nav>
             <a href="/index" class="link">채용정보</a>
             <a href="/area" class="link">지역별</a>

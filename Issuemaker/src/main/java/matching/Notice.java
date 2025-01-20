@@ -51,6 +51,10 @@ public class Notice {
 	public String getExTermStr() {
 		return strExTerm(exTerm);
 	}
+	
+	public String getComLicenseStr() {
+		return strComLicense(comLicense);
+	}
 	public String getSalaryStr() {
 		return strSalary(salary);
 	}
@@ -238,6 +242,13 @@ public class Notice {
 	   }
 	   return info;
    }
+   
+   public String strComLicense(String comLicense) {
+	    if (comLicense != null) {
+	        return comLicense;
+	    }
+	    return "무관"; 
+	}
    
    
    

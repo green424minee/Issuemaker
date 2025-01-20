@@ -60,4 +60,6 @@ public interface NoticeMapper {
 	 // 이력서 받아오기
 	 @Select("SELECT * FROM resume WHERE no = #{no}")
 	 Resume getResume(int no);
+
+
 }

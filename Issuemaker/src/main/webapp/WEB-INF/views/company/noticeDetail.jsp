@@ -20,7 +20,7 @@
 	    <div class="notice-header">
 	        ${company.comName} / ${notice.title} <br>
 	        연락처: ${company.comPhone} 담당자: ${company.managerEmail} <br>
-	       	위치: ${company.comAddress} 사원수: ${company.comSize} <br>
+	       	위치: ${company.comAddress} ${' '} ${company.otherAddress} 사원수: ${company.comSize} <br>
 	       	사이트: ${company.comWeb}
 	        
 	    </div>
