@@ -39,6 +39,7 @@
     	</form>
         <nav>
             <a href="/companyPage" class="link">공고관리</a>
-            
+            <a href="/applicant" class="link">지원자 관리</a>
+            <a href="/successCandidate" class="link">합격자 관리</a>
         </nav>
     </header>

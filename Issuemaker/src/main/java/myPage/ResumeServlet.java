@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import member.User;
+import util.GetCookie;
 
 @WebServlet("/resume")
 public class ResumeServlet extends HttpServlet {
@@ -26,7 +27,10 @@ public class ResumeServlet extends HttpServlet {
 		String no = req.getParameter("resumeNo");
 		int resumeNo = Integer.parseInt(no);
 		
-		
+		GetCookie co = GetCookie.getInstance();
+        String currentUserId = co.getCookieUserId(req);
+        req.setAttribute("currentUserId", currentUserId); 
+        
 		Resume resume = ser.selectResume(resumeNo);
 		req.setAttribute("resume", resume);
 		// 유저 정보
@@ -68,9 +72,6 @@ public class ResumeServlet extends HttpServlet {
 		// 자격증
 		List<License> listLi = ser.selectLicense(id);
 		req.setAttribute("listLi", listLi);
-		
-		// 자기소개서 보기
-		// 포트폴리오 보기
 
 		req.getRequestDispatcher("/WEB-INF/views/mypage/resume.jsp").forward(req, resp);
 	}

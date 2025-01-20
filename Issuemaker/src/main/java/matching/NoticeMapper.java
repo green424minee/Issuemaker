@@ -45,7 +45,19 @@ public interface NoticeMapper {
 	 @Select("SELECT comLicense FROM notice WHERE comId = #{comId}")
 	 List<String> getComLicenseByNoticeComId(String comId);
 
-	
-
-
+	 // 기업의 공고들 정보 받아오기
+	 @Select("SELECT * FROM notice WHERE comId = #{comId}")
+	 List<Notice> getNotices(String comId);
+	 
+	 // 기업에 지원한 이력서 받아오기
+	 @Select("SELECT * FROM apply WHERE noticeNo IN (SELECT no FROM notice WHERE comId = #{comId}) ORDER BY noticeNo")
+	 List<Apply> getResumeByNotice(String comId);
+	 
+	 // 공고 받아오기
+	 @Select("SELECT * FROM notice WHERE no = #{no}")
+	 Notice getNotice(int no);
+	 
+	 // 이력서 받아오기
+	 @Select("SELECT * FROM resume WHERE no = #{no}")
+	 Resume getResume(int no);
 }

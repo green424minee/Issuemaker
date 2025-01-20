@@ -34,7 +34,7 @@ public class NoticeServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        GetCookie co = new GetCookie();
+    	GetCookie co = GetCookie.getInstance();
         String comId = co.getCookieUserId(req);
         
         String title = req.getParameter("title");
