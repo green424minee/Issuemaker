@@ -16,4 +16,5 @@ public interface JobMapper {
 	@Select ("SELECT LEFT(comAddress, LOCATE(' ', comAddress) - 1) FROM company"
 				+ "WHERE comId = #{comId}")
 	String getArea(String comId);
+	
 }

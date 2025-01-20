@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 .container {
-    width: 1000px; 
-    height: 300px;
-    overflow-y: auto;
+   
     justify-items: center;
 }

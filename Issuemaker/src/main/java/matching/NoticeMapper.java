@@ -45,7 +45,5 @@ public interface NoticeMapper {
 	 @Select("SELECT comLicense FROM notice WHERE comId = #{comId}")
 	 List<String> getComLicenseByNoticeComId(String comId);
 
-	
-
 
 }
