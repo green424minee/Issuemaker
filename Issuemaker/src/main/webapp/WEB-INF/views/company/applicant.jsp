@@ -10,7 +10,7 @@
     <title>지원자 관리</title>
     <style>
         table {
-            width: 800px; /* 고정된 너비 설정 */
+            width: 900px; /* 고정된 너비 설정 */
             border-collapse: collapse;
             table-layout: fixed; /* 고정된 레이아웃 */
         }
@@ -39,7 +39,8 @@
             <tr>
                 <th>공고명</th>
                 <th>직무</th>
-                <th>상세보기</th>
+                <th>이력서</th>
+                <th>지원 날짜</th>
                 <th>결과</th>
             </tr>
         </thead>
@@ -49,6 +50,7 @@
                     <td>${ notice.getNoticeDetail().title }</td>
                     <td>${ notice.getNoticeDetail().jobType }</td>
                     <td><a href="/resume?resumeNo=${notice.resume}">${ notice.getResumeDetail().title }</a></td>
+                    <td>${ notice.applicationDate }</td>
                     <td>
                     	<c:if test="${ notice.result == 0 }">
                     		<a href="/accepted?notice=${notice.notice}&resume=${notice.resume}">합격</a> / 
@@ -61,7 +63,6 @@
 	                    	<c:if test="${ notice.result == 2 }">
 	                    		불합격
 	                    	</c:if>
-	                    	<a href="/cancel">수정</a>
                     	</c:if>
                     </td>
                 </tr>
