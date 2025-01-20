@@ -74,6 +74,7 @@ public class CompanyJoinServlet extends HttpServlet{
 	    Company company = new Company(comId, comName, comNo, comPhone, comCeo, managerEmail, comAddress, otherAddress, comBirth, comSize, comWeb);
 	    CompanyService service = CompanyService.getInstance();
 	    service.insert(company);
+	    
 		  
 		req.getRequestDispatcher("/WEB-INF/views/login/login.jsp").forward(req, resp);
 	}

@@ -37,6 +37,15 @@
 			<a href="/changeCompanyInfo">기업정보 수정</a>
     		<input type="submit" value="로그아웃" class="logout"> <%-- 메인 화면으로- --%>
     	</form>
+    	<form class="serach" action="search">
+			<select name="findType">
+				<option value="">검색유형</option>
+				<option value="1">직업별</option>
+				<option value="2">지역별</option> 
+			</select>
+			<input type="search" id="keyword" name="keyword">
+			<input type="submit" value="검색">
+		</form>
         <nav>
             <a href="/companyPage" class="link">공고관리</a>
             
