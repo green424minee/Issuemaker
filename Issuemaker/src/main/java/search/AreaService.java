@@ -30,6 +30,12 @@ public class AreaService {
 			return mapper.getComId(area);	
 		}
 	}
-	
+	public List<Notice> getArea(String area) {
+		try(SqlSession session = DBUtil.getSqlSession()){
+			AreaMapper mapper  = session.getMapper(AreaMapper.class);
+			
+			return mapper.getArea(area);	
+		}
+	}
 
 }

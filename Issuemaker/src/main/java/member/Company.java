@@ -13,10 +13,10 @@ public class Company {
 	private String comAddress;
 	private String otherAddress;
 	private LocalDate comBirth;
-	private int comSize;
+	private Integer comSize;
 	private String comWeb;
 	public Company(String comId, String comName, long comNo, String comPhone, String comCeo, String managerEmail,
-			String comAddress, String otherAddress, LocalDate comBirth, int comSize, String comWeb) {
+			String comAddress, String otherAddress, LocalDate comBirth, Integer comSize, String comWeb) {
 		super();
 		this.comId = comId;
 		this.comName = comName;
@@ -84,10 +84,10 @@ public class Company {
 	public void setComBirth(LocalDate comBirth) {
 		this.comBirth = comBirth;
 	}
-	public int getComSize() {
+	public Integer getComSize() {
 		return comSize;
 	}
-	public void setComSize(int comSize) {
+	public void setComSize(Integer comSize) {
 		this.comSize = comSize;
 	}
 	public String getComWeb() {

@@ -24,7 +24,7 @@ public class SearchServlet extends HttpServlet{
 	    if ("1".equals(findType)) {
 	        try {
 	            JobService jobService = JobService.getInstance();
-	            List<Notice> notices = jobService.getNotice(keyword); // 직업별 검색
+	            List<Notice> notices = jobService.getJobType(keyword); // 직업별 검색
 	            req.setAttribute("jobNotices", notices);
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -34,7 +34,7 @@ public class SearchServlet extends HttpServlet{
 	    else if ("2".equals(findType)) {
 	        try {
 	            AreaService areaService = AreaService.getInstance();
-	            List<Notice> notices = areaService.getComId(keyword); // 지역별 검색
+	            List<Notice> notices = areaService.getArea(keyword); // 지역별 검색
 	            req.setAttribute("areaNotices", notices); 
 	        } catch (Exception e) {
 	            e.printStackTrace();

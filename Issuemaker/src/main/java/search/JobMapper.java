@@ -17,4 +17,7 @@ public interface JobMapper {
 				+ "WHERE comId = #{comId}")
 	String getArea(String comId);
 	
+	@Select("SELECT * FROM notice WHERE jobType LIKE CONCAT('%', #{jobType}, '%')")
+    List<Notice> getJobType(String jobType);
+	
 }
