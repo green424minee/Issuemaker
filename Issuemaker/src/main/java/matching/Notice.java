@@ -24,9 +24,6 @@ public class Notice {
 	private String major;
 	private String comLicense;
 	
-	
-	
-	
 	public Notice(int no, String comId, String title, String context, LocalDate postDate, LocalDate deadLine,
 				Integer salary, String jobType, Integer exTerm, String workday, Integer type, Integer schoolLevel, String major,
 				String comLicense) {
@@ -68,11 +65,21 @@ public class Notice {
 	}
 
 	public String getArea() {
-		NoticeService ser = NoticeService.getInstance();
-		String area =  ser.selectComAddress(comId);
-		int index = area.indexOf(' ');
-		return area.substring(0, index);
+	    NoticeService ser = NoticeService.getInstance();
+	    String area = ser.selectComAddress(comId);
+	    
+	    if (area != null && !area.isEmpty()) { // area가 null이 아니고 비어있지 않은지 확인
+	        int index = area.indexOf(' ');
+	        if (index != -1) { // 공백이 존재하는지 확인
+	            return area.substring(0, index);
+	        } else {
+	            return area; // 공백이 없으면 전체 문자열 반환
+	        }
+	    }
+	    
+	    return ""; // area가 null이거나 비어있으면 빈 문자열 반환
 	}
+
 	
 	public int getNo() {
 		return no;
