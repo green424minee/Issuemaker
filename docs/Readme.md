@@ -20,5 +20,6 @@
 - [PPT 발표자료](이슈메이커.pptx)
 - [프로젝트 성찰지 목록](3_프로젝트_성찰지_목록.md)
 
-https://github.com/000vin000/Issuemaker/blob/master/docs/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4
-<video src="https://github.com/000vin000/Issuemaker/blob/master/docs/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4" width="300" />
+<p align="center">
+  <video src="%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4" width="480px"></video>
+</p>
