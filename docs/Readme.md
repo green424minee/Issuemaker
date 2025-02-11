@@ -20,6 +20,4 @@
 - [PPT 발표자료](이슈메이커.pptx)
 - [프로젝트 성찰지 목록](3_프로젝트_성찰지_목록.md)
 
-<p align="center">
-  <video src="%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4" width="480px"></video>
-</p>
+[시연영상.webm](https://github.com/user-attachments/assets/79b84626-e170-4b51-b0c4-77bd2fb39df1)
