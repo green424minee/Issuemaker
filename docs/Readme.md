@@ -18,10 +18,5 @@
 - [프로젝트 과제 수행 계획서](1_프로젝트_과제_수행_계획서.md)
 - [하부르타노트 목록](2_하브루타_노트_목록.md)
 - [PPT 발표자료](이슈메이커.pptx)
+- [프로젝트 시연영상](프로젝트_영상.mp4)
 - [프로젝트 성찰지 목록](3_프로젝트_성찰지_목록.md)
-
-https://github.com/000vin000/Issuemaker/raw/refs/heads/master/docs/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4
-
-https://github.com/000vin000/Issuemaker/blob/master/docs/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4
-<video src="https://github.com/000vin000/Issuemaker/blob/master/docs/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EC%98%81%EC%83%81.mp4" width="300" />
-
